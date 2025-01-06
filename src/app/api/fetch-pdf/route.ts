@@ -22,26 +22,26 @@ export async function GET(request: Request) {
     const pdfData: PDFData = {
       pdfBuffer: base64String,
       summary:
-        "This document is a sample PDF that demonstrates various features of the PDF format. It includes text, images, and interactive elements to showcase the versatility of PDF documents.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       terms: [
         {
           id: "1",
           term: "Dummy",
           description:
-            "Portable Document Format, a file format used to present documents independently of software, hardware, and operating systems.",
+            "Een endomyocardbiopsie is een procedure waarbij een klein stukje weefsel uit de hartspier (myocard) wordt genomen om te onderzoeken. Dit gebeurt meestal met een dunne buis (katheter) die via een bloedvat naar het hart wordt gebracht. Het doel is om te kijken of er schade, ontsteking of andere afwijkingen in het hartweefsel zijn.",
         },
         {
           id: "2",
-          term: "Metadata",
+          term: "PDF",
           description:
-            "Information about the document, such as author, creation date, and keywords, embedded within the PDF file.",
+            "Steeds erger wordende kortademigheid. Het gaat om het gevoel dat je steeds moeilijker kunt ademen, en dat dit langzaam in de loop van de tijd erger wordt.",
         },
         {
           id: "3",
           term: "File",
-          description:
-            "Additional objects or markups added to a PDF document, such as comments, highlights, or drawings.",
           source: "https://google.com",
+          description:
+            "NYHA staat voor New York Heart Association en is een classificatiesysteem dat wordt gebruikt om te beschrijven hoe ernstig hartfalen is op basis van de symptomen van een patiënt. Er zijn vier klassen: Klasse I: Geen beperkingen in dagelijkse activiteiten, geen klachten. Klasse II: Enige beperking bij zware inspanning, lichte kortademigheid of vermoeidheid. Klasse III: Duidelijke beperking bij alledaagse activiteiten, snel moe of kortademig. Klasse IV: Klachten ook in rust, ernstige beperking in alle activiteiten. Het helpt artsen om te bepalen hoe ernstig het hartfalen is en welke behandeling nodig is.",
         },
       ],
     }

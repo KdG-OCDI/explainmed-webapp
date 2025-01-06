@@ -14,11 +14,9 @@ export function Summary({ summary }: SummaryProps) {
     <div className="mx-auto w-full rounded-lg border border-gray-200 bg-white shadow-lg">
       <Accordion type="single" collapsible>
         <AccordionItem value="summary">
-          <AccordionTrigger className="p-4 font-semibold">
-            Summary
-          </AccordionTrigger>
+          <AccordionTrigger>Samenvatting</AccordionTrigger>
           <AccordionContent>
-            <p className="p-4 text-sm text-gray-600">{summary}</p>
+            <p>{summary}</p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

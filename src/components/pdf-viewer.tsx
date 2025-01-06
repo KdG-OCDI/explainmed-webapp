@@ -81,7 +81,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
           highlight.className = "highlighted-term"
           highlight.title = description
           highlight.style.position = "absolute"
-          highlight.style.backgroundColor = "yellow"
+          highlight.style.backgroundColor = "#0ea5e9"
           highlight.style.opacity = "0.5"
           highlight.style.left = `${rect.left - containerRect.left}px`
           highlight.style.top = `${rect.top - containerRect.top}px`
@@ -134,7 +134,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
 
   return (
     <div className="relative flex h-full flex-col">
-      <div className="grow overflow-auto rounded-lg border" ref={pageRef}>
+      <div className="grow overflow-auto border-r" ref={pageRef}>
         <Document
           file={pdfData}
           onLoadSuccess={onDocumentLoadSuccess}
@@ -161,13 +161,13 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
             <ZoomOut className="size-4" />
             <span className="sr-only">Zoom out</span>
           </Button>
-          <span className="text-sm">{Math.round(scale * 100)}%</span>
+          <span>{Math.round(scale * 100)}%</span>
           <Button onClick={() => changeScale(0.1)} size="sm" variant="outline">
             <ZoomIn className="size-4" />
             <span className="sr-only">Zoom in</span>
           </Button>
 
-          <p className="px-4 text-sm">Pagina {pageNumber}</p>
+          <p className="px-4">Pagina {pageNumber}</p>
 
           <Button
             onClick={() => changePage(-1)}
