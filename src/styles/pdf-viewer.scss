@@ -1,0 +1,16 @@
+/* Import the required react-pdf styles */
+@import "react-pdf/dist/esm/Page/TextLayer.css";
+
+.highlighted-term {
+  background: rgba(255, 255, 0, 0.4);
+  position: absolute;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+/* Ensure the text content is properly positioned */
+.react-pdf__Page {
+  position: relative;
+}
+

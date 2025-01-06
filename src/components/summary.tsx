@@ -5,17 +5,23 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-export function Summary() {
+interface SummaryProps {
+  summary: string
+}
+
+export function Summary({ summary }: SummaryProps) {
   return (
-    <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="summary">
-        <AccordionTrigger>Summary</AccordionTrigger>
-        <AccordionContent>
-          This document is a sample PDF file that demonstrates various features
-          and capabilities of the PDF format. It includes text, images, and
-          interactive elements to showcase the versatility of PDF documents.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <div className="mx-auto w-full rounded-lg border border-gray-200 bg-white shadow-lg">
+      <Accordion type="single" collapsible>
+        <AccordionItem value="summary">
+          <AccordionTrigger className="p-4 font-semibold">
+            Summary
+          </AccordionTrigger>
+          <AccordionContent>
+            <p className="p-4 text-sm text-gray-600">{summary}</p>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
   )
 }
