@@ -1,7 +1,6 @@
 {
   // Base configuration for JavaScript files
   "extends": [
-    "airbnb-base", // Airbnb's base JS style guide
     "next/core-web-vitals", // Next.js core web vitals plugin to avoid build warnings
     "plugin:prettier/recommended" // Integrates Prettier with ESLint
   ],
@@ -13,7 +12,7 @@
         "endOfLine": "auto", // Maintain consistent end of line behavior across environments
         "semi": false // Omit semicolons at the end of statements
       }
-    ] // Prevent conflicts between Prettier and Airbnb ESLint rules
+    ]
   },
   "settings": {
     "tailwindcss": {
@@ -32,8 +31,6 @@
       ],
       "extends": [
         "plugin:tailwindcss/recommended", // Recommended Tailwind CSS linting rules
-        "airbnb", // Airbnb's full style guide (JS + React)
-        "airbnb-typescript", // Airbnb's TypeScript style guide
         "next/core-web-vitals", // Next.js core web vitals plugin
         "plugin:prettier/recommended" // Integrates Prettier with ESLint
       ],
@@ -42,15 +39,6 @@
         "project": "./tsconfig.json" // Ensures TypeScript is linted according to the project's tsconfig.json
       },
       "rules": {
-        "prettier/prettier": [
-          "error",
-          {
-            "singleQuote": false, // Use double quotes for TypeScript files
-            "endOfLine": "auto", // Maintain consistent end of line behavior across environments
-            "semi": false, // Omit semicolons at the end of statements
-            "trailingComma": "es5" // Include trailing commas where valid in ES5
-          }
-        ], // Prevent conflicts between Prettier and Airbnb ESLint rules
         "tailwindcss/no-custom-classname": ["off"], // Allow custom class names (not restricted to Tailwind)
         "import/no-extraneous-dependencies": "warn", // Warn about extraneous dependencies in TypeScript files
         "no-param-reassign": "off", // Allow parameter reassignment
@@ -69,12 +57,6 @@
         "react/no-unstable-nested-components": "off", // Allow unstable nested components (needed by i18n library)
         "@typescript-eslint/comma-dangle": "off", // Disable ESLint comma-dangle rule to avoid conflict with Prettier
         "@typescript-eslint/consistent-type-imports": "error", // Enforce consistent usage of `import type`
-        "no-restricted-syntax": [
-          "error",
-          "ForInStatement", // Disallow `for-in` loops
-          "LabeledStatement", // Disallow labeled statements
-          "WithStatement" // Disallow `with` statements
-        ], // Override Airbnb configuration to restrict specific syntax
         "import/prefer-default-export": "off", // Allow named exports without preferring default exports
         "simple-import-sort/imports": "error", // Enforce sorted imports
         "simple-import-sort/exports": "error", // Enforce sorted exports

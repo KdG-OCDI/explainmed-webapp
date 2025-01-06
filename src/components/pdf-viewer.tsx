@@ -13,7 +13,7 @@ import type { TermsData } from "@/lib/models/pdf.model"
 // Important: Set the worker source for react-pdf
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
+  import.meta.url,
 ).toString()
 
 interface PDFViewerProps {
@@ -34,7 +34,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
   const fetchPDF = useCallback(async () => {
     try {
       const response = await fetch(
-        `/api/fetch-pdf?url=${encodeURIComponent(url)}`
+        `/api/fetch-pdf?url=${encodeURIComponent(url)}`,
       )
       const data = await response.json()
       setPdfData(`data:application/pdf;base64,${data.pdfBuffer}`)
@@ -52,7 +52,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
     console.log("Highlighting terms...") // Debug log
 
     const textLayer = pageRef.current.querySelector(
-      ".react-pdf__Page__textContent"
+      ".react-pdf__Page__textContent",
     )
     if (!textLayer) return
 
@@ -63,7 +63,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
 
     terms.forEach(({ term, description }) => {
       const textNodes = Array.from(textLayer.querySelectorAll("span")).filter(
-        (span) => span.textContent?.toLowerCase().includes(term.toLowerCase())
+        (span) => span.textContent?.toLowerCase().includes(term.toLowerCase()),
       )
 
       textNodes.forEach((node) => {

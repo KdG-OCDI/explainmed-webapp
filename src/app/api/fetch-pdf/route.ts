@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   if (!url) {
     return NextResponse.json(
       { error: "URL parameter is required" },
-      { status: 400 }
+      { status: 400 },
     )
   }
 
