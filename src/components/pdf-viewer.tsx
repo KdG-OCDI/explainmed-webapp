@@ -28,6 +28,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
   const [pdfData, setPdfData] = useState<string | null>(null)
   const [terms, setTerms] = useState<TermsData[]>([])
   const [error, setError] = useState<string | null>(null)
+  const [isPageRendered, setIsPageRendered] = useState(false)
   const pageRef = useRef<HTMLDivElement>(null)
 
   const fetchPDF = useCallback(async () => {
@@ -46,7 +47,9 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
   }, [url, onDataFetched])
 
   const highlightTerms = useCallback(() => {
-    if (!pageRef.current) return
+    if (!pageRef.current || !isPageRendered) return
+
+    console.log("Highlighting terms...") // Debug log
 
     const textLayer = pageRef.current.querySelector(
       ".react-pdf__Page__textContent"
@@ -89,57 +92,36 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
         }
       })
     })
-  }, [terms])
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout
-
-    const applyHighlights = () => {
-      timeout = setTimeout(() => {
-        highlightTerms()
-      }, 3000) // Delay to ensure text rendering is complete
-    }
-
-    const textLayer = pageRef.current?.querySelector(
-      ".react-pdf__Page__textContent"
-    )
-    if (textLayer) {
-      const observer = new MutationObserver(() => {
-        applyHighlights()
-      })
-
-      // Observe changes in the text layer
-      observer.observe(textLayer, { childList: true, subtree: true })
-
-      // Initial attempt to highlight
-      applyHighlights()
-
-      return () => {
-        observer.disconnect()
-        clearTimeout(timeout)
-      }
-    }
-  }, [highlightTerms, pageNumber, scale])
+  }, [terms, isPageRendered])
 
   useEffect(() => {
     if (!pdfData) fetchPDF()
   }, [fetchPDF, pdfData])
 
   useEffect(() => {
-    highlightTerms()
-  }, [highlightTerms, pageNumber, scale])
+    if (isPageRendered) {
+      highlightTerms()
+    }
+  }, [highlightTerms, isPageRendered, pageNumber, scale])
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages)
+    console.log("Document loaded successfully") // Debug log
+  }
+
+  const onPageRenderSuccess = () => {
+    console.log("Page rendered successfully") // Debug log
+    setIsPageRendered(true)
   }
 
   const changePage = (offset: number) => {
     setPageNumber((prev) => Math.min(Math.max(prev + offset, 1), numPages || 1))
+    setIsPageRendered(false) // Reset render state when changing page
   }
 
   const changeScale = (delta: number) => {
-    console.log("koekoek")
     setScale((prev) => Math.min(Math.max(prev + delta, 0.5), 2))
+    setIsPageRendered(false) // Reset render state when changing scale
   }
 
   if (error) {
@@ -155,7 +137,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
       <div className="grow overflow-auto rounded-lg border" ref={pageRef}>
         <Document
           file={pdfData}
-          onLoadSuccess={() => onDocumentLoadSuccess}
+          onLoadSuccess={onDocumentLoadSuccess}
           loading={<div className="py-4 text-center">Loading PDF...</div>}
           error={
             <div className="py-4 text-center text-red-500">
@@ -169,11 +151,11 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
             renderTextLayer
             renderAnnotationLayer={false}
             className="max-w-none"
-            onRenderSuccess={highlightTerms}
+            onRenderSuccess={onPageRenderSuccess}
           />
         </Document>
       </div>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-lg border p-2 shadow-md">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-lg border bg-white p-2 shadow-md">
         <div className="flex items-center space-x-2">
           <Button onClick={() => changeScale(-0.1)} size="sm" variant="outline">
             <ZoomOut className="size-4" />
