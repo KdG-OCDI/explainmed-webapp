@@ -155,8 +155,8 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
           />
         </Document>
       </div>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-lg border bg-white p-2 shadow-md">
-        <div className="flex items-center space-x-2">
+      <div className="absolute bottom-6 left-1/2 z-50 w-[390px] -translate-x-1/2 rounded-lg border bg-white p-2 shadow-md">
+        <div className="flex items-center justify-center space-x-2">
           <Button onClick={() => changeScale(-0.1)} size="sm" variant="outline">
             <ZoomOut className="size-4" />
             <span className="sr-only">Zoom out</span>
