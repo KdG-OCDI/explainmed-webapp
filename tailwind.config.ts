@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        "explain-med": "#004AAD",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

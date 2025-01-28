@@ -22,7 +22,7 @@ export function Terms({ terms }: TermsProps) {
                 <div key={item.id} className="border-b pb-4 last:border-b-0">
                   <dt className="semibold">{item.term}</dt>
 
-                  <dd className="mt-1 text-gray-600">{item.description}</dd>
+                  <dd className="mt-1 text-gray-700">{item.description}</dd>
                   {item.source && (
                     <a
                       href={item.source}
