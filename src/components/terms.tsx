@@ -28,7 +28,7 @@ export function Terms({ terms }: TermsProps) {
                       href={item.source}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 inline-block text-sky-800 hover:text-sky-950"
+                      className="mt-2 inline-block text-blue-600 hover:text-blue-700"
                     >
                       <span>Lees meer</span>
                     </a>

@@ -81,7 +81,7 @@ export function PDFViewer({ url, onDataFetched }: PDFViewerProps) {
           highlight.className = "highlighted-term"
           highlight.title = description
           highlight.style.position = "absolute"
-          highlight.style.backgroundColor = "#0ea5e9"
+          highlight.style.backgroundColor = "#006DFF"
           highlight.style.opacity = "0.5"
           highlight.style.left = `${rect.left - containerRect.left}px`
           highlight.style.top = `${rect.top - containerRect.top}px`
