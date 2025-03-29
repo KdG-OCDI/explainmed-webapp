@@ -3,10 +3,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from '@/components/ui/accordion';
 
 interface SummaryProps {
-  summary: string
+  summary: string;
 }
 
 export function Summary({ summary }: SummaryProps) {
@@ -21,5 +21,5 @@ export function Summary({ summary }: SummaryProps) {
         </AccordionItem>
       </Accordion>
     </div>
-  )
+  );
 }

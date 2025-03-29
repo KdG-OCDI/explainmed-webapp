@@ -3,11 +3,11 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import type { TermsData } from "@/lib/models/pdf.model"
+} from '@/components/ui/accordion';
+import type { TermsData } from '@/lib/models/pdf.model';
 
 interface TermsProps {
-  terms: TermsData[]
+  terms: TermsData[];
 }
 
 export function Terms({ terms }: TermsProps) {
@@ -40,5 +40,5 @@ export function Terms({ terms }: TermsProps) {
         </AccordionItem>
       </Accordion>
     </div>
-  )
+  );
 }

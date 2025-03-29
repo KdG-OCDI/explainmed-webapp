@@ -8,9 +8,9 @@
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": false, // Use single quotes instead of double quotes
+        "singleQuote": true, // Use single quotes instead of double quotes
         "endOfLine": "auto", // Maintain consistent end of line behavior across environments
-        "semi": false // Omit semicolons at the end of statements
+        "semi": true // Omit semicolons at the end of statements
       }
     ]
   },
