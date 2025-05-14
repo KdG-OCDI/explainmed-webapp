@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { storeDocument } from '@/lib/document-store';
 
 // For testing without a backend
-const DUMMY_MODE = true;
+const DUMMY_MODE = false;
 
 export async function POST(request: Request) {
   try {
@@ -22,6 +22,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ id: dummyId });
     }
 
+    console.log('in submit-letter');
+
     // Real API implementation (when DUMMY_MODE is false)
     const API_USERNAME = 'explainmed';
     const API_PASSWORD = 'explainmed';
@@ -39,6 +41,8 @@ export async function POST(request: Request) {
       }),
     });
 
+    console.log(tokenResponse);
+
     if (!tokenResponse.ok) {
       return NextResponse.json(
         { error: 'Failed to authenticate with the API' },
@@ -49,8 +53,10 @@ export async function POST(request: Request) {
     const tokenData = await tokenResponse.json();
     const token = tokenData.token;
 
+    console.log(tokenData);
+
     // Make the actual API request with the token
-    const response = await fetch(`${API_BASE_URL}/api/async/explain`, {
+    const response = await fetch(`${API_BASE_URL}/api/async/simplate/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,6 +67,8 @@ export async function POST(request: Request) {
       }),
     });
 
+    console.log(response);
+
     if (!response.ok) {
       return NextResponse.json(
         { error: `API responded with status: ${response.status}` },
@@ -69,13 +77,24 @@ export async function POST(request: Request) {
     }
 
     const data = await response.json();
+    console.log('API response data:', data);
+    const trackingId = data.task_id || data.id;
 
-    // Store the document with the ID from the API
-    storeDocument(data.id, body.document);
+    if (!trackingId) {
+      console.error('Geen tracking ID ontvangen van API:', data);
+      return NextResponse.json(
+        { error: 'Geen tracking ID ontvangen van API' },
+        { status: 500 },
+      );
+    }
 
-    return NextResponse.json({ id: data.id });
+    storeDocument(trackingId, body.document);
+
+    // Stuur de tracking ID terug naar de client
+    return NextResponse.json({ id: trackingId });
   } catch (error) {
     console.error('API error:', error);
+
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 },

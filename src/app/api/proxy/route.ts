@@ -53,6 +53,8 @@ export async function POST(request: Request) {
       );
     }
 
+    console.log(token);
+
     // Make the actual API request with the token
     const response = await fetch(`${API_BASE_URL}/api/identify/`, {
       method: 'POST',
@@ -64,6 +66,8 @@ export async function POST(request: Request) {
         document: body.document,
       }),
     });
+
+    console.log(response);
 
     if (!response.ok) {
       // If we get a 401, our token might be expired
@@ -79,6 +83,7 @@ export async function POST(request: Request) {
     }
 
     const data = await response.json();
+    console.log(data);
     return NextResponse.json(data);
   } catch (error) {
     console.error('Proxy API error:', error);
