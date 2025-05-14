@@ -2,25 +2,9 @@ import { NextResponse } from 'next/server';
 
 import { storeDocument } from '@/lib/document-store';
 
-// For testing without a backend
-const DUMMY_MODE = false;
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-
-    if (DUMMY_MODE) {
-      // Generate a random ID for testing
-      const dummyId = `test-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-
-      // Store the document with the generated ID
-      storeDocument(dummyId, body.document);
-
-      // Simulate a slight delay
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      return NextResponse.json({ id: dummyId });
-    }
 
     console.log('in submit-letter');
 
