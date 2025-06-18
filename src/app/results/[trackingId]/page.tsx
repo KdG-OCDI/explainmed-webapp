@@ -137,12 +137,10 @@ export default function ResultsPage() {
     });
 
     // Convert map to array and sort alphabetically
-    return Array.from(termsMap)
-      .map(([term, description]) => ({
-        term,
-        description,
-      }))
-      .sort((a, b) => a.term.localeCompare(b.term));
+    return Array.from(termsMap).map(([term, description]) => ({
+      term,
+      description,
+    }));
   };
 
   // Function to render the explained text with proper formatting and click handlers
