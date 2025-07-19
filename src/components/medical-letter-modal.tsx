@@ -95,7 +95,7 @@ export function MedicalLetterModal({
             disabled={isLoading}
           />
 
-          {error && <div className="mt-4 text-sm text-red-500">{error}</div>}
+          {error && <div className="p-4 text-sm text-red-500">{error}</div>}
         </div>
 
         <div className="flex justify-end border-t p-4">
