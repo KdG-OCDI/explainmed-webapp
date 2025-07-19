@@ -1,15 +1,35 @@
 import { NextResponse } from 'next/server';
 
+import { getDemoCaseByTrackingId } from '@/lib/demo-data';
+import { getDemoModeFromRequest } from '@/lib/demo-mode';
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const trackingId = searchParams.get('trackingId');
+    const isDemo = getDemoModeFromRequest(request);
 
     if (!trackingId) {
       return NextResponse.json(
         { error: 'Tracking ID is required' },
         { status: 400 },
       );
+    }
+
+    // Demo mode: return pre-stored results immediately
+    if (isDemo && trackingId.startsWith('demo-')) {
+      const demoCase = getDemoCaseByTrackingId(trackingId);
+
+      if (demoCase) {
+        console.log('Demo mode: returning result for', demoCase.name);
+        return NextResponse.json(demoCase.result);
+      } else {
+        console.log('Demo mode: no case found for tracking ID', trackingId);
+        return NextResponse.json(
+          { error: 'Demo case not found' },
+          { status: 404 },
+        );
+      }
     }
 
     const API_USERNAME = 'explainmed';

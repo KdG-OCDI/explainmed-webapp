@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { DemoInstructions } from '@/components/demo-instructions';
 import { MedicalLetterModal } from '@/components/medical-letter-modal';
 import { Button } from '@/components/ui/button';
 
@@ -28,6 +29,13 @@ export default function Home() {
           >
             Aan de slag
           </Button>
+        </div>
+      </section>
+
+      {/* Demo instructions */}
+      <section className="w-full bg-white px-4 py-8">
+        <div className="container mx-auto max-w-5xl">
+          <DemoInstructions />
         </div>
       </section>
 

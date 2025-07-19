@@ -1,14 +1,44 @@
 import { NextResponse } from 'next/server';
 
+import {
+  findDemoCase,
+  generateDemoTrackingId,
+  storeDemoTracking,
+} from '@/lib/demo-data';
+import { getDemoModeFromRequest } from '@/lib/demo-mode';
 import { storeDocument } from '@/lib/document-store';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const isDemo = getDemoModeFromRequest(request);
 
-    console.log('in submit-letter');
+    console.log('in submit-letter, demo mode:', isDemo);
 
-    // Real API implementation (when DUMMY_MODE is false)
+    // Demo mode: return pre-stored results
+    if (isDemo) {
+      const demoCase = findDemoCase(body.document);
+
+      if (demoCase) {
+        const trackingId = generateDemoTrackingId();
+        storeDocument(trackingId, body.document);
+        storeDemoTracking(trackingId, demoCase.id);
+
+        console.log('Demo mode: found case for', demoCase.name);
+        return NextResponse.json({ id: trackingId });
+      } else {
+        console.log('Demo mode: no matching case found');
+        return NextResponse.json(
+          {
+            error:
+              'Geen demo case gevonden. Probeer een van de voorbeeldteksten: Bob Dylan, Maria Jansen, Jan de Vries, Anna Bakker, of Piet van der Berg.',
+          },
+          { status: 404 },
+        );
+      }
+    }
+
+    // Real API implementation (when demo mode is false)
     const API_USERNAME = 'explainmed';
     const API_PASSWORD = 'explainmed';
     const API_BASE_URL = 'http://localhost:80';

@@ -2,7 +2,7 @@
 
 import { Info, Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -15,6 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { isDemoMode } from '@/lib/demo-mode';
 
 interface Bla {
   term: string;
@@ -23,11 +24,14 @@ interface Bla {
 
 export default function ResultsPage() {
   const { trackingId } = useParams();
+  const searchParams = useSearchParams();
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null);
   const [showInlineDescriptions, setShowInlineDescriptions] = useState(false);
+  const [showMedicalTerms, setShowMedicalTerms] = useState(true);
+  const [showHelpfulQuestions, setShowHelpfulQuestions] = useState(true);
 
   const [extractedTerms, setExtractedTerms] = useState<Bla[]>([]);
   const termRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
@@ -37,9 +41,12 @@ export default function ResultsPage() {
 
     const checkStatus = async () => {
       try {
-        const response = await fetch(
-          `/api/check-status?trackingId=${trackingId}`,
-        );
+        const demoMode = isDemoMode() || searchParams.get('demo') === 'true';
+        const url = demoMode
+          ? `/api/check-status?trackingId=${trackingId}&demo=true`
+          : `/api/check-status?trackingId=${trackingId}`;
+
+        const response = await fetch(url);
 
         if (!response.ok) {
           if (response.status === 404) {
@@ -77,7 +84,7 @@ export default function ResultsPage() {
     };
 
     checkStatus();
-  }, [trackingId]);
+  }, [trackingId, searchParams]);
 
   useEffect(() => {
     if (selectedTerm && termRefs.current[selectedTerm]) {
@@ -240,7 +247,7 @@ export default function ResultsPage() {
 
   return (
     <div className="flex min-h-screen grow flex-col bg-gray-50">
-      <main className="container mx-auto flex grow flex-col py-8">
+      <main className="container mx-auto flex grow flex-col py-6">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
             <Loader2 className="mb-4 size-12 animate-spin text-blue-600" />
@@ -269,7 +276,7 @@ export default function ResultsPage() {
                 <div className="flex items-center justify-between border-b border-gray-100 p-4">
                   <div className="flex items-center ">
                     <h3 className="text-xl font-semibold">
-                      Jouw medisch verslag
+                      Jouw medisch verslag gegenereerd door AI
                     </h3>
                     <TooltipProvider>
                       <Tooltip>

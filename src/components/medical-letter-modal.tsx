@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { isDemoMode } from '@/lib/demo-mode';
 
 interface MedicalLetterModalProps {
   isOpen: boolean;
@@ -33,7 +34,12 @@ export function MedicalLetterModal({
     setError(null);
 
     try {
-      const response = await fetch('/api/submit-letter', {
+      const demoMode = isDemoMode();
+      const url = demoMode
+        ? '/api/submit-letter?demo=true'
+        : '/api/submit-letter';
+
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +57,10 @@ export function MedicalLetterModal({
       const data = await response.json();
 
       // Redirect to results page with the tracking ID
-      router.push(`/results/${data.id}`);
+      const resultsUrl = demoMode
+        ? `/results/${data.id}?demo=true`
+        : `/results/${data.id}`;
+      router.push(resultsUrl);
     } catch (err) {
       console.error('Failed to process medical text:', err);
       setError(
