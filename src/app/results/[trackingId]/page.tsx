@@ -1,11 +1,12 @@
 'use client';
 
-import { Info, Loader2 } from 'lucide-react';
+import { ChevronRight, Info, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
+import { QuestionsModal } from '@/components/questions-modal';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -32,6 +33,7 @@ export default function ResultsPage() {
   const [showInlineDescriptions, setShowInlineDescriptions] = useState(false);
   const [showMedicalTerms, setShowMedicalTerms] = useState(true);
   const [showHelpfulQuestions, setShowHelpfulQuestions] = useState(true);
+  const [isQuestionsModalOpen, setIsQuestionsModalOpen] = useState(false);
 
   const [extractedTerms, setExtractedTerms] = useState<Bla[]>([]);
   const termRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
@@ -246,7 +248,7 @@ export default function ResultsPage() {
   };
 
   return (
-    <div className="flex min-h-screen grow flex-col bg-gray-50">
+    <div className="flex grow flex-col bg-gray-50">
       <main className="container mx-auto flex grow flex-col py-6">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
@@ -273,7 +275,7 @@ export default function ResultsPage() {
           <div className="flex grow gap-4">
             <div className="w-3/4">
               <div className="rounded-lg bg-white pb-4 shadow-md">
-                <div className="flex items-center justify-between border-b border-gray-100 p-4">
+                <div className="flex items-center justify-between border-b border-gray-200 p-4">
                   <div className="flex items-center ">
                     <h3 className="text-xl font-semibold">
                       Jouw medisch verslag gegenereerd door AI
@@ -303,47 +305,50 @@ export default function ResultsPage() {
                       />
                       <Label htmlFor="inline-mode">Toon uitleg inline</Label>
                     </div>
-
-                    <Link
-                      href="/"
-                      className="flex items-center text-sm text-blue-600 underline hover:text-blue-800"
-                    >
-                      Analyseer een ander verslag
-                    </Link>
                   </div>
                 </div>
-                <div className="h-[calc(100vh-200px)] overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
+                <div className="h-[calc(100vh-190px)] overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
                   {renderExplainedText(result)}
                 </div>
               </div>
             </div>
 
-            <div className="w-1/4">
+            <div className="flex w-1/4 flex-col gap-4">
+              <div
+                className="flex cursor-pointer items-center justify-between rounded-lg border-gray-200 bg-white p-4 shadow-md transition-colors hover:bg-blue-50"
+                onClick={() => setIsQuestionsModalOpen(true)}
+              >
+                <h3 className="text-xl font-semibold">Vragen</h3>
+                <ChevronRight className="size-5 text-gray-400 transition-colors group-hover:text-gray-600" />
+              </div>
+
               <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
                 {extractedTerms?.length > 0 && (
                   <>
-                    <h3 className="border-b border-gray-100 p-4 text-xl font-semibold">
+                    <h3 className="border-b border-gray-200 p-4 text-xl font-semibold">
                       Medische termen
                     </h3>
-                    <div className="h-[calc(100vh-200px)] grow overflow-auto p-4">
-                      <div className="space-y-4">
-                        {extractedTerms.map((term: any, index: number) => (
-                          <div
-                            key={index}
-                            ref={(el) => setTermRef(el, term.term)}
-                            className={`rounded-md p-4 transition-colors duration-300 ${
-                              selectedTerm === term.term.toLowerCase()
-                                ? 'border-l-4 border-blue-600 bg-blue-100'
-                                : 'bg-gray-50'
-                            }`}
-                          >
-                            <h4 className="font-semibold text-blue-700">
-                              {term.term}
-                            </h4>
-                            <p>{term.description}</p>
-                          </div>
-                        ))}
-                      </div>
+                    <div className="h-[calc(100vh-266px)] grow overflow-auto">
+                      {extractedTerms.map((term: any, index: number) => (
+                        <div
+                          key={index}
+                          ref={(el) => setTermRef(el, term.term)}
+                          className={`px-4 py-6 transition-colors duration-300 ${
+                            selectedTerm === term.term.toLowerCase()
+                              ? 'bg-blue-200'
+                              : ''
+                          } ${
+                            index < extractedTerms.length - 1
+                              ? 'border-b border-gray-200'
+                              : ''
+                          }`}
+                        >
+                          <h4 className="font-semibold text-blue-700">
+                            {term.term}
+                          </h4>
+                          <p>{term.description}</p>
+                        </div>
+                      ))}
                     </div>
                   </>
                 )}
@@ -352,6 +357,11 @@ export default function ResultsPage() {
           </div>
         )}
       </main>
+
+      <QuestionsModal
+        isOpen={isQuestionsModalOpen}
+        onClose={() => setIsQuestionsModalOpen(false)}
+      />
     </div>
   );
 }
