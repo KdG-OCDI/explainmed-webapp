@@ -31,8 +31,6 @@ export default function ResultsPage() {
   const [error, setError] = useState<string | null>(null);
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null);
   const [showInlineDescriptions, setShowInlineDescriptions] = useState(false);
-  const [showMedicalTerms, setShowMedicalTerms] = useState(true);
-  const [showHelpfulQuestions, setShowHelpfulQuestions] = useState(true);
   const [isQuestionsModalOpen, setIsQuestionsModalOpen] = useState(false);
 
   const [extractedTerms, setExtractedTerms] = useState<Bla[]>([]);
@@ -248,7 +246,7 @@ export default function ResultsPage() {
   };
 
   return (
-    <div className="flex grow flex-col bg-gray-50">
+    <div className="flex h-[calc(100vh-64px)] grow flex-col bg-gray-50">
       <main className="container mx-auto flex grow flex-col py-6">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
@@ -322,37 +320,35 @@ export default function ResultsPage() {
                 <ChevronRight className="size-5 text-gray-400 transition-colors group-hover:text-gray-600" />
               </div>
 
-              <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
-                {extractedTerms?.length > 0 && (
-                  <>
-                    <h3 className="border-b border-gray-200 p-4 text-xl font-semibold">
-                      Medische termen
-                    </h3>
-                    <div className="h-[calc(100vh-266px)] grow overflow-auto">
-                      {extractedTerms.map((term: any, index: number) => (
-                        <div
-                          key={index}
-                          ref={(el) => setTermRef(el, term.term)}
-                          className={`px-4 py-6 transition-colors duration-300 ${
-                            selectedTerm === term.term.toLowerCase()
-                              ? 'bg-blue-200'
-                              : ''
-                          } ${
-                            index < extractedTerms.length - 1
-                              ? 'border-b border-gray-200'
-                              : ''
-                          }`}
-                        >
-                          <h4 className="font-semibold text-blue-700">
-                            {term.term}
-                          </h4>
-                          <p>{term.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
+              {extractedTerms?.length > 0 && (
+                <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
+                  <h3 className="border-b border-gray-200 p-4 text-xl font-semibold">
+                    Medische termen
+                  </h3>
+                  <div className="h-[calc(100vh-266px)] grow overflow-auto">
+                    {extractedTerms.map((term: any, index: number) => (
+                      <div
+                        key={index}
+                        ref={(el) => setTermRef(el, term.term)}
+                        className={`px-4 py-6 transition-colors duration-300 ${
+                          selectedTerm === term.term.toLowerCase()
+                            ? 'bg-blue-200'
+                            : ''
+                        } ${
+                          index < extractedTerms.length - 1
+                            ? 'border-b border-gray-200'
+                            : ''
+                        }`}
+                      >
+                        <h4 className="font-semibold text-blue-700">
+                          {term.term}
+                        </h4>
+                        <p>{term.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
