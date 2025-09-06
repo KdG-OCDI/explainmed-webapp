@@ -9,6 +9,8 @@ export async function GET(request: Request) {
     const trackingId = searchParams.get('trackingId');
     const isDemo = getDemoModeFromRequest(request);
 
+    console.log('Check-status API called with:', { trackingId, isDemo });
+
     if (!trackingId) {
       return NextResponse.json(
         { error: 'Tracking ID is required' },
@@ -18,6 +20,7 @@ export async function GET(request: Request) {
 
     // Demo mode: return pre-stored results immediately
     if (isDemo && trackingId.startsWith('demo-')) {
+      console.log('Demo mode detected, looking for tracking ID:', trackingId);
       const demoCase = getDemoCaseByTrackingId(trackingId);
 
       if (demoCase) {

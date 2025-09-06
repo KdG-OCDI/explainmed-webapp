@@ -17,6 +17,10 @@ export async function POST(request: Request) {
 
     // Demo mode: return pre-stored results
     if (isDemo) {
+      console.log(
+        'Demo mode: searching for demo case in text:',
+        body.document.substring(0, 100) + '...',
+      );
       const demoCase = findDemoCase(body.document);
 
       if (demoCase) {
@@ -24,14 +28,19 @@ export async function POST(request: Request) {
         storeDocument(trackingId, body.document);
         storeDemoTracking(trackingId, demoCase.id);
 
-        console.log('Demo mode: found case for', demoCase.name);
+        console.log(
+          'Demo mode: found case for',
+          demoCase.name,
+          'with tracking ID:',
+          trackingId,
+        );
         return NextResponse.json({ id: trackingId });
       } else {
         console.log('Demo mode: no matching case found');
         return NextResponse.json(
           {
             error:
-              'Geen demo case gevonden. Probeer een van de voorbeeldteksten: Bob Dylan, Maria Jansen, Jan de Vries, Anna Bakker, of Piet van der Berg.',
+              'Geen demo case gevonden. Probeer een van de voorbeeldteksten: Bob Dylan, Maria Jansen, Jan de Vries, Anna Bakker, Piet van der Berg, of Han Solo.',
           },
           { status: 404 },
         );

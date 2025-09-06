@@ -94,7 +94,7 @@ export function DemoModeToggle({ className }: DemoModeToggleProps) {
         <div className="mt-2 text-xs text-gray-600">
           <p>
             Demo teksten: Bob Dylan, Maria Jansen, Jan de Vries, Anna Bakker,
-            Piet van der Berg
+            Piet van der Berg, Han Solo
           </p>
         </div>
       )}

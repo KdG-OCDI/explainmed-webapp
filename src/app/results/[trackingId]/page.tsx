@@ -276,7 +276,7 @@ export default function ResultsPage() {
                 <div className="flex items-center justify-between border-b border-gray-200 p-4">
                   <div className="flex items-center ">
                     <h3 className="text-xl font-semibold">
-                      Jouw medisch verslag gegenereerd door AI
+                      Jouw medisch verslag verklaard door AI
                     </h3>
                     <TooltipProvider>
                       <Tooltip>
@@ -301,7 +301,7 @@ export default function ResultsPage() {
                         checked={showInlineDescriptions}
                         onCheckedChange={setShowInlineDescriptions}
                       />
-                      <Label htmlFor="inline-mode">Toon uitleg inline</Label>
+                      <Label htmlFor="inline-mode">Toon uitleg in de tekst</Label>
                     </div>
                   </div>
                 </div>
