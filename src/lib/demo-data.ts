@@ -16,41 +16,6 @@ const demoTrackingMap = new Map<string, string>();
 
 export const demoCases: DemoCase[] = [
   {
-    id: 'bob-dylan',
-    name: 'Bob Dylan',
-    originalText: `PATIENT: Bob Dylan
-DATUM: 15 januari 2024
-
-DIAGNOSE:
-De patiënt presenteert zich met een acute exacerbatie van chronische obstructieve longziekte (COPD) met secundaire pneumonie. Er is sprake van hypoxemie en respiratoire insufficiëntie.
-
-BEHANDELING:
-- Intraveneuze antibiotica (amoxicilline/clavulaanzuur)
-- Prednisolon 30mg per dag
-- Salbutamol inhalatie via vernevelaar
-- Zuurstofsuppletie via neusbril
-
-VERVOLG:
-Controle na 1 week bij de longarts. Roken volledig stoppen. Vaccinatie tegen pneumokokken en griep aanbevolen.`,
-    result: {
-      state: 'SUCCESS',
-      result: `<p><strong>PATIENT:</strong> Bob Dylan<br>
-<strong>DATUM:</strong> 15 januari 2024</p>
-
-<p><strong>DIAGNOSE:</strong><br>
-De patiënt presenteert zich met een acute <span data-concept="exacerbatie" data-explanation="Verergering of opflakkering van een bestaande ziekte">exacerbatie</span> van <span data-concept="chronische obstructieve longziekte" data-explanation="Een longziekte waarbij de luchtwegen vernauwd zijn en er problemen zijn met ademhalen, vaak veroorzaakt door roken">chronische obstructieve longziekte (COPD)</span> met secundaire <span data-concept="pneumonie" data-explanation="Longontsteking, een infectie van de longen">pneumonie</span>. Er is sprake van <span data-concept="hypoxemie" data-explanation="Te weinig zuurstof in het bloed">hypoxemie</span> en <span data-concept="respiratoire insufficiëntie" data-explanation="Het ademhalingssysteem werkt niet goed genoeg om voldoende zuurstof in het bloed te krijgen">respiratoire insufficiëntie</span>.</p>
-
-<p><strong>BEHANDELING:</strong><br>
-- <span data-concept="Intraveneuze antibiotica" data-explanation="Antibiotica die via een infuus direct in de bloedbaan worden toegediend">Intraveneuze antibiotica</span> (<span data-concept="amoxicilline/clavulaanzuur" data-explanation="Een combinatie van antibiotica die vaak gebruikt wordt bij infecties">amoxicilline/clavulaanzuur</span>)<br>
-- <span data-concept="Prednisolon" data-explanation="Een ontstekingsremmend medicijn dat behoort tot de corticosteroïden">Prednisolon</span> 30mg per dag<br>
-- <span data-concept="Salbutamol" data-explanation="Een medicijn dat de luchtwegen verwijdt en wordt gebruikt bij ademhalingsproblemen">Salbutamol</span> inhalatie via vernevelaar<br>
-- <span data-concept="Zuurstofsuppletie" data-explanation="Extra zuurstof toedienen via een neusbril of masker">Zuurstofsuppletie</span> via neusbril</p>
-
-<p><strong>VERVOLG:</strong><br>
-Controle na 1 week bij de <span data-concept="longarts" data-explanation="Een arts die gespecialiseerd is in longziekten">longarts</span>. Roken volledig stoppen. <span data-concept="Vaccinatie" data-explanation="Het toedienen van een vaccin om het lichaam te beschermen tegen bepaalde ziekten">Vaccinatie</span> tegen <span data-concept="pneumokokken" data-explanation="Bacteriën die longontsteking kunnen veroorzaken">pneumokokken</span> en griep aanbevolen.</p>`,
-    },
-  },
-  {
     id: 'maria-jansen',
     name: 'Maria Jansen',
     originalText: `PATIENT: Maria Jansen

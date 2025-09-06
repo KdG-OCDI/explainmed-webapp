@@ -12,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { DemoSnippetsModal } from '@/components/demo-snippets-modal';
 import { isDemoMode, setDemoMode } from '@/lib/demo-mode';
 
 interface DemoModeToggleProps {
@@ -21,6 +22,7 @@ interface DemoModeToggleProps {
 export function DemoModeToggle({ className }: DemoModeToggleProps) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isSnippetsModalOpen, setIsSnippetsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsEnabled(isDemoMode());
@@ -67,37 +69,48 @@ export function DemoModeToggle({ className }: DemoModeToggleProps) {
   }
 
   return (
-    <div
-      className={`fixed bottom-4 right-4 z-50 rounded-lg border bg-white p-4 shadow-lg ${className}`}
-    >
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <Switch
-            id="demo-mode"
-            checked={isEnabled}
-            onCheckedChange={handleToggle}
-          />
-          <Label htmlFor="demo-mode" className="text-sm font-medium">
-            Demo mode
-          </Label>
+    <>
+      <div
+        className={`fixed bottom-4 right-4 z-50 rounded-lg border bg-white p-4 shadow-lg ${className}`}
+      >
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Switch
+              id="demo-mode"
+              checked={isEnabled}
+              onCheckedChange={handleToggle}
+            />
+            <Label htmlFor="demo-mode" className="text-sm font-medium">
+              Demo mode
+            </Label>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsVisible(false)}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            ✕
+          </Button>
         </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsVisible(false)}
-          className="text-gray-500 hover:text-gray-700"
-        >
-          ✕
-        </Button>
+        {isEnabled && (
+          <div className="mt-3">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setIsSnippetsModalOpen(true)}
+              className="w-full text-xs"
+            >
+              Bekijk demo teksten
+            </Button>
+          </div>
+        )}
       </div>
-      {isEnabled && (
-        <div className="mt-2 text-xs text-gray-600">
-          <p>
-            Demo teksten: Bob Dylan, Maria Jansen, Jan de Vries, Anna Bakker,
-            Piet van der Berg, Han Solo
-          </p>
-        </div>
-      )}
-    </div>
+
+      <DemoSnippetsModal
+        isOpen={isSnippetsModalOpen}
+        onClose={() => setIsSnippetsModalOpen(false)}
+      />
+    </>
   );
 }

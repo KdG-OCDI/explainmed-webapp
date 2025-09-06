@@ -32,8 +32,14 @@ export default function ResultsPage() {
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null);
   const [showInlineDescriptions, setShowInlineDescriptions] = useState(false);
   const [isQuestionsModalOpen, setIsQuestionsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'verslag' | 'samenvatting'>(
+    'verslag',
+  );
+  const [summary, setSummary] = useState<string | null>(null);
+  const [summaryLoading, setSummaryLoading] = useState(false);
 
   const [extractedTerms, setExtractedTerms] = useState<Bla[]>([]);
+  const [summaryTerms, setSummaryTerms] = useState<Bla[]>([]);
   const termRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   useEffect(() => {
@@ -123,6 +129,60 @@ export default function ResultsPage() {
     termRefs.current[term.toLowerCase()] = el;
   };
 
+  // Function to fetch summary from API
+  const fetchSummary = async () => {
+    if (summary || summaryLoading) return; // Don't fetch if already loaded or loading
+
+    setSummaryLoading(true);
+    try {
+      const demoMode = isDemoMode() || searchParams.get('demo') === 'true';
+      const url = demoMode ? '/api/summarize?demo=true' : '/api/summarize';
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          document: result,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Summary API response:', data);
+
+      if (data.state === 'SUCCESS') {
+        setSummary(data.result);
+        // Extract terms from summary
+        const terms = extractTermsFromHtml(data.result);
+        setSummaryTerms(terms);
+      } else {
+        throw new Error('Failed to generate summary');
+      }
+    } catch (err) {
+      console.error('Failed to fetch summary:', err);
+      // Fallback to generated summary
+      const fallbackSummary = generateSummaryContent(result);
+      setSummary(fallbackSummary);
+      // Extract terms from fallback summary
+      const terms = extractTermsFromHtml(fallbackSummary);
+      setSummaryTerms(terms);
+    } finally {
+      setSummaryLoading(false);
+    }
+  };
+
+  // Fetch summary when switching to summary tab
+  useEffect(() => {
+    if (activeTab === 'samenvatting' && result && !summary && !summaryLoading) {
+      fetchSummary();
+    }
+  }, [activeTab, result, summary, summaryLoading]);
+
   // Function to extract terms and explanations from the HTML string
   const extractTermsFromHtml = (htmlString: string) => {
     const tempDiv = document.createElement('div');
@@ -148,6 +208,145 @@ export default function ResultsPage() {
       term,
       description,
     }));
+  };
+
+  // Function to generate summary content from the full result
+  const generateSummaryContent = (htmlString: string) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlString;
+    const text = tempDiv.textContent || '';
+
+    // Extract key sections
+    const sections = {
+      patient: '',
+      diagnose: '',
+      behandeling: '',
+      vervolg: '',
+      medicatie: '',
+    };
+
+    // Extract patient info
+    const patientMatch = text.match(/PATIENT[:\s]+([^\n]+)/i);
+    if (patientMatch) {
+      sections.patient = patientMatch[1].trim();
+    }
+
+    // Extract diagnosis
+    const diagnoseMatch = text.match(
+      /DIAGNOSE[:\s]*([\s\S]*?)(?=BEHANDELING|VERVOLG|MEDICATIE|$)/i,
+    );
+    if (diagnoseMatch) {
+      sections.diagnose = diagnoseMatch[1].trim();
+    }
+
+    // Extract treatment
+    const behandelingMatch = text.match(
+      /BEHANDELING[:\s]*([\s\S]*?)(?=VERVOLG|MEDICATIE|$)/i,
+    );
+    if (behandelingMatch) {
+      sections.behandeling = behandelingMatch[1].trim();
+    }
+
+    // Extract follow-up
+    const vervolgMatch = text.match(/VERVOLG[:\s]*([\s\S]*?)(?=MEDICATIE|$)/i);
+    if (vervolgMatch) {
+      sections.vervolg = vervolgMatch[1].trim();
+    }
+
+    // Extract medication
+    const medicatieMatch = text.match(
+      /MEDICATIE[:\s]*([\s\S]*?)(?=VERVOLG|$)/i,
+    );
+    if (medicatieMatch) {
+      sections.medicatie = medicatieMatch[1].trim();
+    }
+
+    // Build summary HTML with highlighted terms
+    let summaryHtml = '<div class="space-y-6">';
+
+    summaryHtml += '<div class="rounded-lg bg-blue-50 p-4">';
+    summaryHtml +=
+      '<h3 class="text-lg font-semibold text-blue-900 mb-2">Samenvatting</h3>';
+    summaryHtml +=
+      '<p class="text-blue-800">Dit is een beknopte samenvatting van uw medisch verslag met de belangrijkste informatie.</p>';
+    summaryHtml += '</div>';
+
+    if (sections.patient) {
+      summaryHtml += '<div class="rounded-lg bg-white p-4 shadow-sm border">';
+      summaryHtml +=
+        '<h4 class="font-semibold text-gray-900 mb-2">Patiënt</h4>';
+      summaryHtml += `<p class="text-gray-700">${sections.patient}</p>`;
+      summaryHtml += '</div>';
+    }
+
+    if (sections.diagnose) {
+      summaryHtml += '<div class="rounded-lg bg-white p-4 shadow-sm border">';
+      summaryHtml +=
+        '<h4 class="font-semibold text-gray-900 mb-2">Diagnose</h4>';
+      summaryHtml += `<div class="text-gray-700">${highlightTermsInText(sections.diagnose, htmlString)}</div>`;
+      summaryHtml += '</div>';
+    }
+
+    if (sections.behandeling) {
+      summaryHtml += '<div class="rounded-lg bg-white p-4 shadow-sm border">';
+      summaryHtml +=
+        '<h4 class="font-semibold text-gray-900 mb-2">Behandeling</h4>';
+      summaryHtml += `<div class="text-gray-700">${highlightTermsInText(sections.behandeling, htmlString)}</div>`;
+      summaryHtml += '</div>';
+    }
+
+    if (sections.medicatie) {
+      summaryHtml += '<div class="rounded-lg bg-white p-4 shadow-sm border">';
+      summaryHtml +=
+        '<h4 class="font-semibold text-gray-900 mb-2">Medicatie</h4>';
+      summaryHtml += `<div class="text-gray-700">${highlightTermsInText(sections.medicatie, htmlString)}</div>`;
+      summaryHtml += '</div>';
+    }
+
+    if (sections.vervolg) {
+      summaryHtml += '<div class="rounded-lg bg-white p-4 shadow-sm border">';
+      summaryHtml +=
+        '<h4 class="font-semibold text-gray-900 mb-2">Vervolg</h4>';
+      summaryHtml += `<div class="text-gray-700">${highlightTermsInText(sections.vervolg, htmlString)}</div>`;
+      summaryHtml += '</div>';
+    }
+
+    summaryHtml += '</div>';
+
+    return summaryHtml;
+  };
+
+  // Function to highlight terms in text using the original HTML markup
+  const highlightTermsInText = (text: string, originalHtml: string) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = originalHtml;
+
+    const spans = tempDiv.querySelectorAll(
+      'span[data-concept][data-explanation]',
+    );
+    const termsMap = new Map<
+      string,
+      { concept: string; explanation: string }
+    >();
+
+    spans.forEach((span) => {
+      const concept = span.getAttribute('data-concept') || '';
+      const explanation = span.getAttribute('data-explanation') || '';
+      if (concept && explanation) {
+        termsMap.set(concept.toLowerCase(), { concept, explanation });
+      }
+    });
+
+    // Replace terms in text with highlighted versions
+    let processedText = text;
+    termsMap.forEach(({ concept, explanation }, key) => {
+      const regex = new RegExp(`\\b${concept}\\b`, 'gi');
+      processedText = processedText.replace(regex, (match) => {
+        return `<span data-concept="${concept}" data-explanation="${explanation}">${match}</span>`;
+      });
+    });
+
+    return processedText;
   };
 
   // Function to render the explained text with proper formatting and click handlers
@@ -270,85 +469,133 @@ export default function ResultsPage() {
         )}
 
         {result && (
-          <div className="flex grow gap-4">
-            <div className="w-3/4">
-              <div className="rounded-lg bg-white pb-4 shadow-md">
-                <div className="flex items-center justify-between border-b border-gray-200 p-4">
-                  <div className="flex items-center ">
-                    <h3 className="text-xl font-semibold">
-                      Jouw medisch verslag verklaard door AI
-                    </h3>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <button className="ml-2 text-gray-400 hover:text-gray-600">
-                            <Info className="size-4" />
-                          </button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="max-w-xs">
-                            Klik op een gemarkeerd begrip om meer uitleg te
-                            krijgen.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center space-x-2">
-                      <Switch
-                        id="inline-mode"
-                        checked={showInlineDescriptions}
-                        onCheckedChange={setShowInlineDescriptions}
-                      />
-                      <Label htmlFor="inline-mode">Toon uitleg in de tekst</Label>
+          <div className="flex flex-col gap-4">
+            <div className="flex gap-2">
+              <h2 className="text-xl font-semibold">
+                Jouw medisch verslag verklaard door AI
+              </h2>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button className="text-gray-400 hover:text-gray-600">
+                      <Info className="size-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>
+                      Klik op een gemarkeerde medische term om meer informatie
+                      te zien.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            <div className="flex grow gap-4">
+              <div className="w-3/4">
+                <div className="rounded-lg bg-white pb-4 shadow-md">
+                  <div className="flex items-center justify-between border-b border-gray-200 p-4">
+                    <div className="flex items-center gap-6">
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => setActiveTab('verslag')}
+                          className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                            activeTab === 'verslag'
+                              ? 'bg-blue-100 text-blue-700'
+                              : 'text-gray-500 hover:text-gray-700'
+                          }`}
+                        >
+                          Medisch verslag
+                        </button>
+                        <button
+                          onClick={() => setActiveTab('samenvatting')}
+                          className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                            activeTab === 'samenvatting'
+                              ? 'bg-blue-100 text-blue-700'
+                              : 'text-gray-500 hover:text-gray-700'
+                          }`}
+                        >
+                          Samenvatting
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center space-x-2">
+                        <Switch
+                          id="inline-mode"
+                          checked={showInlineDescriptions}
+                          onCheckedChange={setShowInlineDescriptions}
+                        />
+                        <Label htmlFor="inline-mode">
+                          Toon uitleg in de tekst
+                        </Label>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="h-[calc(100vh-190px)] overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
-                  {renderExplainedText(result)}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex w-1/4 flex-col gap-4">
-              <div
-                className="flex cursor-pointer items-center justify-between rounded-lg border-gray-200 bg-white p-4 shadow-md transition-colors hover:bg-blue-50"
-                onClick={() => setIsQuestionsModalOpen(true)}
-              >
-                <h3 className="text-xl font-semibold">Vragen</h3>
-                <ChevronRight className="size-5 text-gray-400 transition-colors group-hover:text-gray-600" />
-              </div>
-
-              {extractedTerms?.length > 0 && (
-                <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
-                  <h3 className="border-b border-gray-200 p-4 text-xl font-semibold">
-                    Medische termen
-                  </h3>
-                  <div className="h-[calc(100vh-266px)] grow overflow-auto">
-                    {extractedTerms.map((term: any, index: number) => (
-                      <div
-                        key={index}
-                        ref={(el) => setTermRef(el, term.term)}
-                        className={`px-4 py-6 transition-colors duration-300 ${
-                          selectedTerm === term.term.toLowerCase()
-                            ? 'bg-blue-200'
-                            : ''
-                        } ${
-                          index < extractedTerms.length - 1
-                            ? 'border-b border-gray-200'
-                            : ''
-                        }`}
-                      >
-                        <h4 className="font-semibold text-blue-700">
-                          {term.term}
-                        </h4>
-                        <p>{term.description}</p>
+                  <div className="h-[calc(100vh-190px)] overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
+                    {activeTab === 'verslag' ? (
+                      renderExplainedText(result)
+                    ) : summaryLoading ? (
+                      <div className="flex items-center justify-center h-32">
+                        <Loader2 className="size-8 animate-spin text-blue-600" />
+                        <span className="ml-2 text-gray-600">
+                          Samenvatting wordt gegenereerd...
+                        </span>
                       </div>
-                    ))}
+                    ) : (
+                      renderExplainedText(
+                        summary || generateSummaryContent(result),
+                      )
+                    )}
                   </div>
                 </div>
-              )}
+              </div>
+
+              <div className="flex w-1/4 flex-col gap-4">
+                <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
+                  <button
+                    onClick={() => setIsQuestionsModalOpen(true)}
+                    className="flex items-center justify-between border-b border-gray-200 p-4 text-left transition-colors hover:bg-gray-50"
+                  >
+                    <h3 className="text-xl font-semibold">Vragen</h3>
+                    <ChevronRight className="size-4 text-gray-400" />
+                  </button>
+                </div>
+                {(() => {
+                  const currentTerms =
+                    activeTab === 'verslag' ? extractedTerms : summaryTerms;
+                  return (
+                    currentTerms?.length > 0 && (
+                      <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
+                        <h3 className="border-b border-gray-200 p-4 text-xl font-semibold">
+                          Medische termen
+                        </h3>
+                        <div className="h-[calc(100vh-266px)] grow overflow-auto">
+                          {currentTerms.map((term: any, index: number) => (
+                            <div
+                              key={index}
+                              ref={(el) => setTermRef(el, term.term)}
+                              className={`px-4 py-6 transition-colors duration-300 ${
+                                selectedTerm === term.term.toLowerCase()
+                                  ? 'bg-blue-200'
+                                  : ''
+                              } ${
+                                index < currentTerms.length - 1
+                                  ? 'border-b border-gray-200'
+                                  : ''
+                              }`}
+                            >
+                              <h4 className="font-semibold text-blue-700">
+                                {term.term}
+                              </h4>
+                              <p>{term.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  );
+                })()}
+              </div>
             </div>
           </div>
         )}

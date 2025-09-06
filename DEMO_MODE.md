@@ -18,28 +18,9 @@ Voeg `?demo=true` toe aan de URL om demo mode te activeren voor die sessie.
 
 ## Beschikbare Demo Teksten
 
-De volgende 6 medische teksten zijn beschikbaar voor testen:
+De volgende 5 medische teksten zijn beschikbaar voor testen:
 
-### 1. Bob Dylan - COPD en Longontsteking
-
-```
-PATIENT: Bob Dylan
-DATUM: 15 januari 2024
-
-DIAGNOSE:
-De patiënt presenteert zich met een acute exacerbatie van chronische obstructieve longziekte (COPD) met secundaire pneumonie. Er is sprake van hypoxemie en respiratoire insufficiëntie.
-
-BEHANDELING:
-- Intraveneuze antibiotica (amoxicilline/clavulaanzuur)
-- Prednisolon 30mg per dag
-- Salbutamol inhalatie via vernevelaar
-- Zuurstofsuppletie via neusbril
-
-VERVOLG:
-Controle na 1 week bij de longarts. Roken volledig stoppen. Vaccinatie tegen pneumokokken en griep aanbevolen.
-```
-
-### 2. Maria Jansen - Diabetes Type 2
+### Maria Jansen - Diabetes Type 2
 
 ```
 PATIENT: Maria Jansen
@@ -58,7 +39,7 @@ VERVOLG:
 Controle over 3 maanden bij internist. Oogarts controle voor retinopathie. Nierfunctie monitoring.
 ```
 
-### 3. Jan de Vries - Hartaanval (STEMI)
+### Jan de Vries - Hartaanval (STEMI)
 
 ```
 PATIENT: Jan de Vries
@@ -77,7 +58,7 @@ VERVOLG:
 Cardiologische revalidatie. Leefstijladviezen: stoppen met roken, gezonde voeding, regelmatige beweging.
 ```
 
-### 4. Anna Bakker - Depressie en Angst
+### Anna Bakker - Depressie en Angst
 
 ```
 PATIENT: Anna Bakker
@@ -96,7 +77,7 @@ VERVOLG:
 Controle over 2 weken. Bij verslechtering direct contact opnemen.
 ```
 
-### 5. Piet van der Berg - Prostaatkanker
+### Piet van der Berg - Prostaatkanker
 
 ```
 PATIENT: Piet van der Berg
@@ -115,7 +96,7 @@ VERVOLG:
 Operatie gepland over 3 weken. Preoperatieve screening. Postoperatieve controle bij uroloog.
 ```
 
-### 6. Han Solo - Complexe Cardiovasculaire Aandoening
+### Han Solo - Complexe Cardiovasculaire Aandoening
 
 ```
 Geachte collega,
