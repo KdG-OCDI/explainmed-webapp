@@ -21,7 +21,7 @@ export async function GET(request: Request) {
     // Demo mode: return pre-stored results immediately
     if (isDemo && trackingId.startsWith('demo-')) {
       console.log('Demo mode detected, looking for tracking ID:', trackingId);
-      const demoCase = await getDemoCaseByTrackingId(trackingId);
+      const demoCase = getDemoCaseByTrackingId(trackingId);
 
       if (demoCase) {
         console.log('Demo mode: returning result for', demoCase.name);

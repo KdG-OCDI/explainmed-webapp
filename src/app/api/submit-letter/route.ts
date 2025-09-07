@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       if (demoCase) {
         const trackingId = generateDemoTrackingId();
         storeDocument(trackingId, body.document);
-        await storeDemoTracking(trackingId, demoCase.id);
+        storeDemoTracking(trackingId, demoCase.id);
 
         console.log(
           'Demo mode: found case for',

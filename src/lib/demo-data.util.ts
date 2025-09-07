@@ -1,9 +1,6 @@
 // Demo data for user testing - pre-processed medical texts and their results
 // This allows consistent testing without API calls
 
-import { promises as fs } from 'fs';
-import path from 'path';
-
 import { demoCases } from './demo-data.constants';
 
 export interface DemoCase {
@@ -16,35 +13,24 @@ export interface DemoCase {
   };
 }
 
-// File-based storage for demo tracking IDs to demo cases
-// This persists across server restarts for demo mode
-const DEMO_TRACKING_FILE = path.join(process.cwd(), 'demo-tracking.json');
+// In-memory storage for demo tracking IDs to demo cases
+// This is temporary storage that doesn't persist across server restarts
+// In production, this should be replaced with a proper database or external storage
+const demoTrackingData: Record<string, string> = {};
 
-// Helper function to read demo tracking data from file
-async function readDemoTrackingData(): Promise<Record<string, string>> {
-  try {
-    const data = await fs.readFile(DEMO_TRACKING_FILE, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    // File doesn't exist or is invalid, return empty object
-    return {};
-  }
+// Helper function to read demo tracking data from memory
+function readDemoTrackingData(): Record<string, string> {
+  return { ...demoTrackingData };
 }
 
-// Helper function to write demo tracking data to file
-async function writeDemoTrackingData(
-  data: Record<string, string>,
-): Promise<void> {
-  try {
-    await fs.writeFile(DEMO_TRACKING_FILE, JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error('Failed to write demo tracking data:', error);
-  }
+// Helper function to write demo tracking data to memory
+function writeDemoTrackingData(data: Record<string, string>): void {
+  Object.assign(demoTrackingData, data);
 }
 
 // Debug function to log current state
-export async function logDemoTrackingState(): Promise<void> {
-  const data = await readDemoTrackingData();
+export function logDemoTrackingState(): void {
+  const data = readDemoTrackingData();
   console.log('Current demo tracking data:', data);
 }
 
@@ -121,26 +107,24 @@ export function generateDemoTrackingId(): string {
 }
 
 // Function to store mapping between tracking ID and demo case
-export async function storeDemoTracking(
+export function storeDemoTracking(
   trackingId: string,
   demoCaseId: string,
-): Promise<void> {
+): void {
   console.log('Storing demo tracking:', { trackingId, demoCaseId });
 
-  const data = await readDemoTrackingData();
+  const data = readDemoTrackingData();
   data[trackingId] = demoCaseId;
-  await writeDemoTrackingData(data);
+  writeDemoTrackingData(data);
 
   console.log('Demo tracking data after store:', data);
 }
 
 // Function to get demo case by tracking ID
-export async function getDemoCaseByTrackingId(
-  trackingId: string,
-): Promise<DemoCase | null> {
+export function getDemoCaseByTrackingId(trackingId: string): DemoCase | null {
   console.log('Looking for demo case with tracking ID:', trackingId);
 
-  const data = await readDemoTrackingData();
+  const data = readDemoTrackingData();
   console.log('Current demo tracking data:', data);
 
   const demoCaseId = data[trackingId];
