@@ -4,7 +4,7 @@ import {
   findDemoCase,
   generateDemoTrackingId,
   storeDemoTracking,
-} from '@/lib/demo-data';
+} from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
 import { storeDocument } from '@/lib/document-store';
 
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       if (demoCase) {
         const trackingId = generateDemoTrackingId();
         storeDocument(trackingId, body.document);
-        storeDemoTracking(trackingId, demoCase.id);
+        await storeDemoTracking(trackingId, demoCase.id);
 
         console.log(
           'Demo mode: found case for',
@@ -40,7 +40,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
           {
             error:
-              'Geen demo case gevonden. Probeer een van de voorbeeldteksten: Bob Dylan, Maria Jansen, Jan de Vries, Anna Bakker, Piet van der Berg, of Han Solo.',
+              'Geen demo case gevonden. Probeer een van de voorbeeldteksten.',
           },
           { status: 404 },
         );

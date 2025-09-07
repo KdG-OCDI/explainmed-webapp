@@ -470,48 +470,28 @@ export default function ResultsPage() {
 
         {result && (
           <div className="flex flex-col gap-4">
-            <div className="flex gap-2">
-              <h2 className="text-xl font-semibold">
-                Jouw medisch verslag verklaard door AI
-              </h2>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <button className="text-gray-400 hover:text-gray-600">
-                      <Info className="size-4" />
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>
-                      Klik op een gemarkeerde medische term om meer informatie
-                      te zien.
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
             <div className="flex grow gap-4">
               <div className="w-3/4">
-                <div className="rounded-lg bg-white pb-4 shadow-md">
-                  <div className="flex items-center justify-between border-b border-gray-200 p-4">
+                <div className="rounded-lg bg-white pb-3 shadow-md">
+                  <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
                     <div className="flex items-center gap-6">
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center bg-gray-100 rounded-lg p-1 gap-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                          className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
                             activeTab === 'verslag'
-                              ? 'bg-blue-100 text-blue-700'
-                              : 'text-gray-500 hover:text-gray-700'
+                              ? 'bg-white text-blue-600 shadow-sm'
+                              : 'text-gray-600 hover:text-gray-800 hover:bg-blue-100'
                           }`}
                         >
                           Medisch verslag
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                          className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
                             activeTab === 'samenvatting'
-                              ? 'bg-blue-100 text-blue-700'
-                              : 'text-gray-500 hover:text-gray-700'
+                              ? 'bg-white text-blue-600 shadow-sm'
+                              : 'text-gray-600 hover:text-gray-800 hover:bg-blue-100'
                           }`}
                         >
                           Samenvatting
@@ -531,7 +511,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="h-[calc(100vh-190px)] overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
+                  <div className="h-[calc(100vh-193px)] text-sm overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (
@@ -551,30 +531,28 @@ export default function ResultsPage() {
               </div>
 
               <div className="flex w-1/4 flex-col gap-4">
-                <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
-                  <button
-                    onClick={() => setIsQuestionsModalOpen(true)}
-                    className="flex items-center justify-between border-b border-gray-200 p-4 text-left transition-colors hover:bg-gray-50"
-                  >
-                    <h3 className="text-xl font-semibold">Vragen</h3>
-                    <ChevronRight className="size-4 text-gray-400" />
-                  </button>
-                </div>
+                <button
+                  onClick={() => setIsQuestionsModalOpen(true)}
+                  className="flex items-center justify-between bg-white rounded-lg shadow-md border-gray-200 px-4 py-3 text-left transition-colors hover:bg-gray-50"
+                >
+                  <h3 className="text-xl font-semibold">Vragen</h3>
+                  <ChevronRight className="size-5 text-gray-400" />
+                </button>
                 {(() => {
                   const currentTerms =
                     activeTab === 'verslag' ? extractedTerms : summaryTerms;
                   return (
-                    currentTerms?.length > 0 && (
-                      <div className="flex flex-col rounded-lg bg-white pb-4 shadow-md">
-                        <h3 className="border-b border-gray-200 p-4 text-xl font-semibold">
-                          Medische termen
-                        </h3>
-                        <div className="h-[calc(100vh-266px)] grow overflow-auto">
-                          {currentTerms.map((term: any, index: number) => (
+                    <div className="flex flex-col rounded-lg bg-white pb-3 shadow-md">
+                      <h3 className="border-b border-gray-200 px-4 py-3 text-xl font-semibold">
+                        Medische termen
+                      </h3>
+                      <div className="h-[calc(100vh-245px)] text-sm grow overflow-auto">
+                        {currentTerms?.length > 0 ? (
+                          currentTerms.map((term: any, index: number) => (
                             <div
                               key={index}
                               ref={(el) => setTermRef(el, term.term)}
-                              className={`px-4 py-6 transition-colors duration-300 ${
+                              className={`p-4 transition-colors duration-300 ${
                                 selectedTerm === term.term.toLowerCase()
                                   ? 'bg-blue-200'
                                   : ''
@@ -589,10 +567,33 @@ export default function ResultsPage() {
                               </h4>
                               <p>{term.description}</p>
                             </div>
-                          ))}
-                        </div>
+                          ))
+                        ) : (
+                          <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+                            <div className="text-gray-400 mb-2">
+                              <svg
+                                className="w-12 h-12 mx-auto"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={1.5}
+                                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                />
+                              </svg>
+                            </div>
+                            <p className="text-gray-500 text-sm">
+                              {activeTab === 'verslag'
+                                ? 'Geen medische termen gevonden in het verslag'
+                                : 'Geen medische termen gevonden in de samenvatting'}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                    )
+                    </div>
                   );
                 })()}
               </div>

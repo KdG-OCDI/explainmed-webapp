@@ -4,7 +4,8 @@ import { Copy, Check, X } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import { demoCases } from '@/lib/demo-data';
+import { demoCases } from '@/lib/demo-data.constants';
+import { DemoCase } from '@/lib/demo-data.util';
 
 interface DemoSnippetsModalProps {
   isOpen: boolean;
@@ -54,7 +55,7 @@ export function DemoSnippetsModal({ isOpen, onClose }: DemoSnippetsModalProps) {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {demoCases.map((demoCase) => (
+            {demoCases.map((demoCase: DemoCase) => (
               <div
                 key={demoCase.id}
                 className="group relative rounded-lg border border-gray-200 bg-gray-50 p-4 hover:bg-gray-100 transition-colors cursor-pointer"
