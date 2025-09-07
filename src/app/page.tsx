@@ -76,13 +76,13 @@ export default function Home() {
             <div className="flex gap-6">
               <a
                 href="/privacy"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Privacybeleid
               </a>
               <a
                 href="/terms"
-                className="text-gray-600 hover:text-blue-600 transition-colors"
+                className="text-gray-600 transition-colors hover:text-blue-600"
               >
                 Algemene voorwaarden
               </a>

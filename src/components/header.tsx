@@ -1,14 +1,15 @@
 'use client';
 
+import { Info } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Info } from 'lucide-react';
 
 export function Header() {
   const pathname = usePathname();

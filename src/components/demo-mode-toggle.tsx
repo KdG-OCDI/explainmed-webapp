@@ -3,6 +3,7 @@
 import { Settings } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
+import { DemoSnippetsModal } from '@/components/demo-snippets-modal';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -12,7 +13,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { DemoSnippetsModal } from '@/components/demo-snippets-modal';
 import { isDemoMode, setDemoMode } from '@/lib/demo-mode';
 
 interface DemoModeToggleProps {

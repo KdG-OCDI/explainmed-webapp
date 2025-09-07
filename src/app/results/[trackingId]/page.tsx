@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronRight, Info, Loader2 } from 'lucide-react';
+import { ChevronRight, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -339,7 +339,7 @@ export default function ResultsPage() {
 
     // Replace terms in text with highlighted versions
     let processedText = text;
-    termsMap.forEach(({ concept, explanation }, key) => {
+    termsMap.forEach(({ concept, explanation }) => {
       const regex = new RegExp(`\\b${concept}\\b`, 'gi');
       processedText = processedText.replace(regex, (match) => {
         return `<span data-concept="${concept}" data-explanation="${explanation}">${match}</span>`;
@@ -475,23 +475,23 @@ export default function ResultsPage() {
                 <div className="rounded-lg bg-white pb-3 shadow-md">
                   <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
                     <div className="flex items-center gap-6">
-                      <div className="flex items-center bg-gray-100 rounded-lg p-1 gap-1">
+                      <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
                             activeTab === 'verslag'
                               ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:text-gray-800 hover:bg-blue-100'
+                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
                           }`}
                         >
                           Medisch verslag
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
                             activeTab === 'samenvatting'
                               ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:text-gray-800 hover:bg-blue-100'
+                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
                           }`}
                         >
                           Samenvatting
@@ -511,11 +511,11 @@ export default function ResultsPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="h-[calc(100vh-193px)] text-sm overflow-auto whitespace-pre-wrap rounded-md p-4 leading-relaxed">
+                  <div className="h-[calc(100vh-193px)] overflow-auto whitespace-pre-wrap rounded-md p-4 text-sm leading-relaxed">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (
-                      <div className="flex items-center justify-center h-32">
+                      <div className="flex h-32 items-center justify-center">
                         <Loader2 className="size-8 animate-spin text-blue-600" />
                         <span className="ml-2 text-gray-600">
                           Samenvatting wordt gegenereerd...
@@ -533,7 +533,7 @@ export default function ResultsPage() {
               <div className="flex w-1/4 flex-col gap-4">
                 <button
                   onClick={() => setIsQuestionsModalOpen(true)}
-                  className="flex items-center justify-between bg-white rounded-lg shadow-md border-gray-200 px-4 py-3 text-left transition-colors hover:bg-gray-50"
+                  className="flex items-center justify-between rounded-lg border-gray-200 bg-white px-4 py-3 text-left shadow-md transition-colors hover:bg-gray-50"
                 >
                   <h3 className="text-xl font-semibold">Vragen</h3>
                   <ChevronRight className="size-5 text-gray-400" />
@@ -546,7 +546,7 @@ export default function ResultsPage() {
                       <h3 className="border-b border-gray-200 px-4 py-3 text-xl font-semibold">
                         Medische termen
                       </h3>
-                      <div className="h-[calc(100vh-245px)] text-sm grow overflow-auto">
+                      <div className="h-[calc(100vh-245px)] grow overflow-auto text-sm">
                         {currentTerms?.length > 0 ? (
                           currentTerms.map((term: any, index: number) => (
                             <div
@@ -569,10 +569,10 @@ export default function ResultsPage() {
                             </div>
                           ))
                         ) : (
-                          <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                            <div className="text-gray-400 mb-2">
+                          <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+                            <div className="mb-2 text-gray-400">
                               <svg
-                                className="w-12 h-12 mx-auto"
+                                className="mx-auto size-12"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -585,7 +585,7 @@ export default function ResultsPage() {
                                 />
                               </svg>
                             </div>
-                            <p className="text-gray-500 text-sm">
+                            <p className="text-sm text-gray-500">
                               {activeTab === 'verslag'
                                 ? 'Geen medische termen gevonden in het verslag'
                                 : 'Geen medische termen gevonden in de samenvatting'}

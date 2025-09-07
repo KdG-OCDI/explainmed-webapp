@@ -1,11 +1,11 @@
 'use client';
 
-import { Copy, Check, X } from 'lucide-react';
+import { Check, Copy, X } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { demoCases } from '@/lib/demo-data.constants';
-import { DemoCase } from '@/lib/demo-data.util';
+import type { DemoCase } from '@/lib/demo-data.util';
 
 interface DemoSnippetsModalProps {
   isOpen: boolean;
@@ -49,45 +49,45 @@ export function DemoSnippetsModal({ isOpen, onClose }: DemoSnippetsModalProps) {
         </div>
 
         <div className="grow overflow-auto p-4">
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="mb-4 text-sm text-gray-600">
             Klik op een snippet om de volledige tekst te kopiëren naar het
             klembord:
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {demoCases.map((demoCase: DemoCase) => (
               <div
                 key={demoCase.id}
-                className="group relative rounded-lg border border-gray-200 bg-gray-50 p-4 hover:bg-gray-100 transition-colors cursor-pointer"
+                className="group relative cursor-pointer rounded-lg border border-gray-200 bg-gray-50 p-4 transition-colors hover:bg-gray-100"
                 onClick={() =>
                   copyToClipboard(demoCase.originalText, demoCase.id)
                 }
               >
-                <div className="flex items-center justify-between gap-2 mb-3">
+                <div className="mb-3 flex items-center justify-between gap-2">
                   <h3 className="text-base font-medium text-gray-900">
                     {demoCase.name}
                   </h3>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="opacity-0 group-hover:opacity-100 transition-opacity p-1 h-7 w-7"
+                    className="size-7 p-1 opacity-0 transition-opacity group-hover:opacity-100"
                     onClick={(e) => {
                       e.stopPropagation();
                       copyToClipboard(demoCase.originalText, demoCase.id);
                     }}
                   >
                     {copiedId === demoCase.id ? (
-                      <Check className="h-4 w-4 text-green-600" />
+                      <Check className="size-4 text-green-600" />
                     ) : (
-                      <Copy className="h-4 w-4 text-gray-500" />
+                      <Copy className="size-4 text-gray-500" />
                     )}
                   </Button>
                 </div>
-                <p className="text-xs text-gray-600 leading-relaxed">
+                <p className="text-xs leading-relaxed text-gray-600">
                   {getSnippet(demoCase.originalText)}
                 </p>
                 {copiedId === demoCase.id && (
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-gray-800 px-2 py-1 text-xs text-white">
                     Gekopieerd!
                   </div>
                 )}
