@@ -66,6 +66,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Footer section */}
+      <footer className="w-full bg-gray-50 px-4 py-8">
+        <div className="container mx-auto max-w-5xl">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <p className="text-gray-600">
+              © 2024 ExplainMed. Alle rechten voorbehouden.
+            </p>
+            <div className="flex gap-6">
+              <a
+                href="/privacy"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Privacybeleid
+              </a>
+              <a
+                href="/terms"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Algemene voorwaarden
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
       {/* Modal for medical letter input */}
       <MedicalLetterModal
         isOpen={isModalOpen}
