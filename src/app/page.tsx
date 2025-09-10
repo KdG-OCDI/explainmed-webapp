@@ -67,7 +67,7 @@ export default function Home() {
       </section>
 
       {/* Footer section */}
-      <footer className="w-full bg-gray-50 px-4 py-8">
+      <footer className="absolute bottom-0 w-full bg-gray-50 px-4 py-8">
         <div className="container mx-auto max-w-5xl">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-gray-600">
