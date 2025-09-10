@@ -80,7 +80,6 @@ export default function PrivacyPage() {
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Wanneer wettelijk verplicht</li>
                 <li>Met uw uitdrukkelijke toestemming</li>
-                <li>Voor de bescherming van onze rechten of veiligheid</li>
               </ul>
             </section>
 
@@ -94,7 +93,7 @@ export default function PrivacyPage() {
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Recht op toegang tot uw gegevens</li>
-                <li>Recht op rectificatie van onjuiste gegevens</li>
+                <li>Recht op rechtzetting van onjuiste gegevens</li>
                 <li>Recht op verwijdering van uw gegevens</li>
                 <li>Recht op beperking van de verwerking</li>
                 <li>Recht op gegevensoverdraagbaarheid</li>
