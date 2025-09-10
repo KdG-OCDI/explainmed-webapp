@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <div className="flex grow flex-col">
       {/* Hero section with gradient background */}
-      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 px-4 py-20 text-white">
+      <section className="w-full bg-gradient-to-r from-blue-600 to-blue-400 px-4 py-40 text-white">
         <div className="container mx-auto max-w-5xl">
           <h1 className="mb-6 text-4xl font-bold md:text-5xl">
             Medische verslagen in heldere taal
           </h1>
-          <p className="mb-8 max-w-3xl text-xl">
+          <p className="mb-6 max-w-3xl text-xl">
             Onze AI-gestuurde tool helpt u complexe medische brieven te
             begrijpen door medische termen uit te leggen en duidelijke
             samenvattingen te geven van diagnoses, behandelingen en
@@ -32,7 +32,7 @@ export default function Home() {
       </section>
 
       {/* Features section */}
-      <section className="w-full bg-white px-4 py-16">
+      <section className="w-full bg-white px-4 py-24">
         <div className="container mx-auto max-w-5xl">
           <h2 className="mb-10 text-center text-3xl font-bold">
             Hoe het werkt
@@ -67,7 +67,7 @@ export default function Home() {
       </section>
 
       {/* Footer section */}
-      <footer className="absolute bottom-0 w-full bg-gray-50 px-4 py-8">
+      <footer className="w-full bg-gray-50 px-4 py-8">
         <div className="container mx-auto max-w-5xl">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-gray-600">
