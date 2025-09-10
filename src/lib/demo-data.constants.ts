@@ -6,138 +6,146 @@ export const demoCases: DemoCase[] = [
     name: 'Han Solo',
     originalText: `Geachte collega,
   
-  Betreft uw patiënt Han Solo, geboren op 27/8/1952.
-  Uw patiënt werd op de raadpleging gezien op 4/05/2021. Betreft een controle evaluatie bij na implantatie van een ICD en CABG.
+Betreft uw patiënt Han Solo, geboren op 27/8/1952.
+Uw patiënt werd op de raadpleging gezien op 4/05/2021. Betreft een controle evaluatie bij na implantatie van een ICD en CABG.
   
-  Voorgeschiedenis
-  2006 coronaire ischemie waarvoor medicamenteuze behandeling
-  2007 totale heupprothese links.
-  Diabetes mellitus.
-  Astma
-  2008 totale heupprothese rechts.
-  2008 endoprothese in het kader van een abdominaal aorta aneurysma.
-  2009 heelkundige ingreep omwille van een popliteaal aneurysma ter hoogte van de rechter kniekuil met tevens plaatsing van een femoropopliteale bypass.
-  2012 endoprothese pta onderste lidmaat links gevolgd door retrombose waarvoor opnieuw ingreep.
-  2016 recidief occlusie linker poot van de aorta-bi-iliacale endoprothese. Ingreep met aanmaak van een femorofemorale bypass.
-  2018 ernstige drietaksziekte waarvoor enkel CABG als optie bij refractaire klachten; endoscopische resectie van colonpoliepen.
-  2020 TTE toont matige gedaalde functie; geen kleplijden
-  2020 weigerachtig voor ICD
-  
-  Risicofactoren
-  Ex roker, gestopt sinds 2 jaar.
-  Hypercholesterolemie niet gekend.
-  Arteriële hypertensie. Stress. Sedentair. Geen obesitas.
-  Diabetes.
-  
-  Huidige problematiek:
-  Stabiel qua dyspnoe d'effort (vooral na middagmaal).
-  Geen angor.
-  Kan nog wat wandelen.
-  Levenskwaliteit 8/10.
-  Bd systolisch normaal rond 120 mmHg.
-  Wenst nog geen ICD.
-  
-  Huidige medicatie
-  Asaflow 80 mg: 1 (po)
-  Bisoprolol 5 mg: 1/dag (po)
-  Lisinopril 15 mg: 1/dag (po)
-  Marevan: 1/dag (po)
-  Simvastatine 40 mg: 1/dag (po)
-  Spironolactone 25 mg: 1/2/dag (po)
-  
-  Lichamelijk onderzoek
-  88 kg voor 173 cm. De bmi bedraagt 29. Regelmatig hartritme. Het hartritme is 61/min . Liggend gemeten aan de arm bedraagt de bloeddruk 157/67 mmHg.
-  Hartauscultatie: normale harttonen, geen geruisen.
-  Longauscultatie: normaal vesiculair ademgeruis.
-  Abdomen: de buikomtrek is 105 cm.
-  
-  Rust ECG
-  Hr: 61 /min.
-  sinusaal ritme. Q golf in v1-v3.
-  Negatieve t top v2-v3.
-  QRS duur: 98 ms.
-  Qtc: 408 ms.
-  
-  Besluit en advies
-  76-jarige patiënt gekend met niet revasculariseerbare ischemische cardiomyopathie met matige kamerfunctie en stabiele dyspnoe nyha klasse 2 à 3. Geen verhaal van angor. De dyspnoe d'effort is vooral aanwezig postprandiaal. Klinisch geen tekenen van decompensatie. De bloeddruk is verhoogd alhier maar in thuissetting heeft hij systolisch niet meer dan 120 mmHg. Rust ECG toont sequellen van oud anteroseptaal infarct, en ook negatieve t-toppen v2 - v3. Hij is ook gekend met een 1e graads av-blok.
-  
-  Zoals u weet gaf patiënt in het verleden te kennen dat hij weigerachtig stond tov een ICD, en hij blijft nog steeds bij zijn standpunt. Ik informeerde hem over de voor-en nadelen van een dergelijk device.
-  
-  Qua medicatie stel ik een ongewijzigd beleid voor, behalve dat we de dosis bisoprolol toch voorzichtig opdrijven naar 7.5 mg/dag, ondanks het 1e graads av-blok.
-  
-  In de hoop u met deze informatie van dienst te zijn geweest, teken ik.
-  
-  Met de meeste hoogachting en collegiale groeten,
-  Prof. Dr. Chewbacca
-  Kliniekhoofd`,
+Voorgeschiedenis
+2006 coronaire ischemie waarvoor medicamenteuze behandeling
+2007 totale heupprothese links.
+Diabetes mellitus.
+Astma
+2008 totale heupprothese rechts.
+2008 endoprothese in het kader van een abdominaal aorta aneurysma.
+2009 heelkundige ingreep omwille van een popliteaal aneurysma ter hoogte van de rechter kniekuil met tevens plaatsing van een femoropopliteale bypass.
+2012 endoprothese pta onderste lidmaat links gevolgd door retrombose waarvoor opnieuw ingreep.
+2016 recidief occlusie linker poot van de aorta-bi-iliacale endoprothese. Ingreep met aanmaak van een femorofemorale bypass.
+2018 ernstige drietaksziekte waarvoor enkel CABG als optie bij refractaire klachten; endoscopische resectie van colonpoliepen.
+2020 TTE toont matige gedaalde functie; geen kleplijden
+2020 weigerachtig voor ICD
+
+Risicofactoren
+Ex roker, gestopt sinds 2 jaar.
+Hypercholesterolemie niet gekend.
+Arteriële hypertensie. Stress. Sedentair. Geen obesitas.
+Diabetes.
+
+Huidige problematiek:
+Stabiel qua dyspnoe d'effort (vooral na middagmaal).
+Geen angor.
+Kan nog wat wandelen.
+Levenskwaliteit 8/10.
+Bd systolisch normaal rond 120 mmHg.
+Wenst nog geen ICD.
+
+Huidige medicatie
+Asaflow 80 mg: 1 (po)
+Bisoprolol 5 mg: 1/dag (po)
+Lisinopril 15 mg: 1/dag (po)
+Marevan: 1/dag (po)
+Simvastatine 40 mg: 1/dag (po)
+Spironolactone 25 mg: 1/2/dag (po)
+
+Lichamelijk onderzoek
+88 kg voor 173 cm. De bmi bedraagt 29. Regelmatig hartritme. Het hartritme is 61/min . Liggend gemeten aan de arm bedraagt de bloeddruk 157/67 mmHg.
+Hartauscultatie: normale harttonen, geen geruisen.
+Longauscultatie: normaal vesiculair ademgeruis.
+Abdomen: de buikomtrek is 105 cm.
+
+Rust ECG
+Hr: 61 /min.
+sinusaal ritme. Q golf in v1-v3.
+Negatieve t top v2-v3.
+QRS duur: 98 ms.
+Qtc: 408 ms.
+
+Besluit en advies
+76-jarige patiënt gekend met niet revasculariseerbare ischemische cardiomyopathie met matige kamerfunctie en stabiele dyspnoe nyha klasse 2 à 3. Geen verhaal van angor. De dyspnoe d'effort is vooral aanwezig postprandiaal. Klinisch geen tekenen van decompensatie. De bloeddruk is verhoogd alhier maar in thuissetting heeft hij systolisch niet meer dan 120 mmHg. Rust ECG toont sequellen van oud anteroseptaal infarct, en ook negatieve t-toppen v2 - v3. Hij is ook gekend met een 1e graads av-blok.
+
+Zoals u weet gaf patiënt in het verleden te kennen dat hij weigerachtig stond tov een ICD, en hij blijft nog steeds bij zijn standpunt. Ik informeerde hem over de voor-en nadelen van een dergelijk device.
+
+Qua medicatie stel ik een ongewijzigd beleid voor, behalve dat we de dosis bisoprolol toch voorzichtig opdrijven naar 7.5 mg/dag, ondanks het 1e graads av-blok.
+
+In de hoop u met deze informatie van dienst te zijn geweest, teken ik.
+
+Met de meeste hoogachting en collegiale groeten,
+Prof. Dr. Chewbacca
+Kliniekhoofd`,
     result: {
       state: 'SUCCESS',
       result: `<strong>Geachte collega,</strong>
   
-  Betreft uw patiënt <strong>Han Solo</strong>, geboren op 27/8/1952.<br>
-  Uw patiënt werd op de raadpleging gezien op 4/05/2021. Betreft een controle evaluatie bij na <span data-concept="implantatie" data-explanation="het inbrengen van een medische apparaat of prothese in het lichaam">implantatie</span> van een <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span> en <span data-concept="CABG" data-explanation="Coronary Artery Bypass Grafting, een omleidingsoperatie voor hartbloedvaten">CABG</span>.
-  
-  <strong>Voorgeschiedenis</strong><br>
-  2006 <span data-concept="coronaire ischemie" data-explanation="verminderde bloedtoevoer naar het hart">coronaire ischemie</span> waarvoor <span data-concept="medicamenteuze behandeling" data-explanation="behandeling met medicijnen">medicamenteuze behandeling</span><br>
-  2007 <span data-concept="totale heupprothese" data-explanation="kunstheupvervanging">totale heupprothese</span> links.<br>
-  <span data-concept="Diabetes mellitus" data-explanation="suikerziekte, een stofwisselingsziekte waardoor te veel glucose in het bloed zit">Diabetes mellitus</span>.<br>
-  Astma<br>
-  2008 <span data-concept="totale heupprothese" data-explanation="kunstheupvervanging">totale heupprothese</span> rechts.<br>
-  2008 <span data-concept="endoprothese" data-explanation="een inwendige prothese om bloedvaten te ondersteunen">endoprothese</span> in het kader van een <span data-concept="abdominaal aorta aneurysma" data-explanation="een zwelling van de buikslagader">abdominaal aorta aneurysma</span>.<br>
-  2009 <span data-concept="heelkundige" data-explanation="chirurgische of operatieve">heelkundige</span> ingreep omwille van een <span data-concept="popliteaal aneurysma" data-explanation="een uitstulping in een slagader achter de knie">popliteaal aneurysma</span> ter hoogte van de rechter <span data-concept="kniekuil" data-explanation="ruimte aan de achterkant van de knie">kniekuil</span> met tevens plaatsing van een <span data-concept="femoropopliteale bypass" data-explanation="een omleiding van de bloedstroom tussen het dijbeen en de knie">femoropopliteale bypass</span>.<br>
-  2012 <span data-concept="endoprothese pta" data-explanation="een inwendige prothese na Percutane Transluminale Angioplastiek (PTA), een procedure om de bloedvaten te openen">endoprothese pta</span> <span data-concept="onderste lidmaat" data-explanation="een been of een van de benen">onderste lidmaat</span> links gevolgd door <span data-concept="retrombose" data-explanation="opnieuw optreden van een bloedprop in een bloedvat">retrombose</span> waarvoor opnieuw ingreep.<br>
-  2016 <span data-concept="recidief" data-explanation="het opnieuw optreden van een ziekte of symptoom">recidief</span> <span data-concept="occlusie" data-explanation="afsluiting van een bloedvat">occlusie</span> linker poot van de <span data-concept="aorta-bi-iliacale endoprothese" data-explanation="een prothese die de bloedstroom in de abdominale aorta en beide heupslagaders ondersteunt">aorta-bi-iliacale endoprothese</span>. Ingreep met aanmaak van een <span data-concept="femorofemorale" data-explanation="tussen beide dijbenen">femorofemorale</span> bypass.<br>
-  2018 ernstige <span data-concept="drietaksziekte" data-explanation="ernstige vernauwingen in de drie grote kransslagaders van het hart">drietaksziekte</span> waarvoor enkel <span data-concept="CABG" data-explanation="Coronary Artery Bypass Grafting, een omleidingsoperatie voor hartbloedvaten">CABG</span> als optie bij <span data-concept="refractaire" data-explanation="niet reagerend op behandeling">refractaire</span> klachten; endoscopische <span data-concept="resectie" data-explanation="verwijdering">resectie</span> van <span data-concept="colonpoliepen" data-explanation="uitstulpingen in de dikke darm die verwijderd moeten worden">colonpoliepen</span>.<br>
-  2020 <span data-concept="TTE" data-explanation="Transthoracale echocardiografie, een niet-invasief hartonderzoek">TTE</span> toont matige gedaalde functie; geen <span data-concept="kleplijden" data-explanation="problemen met de hartkleppen">kleplijden</span><br>
-  2020 weigerachtig voor <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span>
-  
-  <strong>Risicofactoren</strong><br>
-  Ex roker, gestopt sinds 2 jaar.<br>
-  <span data-concept="Hypercholesterolemie" data-explanation="verhoogd cholesterolgehalte in het bloed">Hypercholesterolemie</span> niet gekend.<br>
-  <span data-concept="Arteriële hypertensie" data-explanation="verhoogde bloeddruk in de slagaders">Arteriële hypertensie</span>. Stress. Sedentair. Geen obesitas.<br>
-  <span data-concept="Diabetes" data-explanation="suikerziekte, een stofwisselingsziekte waardoor te veel glucose in het bloed zit">Diabetes</span>.
-  
-  <strong>Huidige problematiek:</strong><br>
-  Stabiel qua <span data-concept="dyspnoe d'effort" data-explanation="kortademigheid bij inspanning">dyspnoe d'effort</span> (vooral na middagmaal).<br>
-  Geen <span data-concept="angor" data-explanation="pijn op de borst, ook bekend als angina pectoris">angor</span>.<br>
-  Kan nog wat wandelen.<br>
-  Levenskwaliteit 8/10.<br>
-  Bd <span data-concept="systolisch" data-explanation="de bovendruk van de bloeddrukmeting">systolisch</span> normaal rond 120 <span data-concept="mmHg" data-explanation="millimeter kwikdruk, de meeteenheid voor bloeddruk">mmHg</span>.<br>
-  Wenst nog geen <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span>.
-  
-  <strong>Huidige medicatie</strong><br>
-  <span data-concept="Asaflow" data-explanation="een bloedverdunner (80 mg) die eenmaal per dag ingenomen wordt">Asaflow</span> 80 mg: 1 (po)<br>
-  <span data-concept="Bisoprolol" data-explanation="een bètablokker (5 mg) voor hartproblemen die eenmaal per dag ingenomen wordt">Bisoprolol</span> 5 mg: 1/dag (po)<br>
-  <span data-concept="Lisinopril" data-explanation="een bloeddrukverlagend middel (15 mg) dat eenmaal per dag ingenomen wordt">Lisinopril</span> 15 mg: 1/dag (po)<br>
-  <span data-concept="Marevan" data-explanation="een bloedverdunner die eenmaal per dag ingenomen wordt">Marevan</span>: 1/dag (po)<br>
-  <span data-concept="Simvastatine" data-explanation="een cholesterolverlager (40 mg) die eenmaal per dag ingenomen wordt">Simvastatine</span> 40 mg: 1/dag (po)<br>
-  <span data-concept="Spironolactone" data-explanation="een plasmiddel (25 mg), halve dosis, dat via de mond wordt ingenomen">Spironolactone</span> 25 mg: 1/2/dag (po)
-  
-  <strong>Lichamelijk onderzoek</strong><br>
-  88 kg voor 173 cm. De bmi bedraagt 29. Regelmatig <span data-concept="hartritme" data-explanation="het ritme waarmee het hart klopt">hartritme</span>. Het <span data-concept="hartritme" data-explanation="het ritme waarmee het hart klopt">hartritme</span> is 61/min . Liggend gemeten aan de arm bedraagt de bloeddruk 157/67 <span data-concept="mmHg" data-explanation="millimeter kwikdruk, de meeteenheid voor bloeddruk">mmHg</span>.<br>
-  <span data-concept="Hartauscultatie" data-explanation="luisteren naar de harttonen">Hartauscultatie</span>: normale harttonen, geen geruisen.<br>
-  <span data-concept="Longauscultatie" data-explanation="luisteren naar de ademhalingsgeluiden">Longauscultatie</span>: normaal <span data-concept="vesiculair ademgeruis" data-explanation="normaal ademgeruis zoals dat bij gezonde longen hoort">vesiculair ademgeruis</span>.<br>
-  <span data-concept="Abdomen" data-explanation="de buikstreek">Abdomen</span>: de <span data-concept="buikomtrek" data-explanation="omtrek van het lichaam ter hoogte van de buik">buikomtrek</span> is 105 cm.
-  
-  <strong>Rust ECG</strong><br>
-  Hr: 61 /min.<br>
-  <span data-concept="sinusaal ritme" data-explanation="normaal hartritme wat aangestuurd wordt door de sinusknoop">sinusaal ritme</span>. Q golf in <span data-concept="v1-v3" data-explanation="specifieke meetpunten (afleidingen) op een elektrocardiogram">v1-v3</span>.<br>
-  Negatieve t top <span data-concept="v2-v3" data-explanation="specifieke meetpunten (afleidingen) op een elektrocardiogram">v2-v3</span>.<br>
-  <span data-concept="QRS" data-explanation="een onderdeel van het elektrocardiogram dat de elektrische activiteit van de kamers van het hart weergeeft">QRS</span> duur: 98 ms.<br>
-  <span data-concept="Qtc" data-explanation="gecorrigeerde QT-tijd, een maatstaf op het elektrocardiogram">Qtc</span>: 408 ms.
-  
-  <strong>Besluit en advies</strong><br>
-  76-jarige patiënt gekend met niet revasculariseerbare <span data-concept="ischemische cardiomyopathie" data-explanation="een aandoening waar het hartspierweefsel aangetast is door verminderde aanvoer van zuurstofrijk bloed">ischemische cardiomyopathie</span> met matige <span data-concept="kamerfunctie" data-explanation="de effectiviteit waarmee de hartkamers samentrekken">kamerfunctie</span> en stabiele <span data-concept="dyspnoe nyha" data-explanation="kortademigheid volgens de New York Heart Association classificatie">dyspnoe nyha</span> klasse 2 à 3. Geen verhaal van <span data-concept="angor" data-explanation="pijn op de borst, ook bekend als angina pectoris">angor</span>. De <span data-concept="dyspnoe d'effort" data-explanation="kortademigheid bij inspanning">dyspnoe d'effort</span> is vooral aanwezig <span data-concept="postprandiaal" data-explanation="na de maaltijd">postprandiaal</span>. <span data-concept="Klinisch" data-explanation="volgens het lichamelijk onderzoek">Klinisch</span> geen tekenen van <span data-concept="decompensatie" data-explanation="een situatie waarin het hart het niet meer redt om goed te functioneren">decompensatie</span>. De bloeddruk is verhoogd alhier maar in <span data-concept="thuissetting" data-explanation="thuissituatie">thuissetting</span> heeft hij <span data-concept="systolisch" data-explanation="de bovendruk van de bloeddrukmeting">systolisch</span> niet meer dan 120 <span data-concept="mmHg" data-explanation="millimeter kwikdruk, de meeteenheid voor bloeddruk">mmHg</span>. Rust <span data-concept="ECG" data-explanation="elektrocardiogram, een test om de elektrische activiteiten van het hart te meten">ECG</span> toont <span data-concept="sequellen" data-explanation="sporen van voorgaande hartaandoeningen die zichtbaar zijn op ECG">sequellen</span> van oud <span data-concept="anteroseptaal" data-explanation="voorzijde en tussenschot van het hart">anteroseptaal</span> infarct, en ook negatieve t-toppen <span data-concept="v2-v3" data-explanation="specifieke meetpunten (afleidingen) op een elektrocardiogram">v2 - v3</span>. Hij is ook gekend met een 1e <span data-concept="graads av-blok" data-explanation="eerste graads atrioventriculair blok, een kleine vertraging in de geleiding tussen de boezems en kamers van het hart">graads av-blok</span>.
-  
-  Zoals u weet gaf patiënt in het verleden te kennen dat hij weigerachtig stond tov een <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span>, en hij blijft nog steeds bij zijn standpunt. Ik informeerde hem over de voor-en nadelen van een dergelijk device.
-  
-  Qua medicatie stel ik een ongewijzigd beleid voor, behalve dat we de dosis <span data-concept="bisoprolol" data-explanation="een bètablokker (5 mg) voor hartproblemen die eenmaal per dag ingenomen wordt">bisoprolol</span> toch voorzichtig opdrijven naar 7.5 mg/dag, ondanks het 1e <span data-concept="graads av-blok" data-explanation="eerste graads atrioventriculair blok, een kleine vertraging in de geleiding tussen de boezems en kamers van het hart">graads av-blok</span>.
-  
-  In de hoop u met deze informatie van dienst te zijn geweest, teken ik.
-  
-  Met de meeste hoogachting en collegiale groeten,<br>
-  Prof. Dr. Chewbacca<br>
-  <span data-concept="Kliniekhoofd" data-explanation="hoofd van een kliniek of ziekenhuisafdeling">Kliniekhoofd</span>`,
+Betreft uw patiënt <strong>Han Solo</strong>, geboren op 27/8/1952.<br>
+Uw patiënt werd op de raadpleging gezien op 4/05/2021. Betreft een controle evaluatie bij na <span data-concept="implantatie" data-explanation="het inbrengen van een medische apparaat of prothese in het lichaam">implantatie</span> van een <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span> en <span data-concept="CABG" data-explanation="Coronary Artery Bypass Grafting, een omleidingsoperatie voor hartbloedvaten">CABG</span>.
+
+<strong>Voorgeschiedenis</strong><br>
+2006 <span data-concept="coronaire ischemie" data-explanation="verminderde bloedtoevoer naar het hart">coronaire ischemie</span> waarvoor <span data-concept="medicamenteuze behandeling" data-explanation="behandeling met medicijnen">medicamenteuze behandeling</span><br>
+2007 <span data-concept="totale heupprothese" data-explanation="kunstheupvervanging">totale heupprothese</span> links.<br>
+<span data-concept="Diabetes mellitus" data-explanation="suikerziekte, een stofwisselingsziekte waardoor te veel glucose in het bloed zit">Diabetes mellitus</span>.<br>
+Astma<br>
+2008 <span data-concept="totale heupprothese" data-explanation="kunstheupvervanging">totale heupprothese</span> rechts.<br>
+2008 <span data-concept="endoprothese" data-explanation="een inwendige prothese om bloedvaten te ondersteunen">endoprothese</span> in het kader van een <span data-concept="abdominaal aorta aneurysma" data-explanation="een zwelling van de buikslagader">abdominaal aorta aneurysma</span>.<br>
+2009 <span data-concept="heelkundige" data-explanation="chirurgische of operatieve">heelkundige</span> ingreep omwille van een <span data-concept="popliteaal aneurysma" data-explanation="een uitstulping in een slagader achter de knie">popliteaal aneurysma</span> ter hoogte van de rechter <span data-concept="kniekuil" data-explanation="ruimte aan de achterkant van de knie">kniekuil</span> met tevens plaatsing van een <span data-concept="femoropopliteale bypass" data-explanation="een omleiding van de bloedstroom tussen het dijbeen en de knie">femoropopliteale bypass</span>.<br>
+2012 <span data-concept="endoprothese pta" data-explanation="een inwendige prothese na Percutane Transluminale Angioplastiek (PTA), een procedure om de bloedvaten te openen">endoprothese pta</span> <span data-concept="onderste lidmaat" data-explanation="een been of een van de benen">onderste lidmaat</span> links gevolgd door <span data-concept="retrombose" data-explanation="opnieuw optreden van een bloedprop in een bloedvat">retrombose</span> waarvoor opnieuw ingreep.<br>
+2016 <span data-concept="recidief" data-explanation="het opnieuw optreden van een ziekte of symptoom">recidief</span> <span data-concept="occlusie" data-explanation="afsluiting van een bloedvat">occlusie</span> linker poot van de <span data-concept="aorta-bi-iliacale endoprothese" data-explanation="een prothese die de bloedstroom in de abdominale aorta en beide heupslagaders ondersteunt">aorta-bi-iliacale endoprothese</span>. Ingreep met aanmaak van een <span data-concept="femorofemorale" data-explanation="tussen beide dijbenen">femorofemorale</span> bypass.<br>
+2018 ernstige <span data-concept="drietaksziekte" data-explanation="ernstige vernauwingen in de drie grote kransslagaders van het hart">drietaksziekte</span> waarvoor enkel <span data-concept="CABG" data-explanation="Coronary Artery Bypass Grafting, een omleidingsoperatie voor hartbloedvaten">CABG</span> als optie bij <span data-concept="refractaire" data-explanation="niet reagerend op behandeling">refractaire</span> klachten; endoscopische <span data-concept="resectie" data-explanation="verwijdering">resectie</span> van <span data-concept="colonpoliepen" data-explanation="uitstulpingen in de dikke darm die verwijderd moeten worden">colonpoliepen</span>.<br>
+2020 <span data-concept="TTE" data-explanation="Transthoracale echocardiografie, een niet-invasief hartonderzoek">TTE</span> toont matige gedaalde functie; geen <span data-concept="kleplijden" data-explanation="problemen met de hartkleppen">kleplijden</span><br>
+2020 weigerachtig voor <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span>
+
+<strong>Risicofactoren</strong><br>
+Ex roker, gestopt sinds 2 jaar.<br>
+<span data-concept="Hypercholesterolemie" data-explanation="verhoogd cholesterolgehalte in het bloed">Hypercholesterolemie</span> niet gekend.<br>
+<span data-concept="Arteriële hypertensie" data-explanation="verhoogde bloeddruk in de slagaders">Arteriële hypertensie</span>. Stress. Sedentair. Geen obesitas.<br>
+<span data-concept="Diabetes" data-explanation="suikerziekte, een stofwisselingsziekte waardoor te veel glucose in het bloed zit">Diabetes</span>.
+
+<strong>Huidige problematiek:</strong><br>
+Stabiel qua <span data-concept="dyspnoe d'effort" data-explanation="kortademigheid bij inspanning">dyspnoe d'effort</span> (vooral na middagmaal).<br>
+Geen <span data-concept="angor" data-explanation="pijn op de borst, ook bekend als angina pectoris">angor</span>.<br>
+Kan nog wat wandelen.<br>
+Levenskwaliteit 8/10.<br>
+Bd <span data-concept="systolisch" data-explanation="de bovendruk van de bloeddrukmeting">systolisch</span> normaal rond 120 <span data-concept="mmHg" data-explanation="millimeter kwikdruk, de meeteenheid voor bloeddruk">mmHg</span>.<br>
+Wenst nog geen <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span>.
+
+<strong>Huidige medicatie</strong><br>
+<span data-concept="Asaflow" data-explanation="een bloedverdunner (80 mg) die eenmaal per dag ingenomen wordt">Asaflow</span> 80 mg: 1 (po)<br>
+<span data-concept="Bisoprolol" data-explanation="een bètablokker (5 mg) voor hartproblemen die eenmaal per dag ingenomen wordt">Bisoprolol</span> 5 mg: 1/dag (po)<br>
+<span data-concept="Lisinopril" data-explanation="een bloeddrukverlagend middel (15 mg) dat eenmaal per dag ingenomen wordt">Lisinopril</span> 15 mg: 1/dag (po)<br>
+<span data-concept="Marevan" data-explanation="een bloedverdunner die eenmaal per dag ingenomen wordt">Marevan</span>: 1/dag (po)<br>
+<span data-concept="Simvastatine" data-explanation="een cholesterolverlager (40 mg) die eenmaal per dag ingenomen wordt">Simvastatine</span> 40 mg: 1/dag (po)<br>
+<span data-concept="Spironolactone" data-explanation="een plasmiddel (25 mg), halve dosis, dat via de mond wordt ingenomen">Spironolactone</span> 25 mg: 1/2/dag (po)
+
+<strong>Lichamelijk onderzoek</strong><br>
+88 kg voor 173 cm. De bmi bedraagt 29. Regelmatig <span data-concept="hartritme" data-explanation="het ritme waarmee het hart klopt">hartritme</span>. Het <span data-concept="hartritme" data-explanation="het ritme waarmee het hart klopt">hartritme</span> is 61/min . Liggend gemeten aan de arm bedraagt de bloeddruk 157/67 <span data-concept="mmHg" data-explanation="millimeter kwikdruk, de meeteenheid voor bloeddruk">mmHg</span>.<br>
+<span data-concept="Hartauscultatie" data-explanation="luisteren naar de harttonen">Hartauscultatie</span>: normale harttonen, geen geruisen.<br>
+<span data-concept="Longauscultatie" data-explanation="luisteren naar de ademhalingsgeluiden">Longauscultatie</span>: normaal <span data-concept="vesiculair ademgeruis" data-explanation="normaal ademgeruis zoals dat bij gezonde longen hoort">vesiculair ademgeruis</span>.<br>
+<span data-concept="Abdomen" data-explanation="de buikstreek">Abdomen</span>: de <span data-concept="buikomtrek" data-explanation="omtrek van het lichaam ter hoogte van de buik">buikomtrek</span> is 105 cm.
+
+<strong>Rust ECG</strong><br>
+Hr: 61 /min.<br>
+<span data-concept="sinusaal ritme" data-explanation="normaal hartritme wat aangestuurd wordt door de sinusknoop">sinusaal ritme</span>. Q golf in <span data-concept="v1-v3" data-explanation="specifieke meetpunten (afleidingen) op een elektrocardiogram">v1-v3</span>.<br>
+Negatieve t top <span data-concept="v2-v3" data-explanation="specifieke meetpunten (afleidingen) op een elektrocardiogram">v2-v3</span>.<br>
+<span data-concept="QRS" data-explanation="een onderdeel van het elektrocardiogram dat de elektrische activiteit van de kamers van het hart weergeeft">QRS</span> duur: 98 ms.<br>
+<span data-concept="Qtc" data-explanation="gecorrigeerde QT-tijd, een maatstaf op het elektrocardiogram">Qtc</span>: 408 ms.
+
+<strong>Besluit en advies</strong><br>
+76-jarige patiënt gekend met niet revasculariseerbare <span data-concept="ischemische cardiomyopathie" data-explanation="een aandoening waar het hartspierweefsel aangetast is door verminderde aanvoer van zuurstofrijk bloed">ischemische cardiomyopathie</span> met matige <span data-concept="kamerfunctie" data-explanation="de effectiviteit waarmee de hartkamers samentrekken">kamerfunctie</span> en stabiele <span data-concept="dyspnoe nyha" data-explanation="kortademigheid volgens de New York Heart Association classificatie">dyspnoe nyha</span> klasse 2 à 3. Geen verhaal van <span data-concept="angor" data-explanation="pijn op de borst, ook bekend als angina pectoris">angor</span>. De <span data-concept="dyspnoe d'effort" data-explanation="kortademigheid bij inspanning">dyspnoe d'effort</span> is vooral aanwezig <span data-concept="postprandiaal" data-explanation="na de maaltijd">postprandiaal</span>. <span data-concept="Klinisch" data-explanation="volgens het lichamelijk onderzoek">Klinisch</span> geen tekenen van <span data-concept="decompensatie" data-explanation="een situatie waarin het hart het niet meer redt om goed te functioneren">decompensatie</span>. De bloeddruk is verhoogd alhier maar in <span data-concept="thuissetting" data-explanation="thuissituatie">thuissetting</span> heeft hij <span data-concept="systolisch" data-explanation="de bovendruk van de bloeddrukmeting">systolisch</span> niet meer dan 120 <span data-concept="mmHg" data-explanation="millimeter kwikdruk, de meeteenheid voor bloeddruk">mmHg</span>. Rust <span data-concept="ECG" data-explanation="elektrocardiogram, een test om de elektrische activiteiten van het hart te meten">ECG</span> toont <span data-concept="sequellen" data-explanation="sporen van voorgaande hartaandoeningen die zichtbaar zijn op ECG">sequellen</span> van oud <span data-concept="anteroseptaal" data-explanation="voorzijde en tussenschot van het hart">anteroseptaal</span> infarct, en ook negatieve t-toppen <span data-concept="v2-v3" data-explanation="specifieke meetpunten (afleidingen) op een elektrocardiogram">v2 - v3</span>. Hij is ook gekend met een 1e <span data-concept="graads av-blok" data-explanation="eerste graads atrioventriculair blok, een kleine vertraging in de geleiding tussen de boezems en kamers van het hart">graads av-blok</span>.
+
+Zoals u weet gaf patiënt in het verleden te kennen dat hij weigerachtig stond tov een <span data-concept="ICD" data-explanation="Implanteerbare Cardioverter Defibrillator, een apparaat dat gevaarlijke hartritmes corrigeert">ICD</span>, en hij blijft nog steeds bij zijn standpunt. Ik informeerde hem over de voor-en nadelen van een dergelijk device.
+
+Qua medicatie stel ik een ongewijzigd beleid voor, behalve dat we de dosis <span data-concept="bisoprolol" data-explanation="een bètablokker (5 mg) voor hartproblemen die eenmaal per dag ingenomen wordt">bisoprolol</span> toch voorzichtig opdrijven naar 7.5 mg/dag, ondanks het 1e <span data-concept="graads av-blok" data-explanation="eerste graads atrioventriculair blok, een kleine vertraging in de geleiding tussen de boezems en kamers van het hart">graads av-blok</span>.
+
+In de hoop u met deze informatie van dienst te zijn geweest, teken ik.
+
+Met de meeste hoogachting en collegiale groeten,<br>
+Prof. Dr. Chewbacca<br>
+<span data-concept="Kliniekhoofd" data-explanation="hoofd van een kliniek of ziekenhuisafdeling">Kliniekhoofd</span>`,
+    },
+    summary: {
+      state: 'SUCCESS',
+      result: `Han Solo, geboren op 27 augustus 1952, is een patiënt die eerder een <span data-concept='cabg' data-explanation='Een operatie om de bloedtoevoer naar het hart te verbeteren door verstopte delen van de kransslagaders te omzeilen.'>cabg</span> (een speciale hartoperatie) en een <span data-concept='icd' data-explanation='Een apparaat dat helpt bij het reguleren van gevaarlijke hartritmes.'>icd</span> (een apparaat voor het hart) heeft gehad. Hij heeft ook te maken met <span data-concept='coronaire ischemie' data-explanation='Een aandoening waarbij de bloedtoevoer naar de hartspier afneemt.'>coronaire ischemie</span> sinds 2006 en heeft suikerziekte en astma. Han rookt niet meer en heeft een normale bloeddruk als hij thuis is.
+      
+Han neemt verschillende medicijnen, waaronder <span data-concept='Asaflow' data-explanation='Een medicijn dat helpt bloedklonters te voorkomen.'>Asaflow</span>, <span data-concept='Bisoprolol' data-explanation='Een medicijn dat de hartslag verlaagt en helpt de bloeddruk te beheersen.'>Bisoprolol</span>, <span data-concept='Lisinopril' data-explanation='Een medicijn dat helpt bij het verlagen van de bloeddruk.'>Lisinopril</span>, <span data-concept='Marevan' data-explanation='Een bloedverdunner om bloedstolsels te voorkomen.'>Marevan</span>, <span data-concept='Simvastatine' data-explanation='Een medicijn om cholesterol te verlagen.'>Simvastatine</span>, en <span data-concept='spironolactone' data-explanation='Een medicijn dat helpt om overtollig vocht uit het lichaam te verwijderen.'>Spironolactone</span>.
+
+Bij het onderzoek bleek zijn hartslag normaal te zijn, en zijn bloeddruk was iets hoger in de kliniek dan thuis. Hij heeft geen pijn op de borst en kan nog redelijk goed bewegen, al wordt hij wel kortademig na het eten. Zijn levenskwaliteit is goed, en hij wil geen <span data-concept='icd' data-explanation='Een apparaat dat helpt bij het reguleren van gevaarlijke hartritmes.'>icd</span> laten plaatsen. Zijn medicijnen blijven bijna hetzelfde, alleen de <span data-concept='Bisoprolol' data-explanation='Een medicijn dat de hartslag verlaagt en helpt de bloeddruk te beheersen.'>Bisoprolol</span> wordt iets verhoogd.`,
     },
   },
   {
@@ -274,6 +282,18 @@ Met de meeste hoogachting en collegiale groeten,<br>
 Dr. Ki-Adi-Mundi<br>
 <span data-concept="Cardioloog" data-explanation="een arts die gespecialiseerd is in hartziekten">Cardioloog</span>`,
     },
+    summary: {
+      state: 'SUCCESS',
+      result: `Obi-Wan Kenobi, geboren op 27 augustus 1952, kwam voor controle nadat er een <span data-concept='icd' data-explanation='Implanteerbare Cardioverter Defibrillator, een apparaat dat helpt bij het reguleren van hartproblemen'>ICD</span> in zijn hart is geplaatst. Hij had eerder ook al een <span data-concept='cabg' data-explanation='Coronary Artery Bypass Grafting, een operatie om een omleiding te maken voor het bloed om een blokkade in de kransslagaders te omzeilen'>CABG</span> operatie gehad.
+
+In 1998 had hij een val waarbij zijn <span data-concept='femur' data-explanation='Dijbeen, het bot in je bovenbeen'>linker dijbeen</span> was gebroken. Hij heeft <span data-concept='copd' data-explanation='Chronische obstructieve longziekte, een longziekte die ademen moeilijk maakt'>COPD</span> en heeft meerdere heupoperaties ondergaan. Hij heeft verschillende hartproblemen gehad, zoals <span data-concept='paroxysmale vkf' data-explanation='Plotseling optredende onregelmatige hartslag'>paroxysmale vkf</span> en hartfalen. Hij was vroeger een roker, maar is nu gestopt.
+
+Over het algemeen gaat het nu redelijk goed met hem. Hij neemt dagelijks <span data-concept='Burinex' data-explanation='Een medicijn dat helpt bij het verwijderen van overtollig vocht'>Burinex</span> om vocht in zijn lichaam te verminderen.
+
+Hij gebruikt verschillende medicijnen: <span data-concept='allopurinol' data-explanation='Medicijn tegen jicht'>Allopurinol</span>, <span data-concept='Asaflow' data-explanation='Een vorm van aspirine, helpt het bloed te verdunnen'>Asaflow</span>, <span data-concept='Cordarone' data-explanation='Medicijn dat helpt om de hartslag te reguleren'>Cordarone</span>, <span data-concept='Emconcor Minor' data-explanation='Help bij hartproblemen'>Emconcor Minor</span>, <span data-concept='Marevan' data-explanation='Bloedverdunner, doseren op basis van INR-test'>Marevan</span> (afhankelijk van <span data-concept='INR' data-explanation='Een bloedtest om te zien hoe snel uw bloed stolt'>INR</span> resultaten), <span data-concept='Pantomed' data-explanation='Helpt bij maagproblemen'>Pantomed</span> en <span data-concept='simvastatine' data-explanation='Verlaagt het cholesterolgehalte'>Simvastatine</span>.
+
+De dokter heeft de <span data-concept='ecg' data-explanation='Elektrocardiogram, een test die de elektrische activiteit van het hart registreert'>ECG</span> getest en zegt dat zijn hart momenteel stabiel is. Zijn gewicht is nu ook stabiel nadat hij vocht kwijt is geraakt na de laatste ziekenhuisopname. De dokter plant nog verdere controles om te kijken hoe het met zijn <span data-concept='icd' data-explanation='Implanteerbare Cardioverter Defibrillator, een apparaat dat helpt bij het reguleren van hartproblemen'>ICD</span> gaat.`,
+    },
   },
   {
     id: 'padme-amidala',
@@ -361,6 +381,16 @@ Met de meeste hoogachting en collegiale groeten,<br>
 Dr. Luke Skywalker<br>
 <span data-concept="Coördinerend cardioloog" data-explanation="Een cardioloog die de zorg coördineert">Coördinerend cardioloog</span>`,
     },
+    summary: {
+      state: 'SUCCESS',
+      result: `Padmé Amidala, geboren op 3 juli 1964, kwam voor controle van haar <span data-concept='gedilateerde cardiomyopathie' data-explanation='gezondheidsprobleem waarbij het hart vergroot en verzwakt is'>gedilateerde cardiomyopathie</span>. Ze heeft last van <span data-concept='dyspnoe' data-explanation='moeilijkheden met ademhalen'>dyspnoe</span> sinds 2020 en heeft in 2021 een <span data-concept='urineweginfectie' data-explanation='een infectie die de urinewegen treft'>urineweginfectie</span> gehad. In 2022 herstelde haar <span data-concept='linker' data-explanation='in dit geval verwijst het naar de linker kant van het hart'>linker</span> <span data-concept='ventrikelfunctie' data-explanation='de pompkracht van de linker hartkamer'>ventrikelfunctie</span>. 
+      
+Ze heeft geen last van roken, diabetes of overgewicht, maar haar moeder had hartproblemen. Padmé voelt zich over het algemeen goed, maar kreeg tijdens inspanning een keer <span data-concept='vertigo' data-explanation='duizeligheid of draaierig gevoel'>vertigo</span>. Zeer zware inspanningen zijn moeilijker, en ze moet vaak rusten. Haar <span data-concept='arbeidsongeschiktheid' data-explanation='niet in staat zijn om te werken vanwege gezondheidsproblemen'>arbeidsongeschiktheid</span> is opgeheven, wat het moeilijk maakt voor haar bedrijf.
+
+Ze gebruikt dagelijks <span data-concept='Zestril' data-explanation='een medicijn dat de bloeddruk verlaagt en het hart helpt beter te pompen'>Zestril</span> 20 mg. Bij onderzoek was haar bloeddruk 123/76 <span data-concept='mmHg' data-explanation='een eenheid voor druk die vaak wordt gebruikt om bloeddruk te meten'>mmHg</span>, en haar <span data-concept='hartritme' data-explanation='de snelheid waarmee het hart klopt'>hartritme</span> was normaal. De <span data-concept='longauscultatie' data-explanation='luisteren naar geluiden in de longen met een stethoscoop'>longauscultatie</span> en <span data-concept='hartauscultatie' data-explanation='luisteren naar hartgeluiden met een stethoscoop'>hartauscultatie</span> waren normaal en er waren geen <span data-concept='claudicatio' data-explanation='pijnlijke benen bij lopen door een verminderde bloedtoevoer'>claudicatio</span>-klachten. Er zijn geen <span data-concept='oedeem' data-explanation='zwelling door vochtophoping in het lichaam'>oedemen</span> aangetroffen in haar <span data-concept='onderste ledematen' data-explanation='de benen van een persoon'>onderste ledematen</span>.
+      
+Ze komt binnenkort terug voor de bespreking van de resultaten.`,
+    },
   },
   {
     id: 'bail-organa',
@@ -430,6 +460,15 @@ In de hoop u met deze informatie van dienst te zijn geweest, teken ik.<br>
 Met de meeste hoogachting en collegiale groeten,<br><br>
 Prof. Dr. Sheev Palpatine<br>
 <span data-concept="Cardiochirurg" data-explanation="een chirurg die gespecialiseerd is in hartoperaties">Cardiochirurg</span>`,
+    },
+    summary: {
+      state: 'SUCCESS',
+      result: `Bail Organa, geboren op 10 mei 1968, had een operatie op 1 februari 2022. Hij kreeg een nieuw <span data-concept='implantatie' data-explanation='plaatsen of inbrengen van een medisch apparaat in het lichaam'>implantatie</span> van een apparaat genaamd
+<span data-concept='heartmate' data-explanation='een type apparaat dat het hart ondersteunt bij het pompen van bloed'>Heartmate 2</span> om zijn hart te helpen, omdat hij een bloeding had. De operatie ging goed en hij voelde zich weer beter toen hij op 4 februari het ziekenhuis mocht verlaten.
+
+Voor zijn gezondheid is het belangrijk om zijn medicijnen weer te gebruiken. Hij heeft al een nieuwe afspraak om zijn gezondheid te laten controleren.\n\nIn het verleden had Bail ademhalingsproblemen, ten eerste werd gedacht dat het door astma kwam. Maar later bleek dat hij last had van een probleem met zijn hart, genaamd <span data-concept='gedilateerde cardiomyopathie' data-explanation='een ziekte waarbij de hartspier zich vergroot en verzwakt'>gedilateerde cardiomyopathie</span>, waardoor zijn hart minder goed pompt. Ook had hij in 2019 een aanval die leek op een mini-beroerte, noem je een <span data-concept='CVA' data-explanation='Een beroerte, veroorzaakt door problemen met de bloedcirculatie in de hersenen'>CVA</span>.
+
+Bail rookte 5 à 6 sigaretten per dag en werkte vroeger met metaal, maar nu kan hij niet meer werken, oftewel is hij <span data-concept='arbeidsongeschikt' data-explanation='niet in staat te werken door ziekte of letsel'>arbeidsongeschikt</span>.`,
     },
   },
 ];

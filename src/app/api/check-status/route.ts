@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
-import { getDemoCaseByTrackingId } from '@/lib/demo-data.util';
+import { findDemoCase } from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
+import { getDocument } from '@/lib/document-store';
 
 export async function GET(request: Request) {
   try {
@@ -18,16 +19,28 @@ export async function GET(request: Request) {
       );
     }
 
-    // Demo mode: return pre-stored results immediately
+    // Demo mode: find the demo case by re-matching the original text
     if (isDemo && trackingId.startsWith('demo-')) {
-      console.log('Demo mode detected, looking for tracking ID:', trackingId);
-      const demoCase = getDemoCaseByTrackingId(trackingId);
+      console.log('Demo mode detected, looking for original document:', trackingId);
 
+      // Get the original document that was submitted
+      const originalDocument = getDocument(trackingId);
+      if (!originalDocument) {
+        console.log('Demo mode: no original document found for tracking ID', trackingId);
+        return NextResponse.json(
+          { error: 'Original document not found' },
+          { status: 404 },
+        );
+      }
+
+      // Re-run the same matching logic to find the demo case
+      const demoCase = findDemoCase(originalDocument);
       if (demoCase) {
         console.log('Demo mode: returning result for', demoCase.name);
         return NextResponse.json(demoCase.result);
       } else {
-        console.log('Demo mode: no case found for tracking ID', trackingId);
+        console.log('Demo mode: no case found for document');
+        console.log('Demo mode: document preview:', originalDocument.substring(0, 100) + '...');
         return NextResponse.json(
           { error: 'Demo case not found' },
           { status: 404 },

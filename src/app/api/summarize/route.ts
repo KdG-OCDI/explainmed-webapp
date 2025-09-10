@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
+import { findDemoCase } from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
+import { getDocument } from '@/lib/document-store';
 
 export async function POST(request: Request) {
   try {
@@ -9,12 +11,46 @@ export async function POST(request: Request) {
 
     console.log('in summarize, demo mode:', isDemo);
 
-    // Demo mode: return "Bazinga" for demo purposes
+    // Demo mode: return appropriate demo case summary
     if (isDemo) {
-      console.log('Demo mode: returning Bazinga summary');
+      console.log('Demo mode: looking for demo case summary');
+      console.log('Demo mode: received document preview:', body.document.substring(0, 100) + '...');
+
+      // For demo mode, try to find the demo case by matching the document content
+      // The document might be processed HTML, so we need to be smart about matching
+      const demoCase = findDemoCase(body.document);
+      console.log('Demo mode: found demo case:', demoCase?.name || 'none');
+
+      if (demoCase && demoCase.summary) {
+        console.log('Demo mode: returning summary for', demoCase.name);
+        return NextResponse.json(demoCase.summary);
+      }
+
+      // If direct matching fails, try to get original document from tracking ID
+      const { searchParams } = new URL(request.url);
+      const trackingId = searchParams.get('trackingId');
+
+      if (trackingId && trackingId.startsWith('demo-')) {
+        console.log('Demo mode: trying to get original document for tracking ID:', trackingId);
+        const originalDocument = getDocument(trackingId);
+
+        if (originalDocument) {
+          console.log('Demo mode: found original document, trying to match');
+          const originalDemoCase = findDemoCase(originalDocument);
+
+          if (originalDemoCase && originalDemoCase.summary) {
+            console.log('Demo mode: returning summary for original case:', originalDemoCase.name);
+            return NextResponse.json(originalDemoCase.summary);
+          }
+        }
+      }
+
+      // Fallback: return a generic demo summary
+      console.log('Demo mode: returning generic demo summary');
       return NextResponse.json({
         state: 'SUCCESS',
-        result: 'Bazinga',
+        result:
+          '<div class="space-y-6"><div class="rounded-lg bg-blue-50 p-4"><h3 class="text-lg font-semibold text-blue-900 mb-2">Samenvatting</h3><p class="text-blue-800">Dit is een demo samenvatting. In de echte versie zou hier een geautomatiseerde samenvatting van het medisch verslag staan.</p></div></div>',
       });
     }
 

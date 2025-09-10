@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 import {
   findDemoCase,
   generateDemoTrackingId,
-  storeDemoTracking,
 } from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
 import { storeDocument } from '@/lib/document-store';
@@ -24,9 +23,9 @@ export async function POST(request: Request) {
       const demoCase = findDemoCase(body.document);
 
       if (demoCase) {
+        // Simple tracking ID - just indicates this is demo mode
         const trackingId = generateDemoTrackingId();
         storeDocument(trackingId, body.document);
-        storeDemoTracking(trackingId, demoCase.id);
 
         console.log(
           'Demo mode: found case for',

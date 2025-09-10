@@ -83,7 +83,7 @@ export function DemoSnippetsModal({ isOpen, onClose }: DemoSnippetsModalProps) {
                     )}
                   </Button>
                 </div>
-                <p className="text-xs leading-relaxed text-gray-600">
+                <p className="text-xs text-gray-600">
                   {getSnippet(demoCase.originalText)}
                 </p>
                 {copiedId === demoCase.id && (
