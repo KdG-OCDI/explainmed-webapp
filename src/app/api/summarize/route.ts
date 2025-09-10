@@ -14,7 +14,10 @@ export async function POST(request: Request) {
     // Demo mode: return appropriate demo case summary
     if (isDemo) {
       console.log('Demo mode: looking for demo case summary');
-      console.log('Demo mode: received document preview:', body.document.substring(0, 100) + '...');
+      console.log(
+        'Demo mode: received document preview:',
+        body.document.substring(0, 100) + '...',
+      );
 
       // For demo mode, try to find the demo case by matching the document content
       // The document might be processed HTML, so we need to be smart about matching
@@ -31,7 +34,10 @@ export async function POST(request: Request) {
       const trackingId = searchParams.get('trackingId');
 
       if (trackingId && trackingId.startsWith('demo-')) {
-        console.log('Demo mode: trying to get original document for tracking ID:', trackingId);
+        console.log(
+          'Demo mode: trying to get original document for tracking ID:',
+          trackingId,
+        );
         const originalDocument = getDocument(trackingId);
 
         if (originalDocument) {
@@ -39,7 +45,10 @@ export async function POST(request: Request) {
           const originalDemoCase = findDemoCase(originalDocument);
 
           if (originalDemoCase && originalDemoCase.summary) {
-            console.log('Demo mode: returning summary for original case:', originalDemoCase.name);
+            console.log(
+              'Demo mode: returning summary for original case:',
+              originalDemoCase.name,
+            );
             return NextResponse.json(originalDemoCase.summary);
           }
         }

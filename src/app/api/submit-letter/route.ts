@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import {
-  findDemoCase,
-  generateDemoTrackingId,
-} from '@/lib/demo-data.util';
+import { findDemoCase, generateDemoTrackingId } from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
 import { storeDocument } from '@/lib/document-store';
 

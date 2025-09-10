@@ -21,12 +21,18 @@ export async function GET(request: Request) {
 
     // Demo mode: find the demo case by re-matching the original text
     if (isDemo && trackingId.startsWith('demo-')) {
-      console.log('Demo mode detected, looking for original document:', trackingId);
+      console.log(
+        'Demo mode detected, looking for original document:',
+        trackingId,
+      );
 
       // Get the original document that was submitted
       const originalDocument = getDocument(trackingId);
       if (!originalDocument) {
-        console.log('Demo mode: no original document found for tracking ID', trackingId);
+        console.log(
+          'Demo mode: no original document found for tracking ID',
+          trackingId,
+        );
         return NextResponse.json(
           { error: 'Original document not found' },
           { status: 404 },
@@ -40,7 +46,10 @@ export async function GET(request: Request) {
         return NextResponse.json(demoCase.result);
       } else {
         console.log('Demo mode: no case found for document');
-        console.log('Demo mode: document preview:', originalDocument.substring(0, 100) + '...');
+        console.log(
+          'Demo mode: document preview:',
+          originalDocument.substring(0, 100) + '...',
+        );
         return NextResponse.json(
           { error: 'Demo case not found' },
           { status: 404 },
