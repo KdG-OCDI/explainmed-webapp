@@ -12,9 +12,9 @@ interface QuestionsModalProps {
 }
 
 const predefinedQuestions = [
-  'Wat zijn de mogelijkheden voor behandeling?',
-  'Wat zijn voordelen en nadelen van die mogelijkheden?',
-  'Wat betekent dat in mijn situatie?',
+  'Wat zijn mijn mogelijkheden? Wat kan ik doen?',
+  'Wat zijn de voordelen en nadelen van elke optie?',
+  'Wat betekent dit voor mij? Wat is de impact op mijn leven?',
 ];
 
 export function QuestionsModal({ isOpen, onClose }: QuestionsModalProps) {

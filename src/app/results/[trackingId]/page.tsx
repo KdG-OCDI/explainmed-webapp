@@ -480,23 +480,21 @@ export default function ResultsPage() {
                       <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                            activeTab === 'verslag'
-                              ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                          }`}
+                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${activeTab === 'verslag'
+                            ? 'bg-white text-blue-600 shadow-sm'
+                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                            }`}
                         >
-                          Medisch verslag
+                          Bekijk het medisch verslag
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                            activeTab === 'samenvatting'
-                              ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                          }`}
+                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${activeTab === 'samenvatting'
+                            ? 'bg-white text-blue-600 shadow-sm'
+                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                            }`}
                         >
-                          Samenvatting
+                          Lees de samenvatting
                         </button>
                       </div>
                     </div>
@@ -537,7 +535,7 @@ export default function ResultsPage() {
                   onClick={() => setIsQuestionsModalOpen(true)}
                   className="flex items-center justify-between rounded-lg border-gray-200 bg-white px-4 py-3 text-left shadow-md transition-colors hover:bg-gray-50"
                 >
-                  <h3 className="text-xl font-semibold">Vragen</h3>
+                  <h3 className="text-xl font-semibold">Vragen voor uw arts</h3>
                   <ChevronRight className="size-5 text-gray-400" />
                 </button>
                 {(() => {
@@ -554,15 +552,13 @@ export default function ResultsPage() {
                             <div
                               key={index}
                               ref={(el) => setTermRef(el, term.term)}
-                              className={`p-4 transition-colors duration-300 ${
-                                selectedTerm === term.term.toLowerCase()
-                                  ? 'bg-blue-200'
-                                  : ''
-                              } ${
-                                index < currentTerms.length - 1
+                              className={`p-4 transition-colors duration-300 ${selectedTerm === term.term.toLowerCase()
+                                ? 'bg-blue-200'
+                                : ''
+                                } ${index < currentTerms.length - 1
                                   ? 'border-b border-gray-200'
                                   : ''
-                              }`}
+                                }`}
                             >
                               <h4 className="font-semibold text-blue-700">
                                 {term.term}
