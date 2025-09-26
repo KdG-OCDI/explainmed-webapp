@@ -15,7 +15,8 @@ export default function TermsPage() {
 
             <section className="mb-8">
               <p className="mb-4 text-gray-700">
-                Welkom bij ExplainMed. Door deze tool te gebruiken, gaat u akkoord met deze voorwaarden.
+                Welkom bij ExplainMed. Door deze tool te gebruiken, gaat u
+                akkoord met deze voorwaarden.
               </p>
             </section>
 
@@ -27,8 +28,13 @@ export default function TermsPage() {
                 ExplainMed biedt een AI-tool die:
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>Medische verslagen analyseert en moeilijke termen uitlegt</li>
-                <li>Samenvattingen maakt van diagnoses, behandelingen en aanbevelingen</li>
+                <li>
+                  Medische verslagen analyseert en moeilijke termen uitlegt
+                </li>
+                <li>
+                  Samenvattingen maakt van diagnoses, behandelingen en
+                  aanbevelingen
+                </li>
                 <li>Medische termen markeert en uitlegt</li>
               </ul>
             </section>
@@ -45,7 +51,9 @@ export default function TermsPage() {
                 <li>Uw eigen medische verslagen analyseren</li>
                 <li>Medische termen begrijpen</li>
                 <li>Uitleg krijgen over diagnoses en behandelingen</li>
-                <li>Voor leerdoelen, zoals bijvoorbeeld het tonen in een les</li>
+                <li>
+                  Voor leerdoelen, zoals bijvoorbeeld het tonen in een les
+                </li>
               </ul>
 
               <h3 className="mb-3 text-xl font-medium text-gray-900">
@@ -70,10 +78,22 @@ export default function TermsPage() {
                 </p>
               </div>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>ExplainMed is alleen een hulpmiddel en vervangt geen professioneel medisch advies</li>
-                <li>Raadpleeg altijd een arts voor medische vragen of noodsituaties</li>
-                <li>Maak geen medische beslissingen alleen op basis van onze analyse</li>
-                <li>Bij medische noodsituaties, neem direct contact op met een arts of bel 112</li>
+                <li>
+                  ExplainMed is alleen een hulpmiddel en vervangt geen
+                  professioneel medisch advies
+                </li>
+                <li>
+                  Raadpleeg altijd een arts voor medische vragen of
+                  noodsituaties
+                </li>
+                <li>
+                  Maak geen medische beslissingen alleen op basis van onze
+                  analyse
+                </li>
+                <li>
+                  Bij medische noodsituaties, neem direct contact op met een
+                  arts of bel 112
+                </li>
               </ul>
             </section>
 
@@ -84,7 +104,16 @@ export default function TermsPage() {
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Uw documenten worden niet permanent bewaard</li>
                 <li>Alles wordt automatisch verwijderd na verwerking</li>
-                <li>Zie ons <a href="/privacy" className="text-blue-600 underline hover:text-blue-800">privacybeleid</a> voor meer info</li>
+                <li>
+                  Zie ons{' '}
+                  <a
+                    href="/privacy"
+                    className="text-blue-600 underline hover:text-blue-800"
+                  >
+                    privacybeleid
+                  </a>{' '}
+                  voor meer info
+                </li>
               </ul>
             </section>
 
@@ -93,8 +122,14 @@ export default function TermsPage() {
                 Beschikbaarheid
               </h2>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>We proberen 24/7 online te zijn, maar kunnen dit niet garanderen</li>
-                <li>We mogen de service tijdelijk onderbreken voor onderhoud, updates of beëindiging</li>
+                <li>
+                  We proberen 24/7 online te zijn, maar kunnen dit niet
+                  garanderen
+                </li>
+                <li>
+                  We mogen de service tijdelijk onderbreken voor onderhoud,
+                  updates of beëindiging
+                </li>
               </ul>
             </section>
 
@@ -103,8 +138,14 @@ export default function TermsPage() {
                 Eigendom
               </h2>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>Alles aan ExplainMed (software, AI-model, content) is ons eigendom</li>
-                <li>Kopiëren, verspreiden of reverse-engineeren is niet toegestaan zonder toestemming</li>
+                <li>
+                  Alles aan ExplainMed (software, AI-model, content) is ons
+                  eigendom
+                </li>
+                <li>
+                  Kopiëren, verspreiden of reverse-engineeren is niet toegestaan
+                  zonder toestemming
+                </li>
               </ul>
             </section>
 
@@ -113,9 +154,18 @@ export default function TermsPage() {
                 Aansprakelijkheid
               </h2>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>We zijn niet verantwoordelijk voor medische beslissingen die u neemt</li>
-                <li>We zijn niet aansprakelijk voor schade, fouten in de analyse of onderbrekingen</li>
-                <li>Onze maximale aansprakelijkheid is het bedrag dat u voor de service heeft betaald</li>
+                <li>
+                  We zijn niet verantwoordelijk voor medische beslissingen die u
+                  neemt
+                </li>
+                <li>
+                  We zijn niet aansprakelijk voor schade, fouten in de analyse
+                  of onderbrekingen
+                </li>
+                <li>
+                  Onze maximale aansprakelijkheid is het bedrag dat u voor de
+                  service heeft betaald
+                </li>
               </ul>
             </section>
 
@@ -124,7 +174,10 @@ export default function TermsPage() {
                 Wijzigingen
               </h2>
               <p className="mb-4 text-gray-700">
-                We kunnen deze voorwaarden van tijd tot tijd aanpassen. Nieuwe voorwaarden worden hier gepubliceerd en de datum van de laatste update wordt bovenaan vermeld. Door de service te blijven gebruiken, accepteert u de nieuwe voorwaarden.
+                We kunnen deze voorwaarden van tijd tot tijd aanpassen. Nieuwe
+                voorwaarden worden hier gepubliceerd en de datum van de laatste
+                update wordt bovenaan vermeld. Door de service te blijven
+                gebruiken, accepteert u de nieuwe voorwaarden.
               </p>
             </section>
 
@@ -133,7 +186,9 @@ export default function TermsPage() {
                 Recht en geschillen
               </h2>
               <p className="mb-4 text-gray-700">
-                De Belgische wet is van toepassing op deze voorwaarden. Eventuele geschillen (bv. meningsverschillen) worden voorgelegd aan de bevoegde rechter in België.
+                De Belgische wet is van toepassing op deze voorwaarden.
+                Eventuele geschillen (bv. meningsverschillen) worden voorgelegd
+                aan de bevoegde rechter in België.
               </p>
             </section>
 
@@ -142,7 +197,8 @@ export default function TermsPage() {
                 Contact
               </h2>
               <p className="mb-4 text-gray-700">
-                Als u vragen heeft over deze algemene voorwaarden, kunt u contact met ons opnemen via:
+                Als u vragen heeft over deze algemene voorwaarden, kunt u
+                contact met ons opnemen via:
               </p>
               <div className="rounded-lg bg-gray-50 p-4">
                 <p className="text-gray-700">

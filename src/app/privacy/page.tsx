@@ -14,7 +14,10 @@ export default function PrivacyPage() {
 
             <section className="mb-8">
               <p className="mb-4 text-gray-700">
-                ExplainMed respecteert uw privacy en zal uw persoonlijke gegevens beschermen. Hier leggen we uit hoe ExplainMed omgaat met uw verslag wanneer u deze tool gebruikt. ExplainMed maakt gebruik van AI.
+                ExplainMed respecteert uw privacy en zal uw persoonlijke
+                gegevens beschermen. Hier leggen we uit hoe ExplainMed omgaat
+                met uw verslag wanneer u deze tool gebruikt. ExplainMed maakt
+                gebruik van AI.
               </p>
             </section>
 
@@ -23,7 +26,8 @@ export default function PrivacyPage() {
                 Informatie die wij verzamelen
               </h2>
               <p className="mb-4 text-gray-700">
-                Wanneer u een medisch verslag uploadt voor analyse, verwerken wij deze gegevens tijdelijk om:
+                Wanneer u een medisch verslag uploadt voor analyse, verwerken
+                wij deze gegevens tijdelijk om:
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Medische termen te identificeren en uit te leggen</li>
@@ -36,7 +40,8 @@ export default function PrivacyPage() {
                 Tijdelijke opslag
               </h2>
               <p className="mb-4 text-gray-700">
-                Wij bewaren uw medische verslagen niet permanent. Alle geüploade documenten worden automatisch verwijderd na verwerking.
+                Wij bewaren uw medische verslagen niet permanent. Alle geüploade
+                documenten worden automatisch verwijderd na verwerking.
               </p>
             </section>
 
@@ -49,13 +54,19 @@ export default function PrivacyPage() {
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>
-                  <strong>Versleuteling van gegevens:</strong> Informatie wordt geheim gemaakt met een soort code, zodat anderen het niet zomaar kunnen lezen tijdens de overdracht en opslag
+                  <strong>Versleuteling van gegevens:</strong> Informatie wordt
+                  geheim gemaakt met een soort code, zodat anderen het niet
+                  zomaar kunnen lezen tijdens de overdracht en opslag
                 </li>
                 <li>
-                  <strong>Toegangscontrole en authenticatie:</strong> Alleen mensen die toestemming hebben, kunnen erbij. Ze moeten zich bijvoorbeeld aanmelden met een wachtwoord of extra code.
+                  <strong>Toegangscontrole en authenticatie:</strong> Alleen
+                  mensen die toestemming hebben, kunnen erbij. Ze moeten zich
+                  bijvoorbeeld aanmelden met een wachtwoord of extra code.
                 </li>
                 <li>
-                  <strong>Regelmatige controles:</strong> Er wordt vaak gecontroleerd of alles nog veilig is en of er geen fouten in de beveiliging zitten
+                  <strong>Regelmatige controles:</strong> Er wordt vaak
+                  gecontroleerd of alles nog veilig is en of er geen fouten in
+                  de beveiliging zitten
                 </li>
                 <li>Beperkte toegang tot gegevens</li>
               </ul>
@@ -66,7 +77,8 @@ export default function PrivacyPage() {
                 Gegevensdeling
               </h2>
               <p className="mb-4 text-gray-700">
-                Wij delen uw persoonlijke gegevens niet met derden, behalve in de volgende gevallen:
+                Wij delen uw persoonlijke gegevens niet met derden, behalve in
+                de volgende gevallen:
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Wanneer wettelijk verplicht</li>
@@ -79,7 +91,8 @@ export default function PrivacyPage() {
                 Uw rechten
               </h2>
               <p className="mb-4 text-gray-700">
-                U mag uw gegevens inzien, aanpassen of laten verwijderen. Ook kunt u altijd bezwaar maken tegen het gebruik van uw gegevens.
+                U mag uw gegevens inzien, aanpassen of laten verwijderen. Ook
+                kunt u altijd bezwaar maken tegen het gebruik van uw gegevens.
               </p>
             </section>
 
@@ -88,7 +101,8 @@ export default function PrivacyPage() {
                 Contact
               </h2>
               <p className="mb-4 text-gray-700">
-                Als u vragen heeft over dit privacybeleid of over hoe wij uw gegevens verwerken, kunt u contact met ons opnemen via:
+                Als u vragen heeft over dit privacybeleid of over hoe wij uw
+                gegevens verwerken, kunt u contact met ons opnemen via:
               </p>
               <div className="rounded-lg bg-gray-50 p-4">
                 <p className="text-gray-700">
@@ -103,7 +117,9 @@ export default function PrivacyPage() {
 
             <div className="mt-8 border-t border-gray-200 pt-6">
               <p className="text-sm text-gray-500">
-                Dit privacybeleid is opgesteld in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en de Belgische privacywetgeving.
+                Dit privacybeleid is opgesteld in overeenstemming met de
+                Algemene Verordening Gegevensbescherming (AVG) en de Belgische
+                privacywetgeving.
               </p>
             </div>
           </div>

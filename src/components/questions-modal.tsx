@@ -76,11 +76,17 @@ export function QuestionsModal({ isOpen, onClose }: QuestionsModalProps) {
               <h3 className="mb-3 text-lg font-semibold text-blue-900">
                 Samen beslissen met uw arts
               </h3>
-              <p className="text-sm text-blue-800 leading-relaxed">
-                Als u naar de arts gaat voor een onderzoek of een behandeling, heeft u altijd meerdere mogelijkheden waaruit u kunt kiezen. Welke behandeling of welk onderzoek het beste bij u past, hangt af van de voor- en nadelen die eraan verbonden zijn, maar vooral ook wat de impact ervan is op uw dagelijks leven.
+              <p className="text-sm leading-relaxed text-blue-800">
+                Als u naar de arts gaat voor een onderzoek of een behandeling,
+                heeft u altijd meerdere mogelijkheden waaruit u kunt kiezen.
+                Welke behandeling of welk onderzoek het beste bij u past, hangt
+                af van de voor- en nadelen die eraan verbonden zijn, maar vooral
+                ook wat de impact ervan is op uw dagelijks leven.
               </p>
-              <p className="mt-2 text-sm text-blue-800 leading-relaxed">
-                Het is belangrijk om samen met uw arts deze zaken op een rijtje te zetten. Samen met uw arts kunt u vervolgens beslissen welk onderzoek of behandeling het beste bij u past.
+              <p className="mt-2 text-sm leading-relaxed text-blue-800">
+                Het is belangrijk om samen met uw arts deze zaken op een rijtje
+                te zetten. Samen met uw arts kunt u vervolgens beslissen welk
+                onderzoek of behandeling het beste bij u past.
               </p>
               <p className="mt-2 text-xs text-blue-700">
                 Bron: 3goedevragen.nl

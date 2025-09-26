@@ -90,8 +90,10 @@ export default function Home() {
               <h3 className="mb-4 text-2xl font-semibold text-gray-900">
                 Wie zijn wij?
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                Wij zijn een team bestaande uit Next Genics, onderzoekers verbonden aan Karel de Grote Hogeschool, Universiteit Gent en een IT ontwikkelaar van Forcit.
+              <p className="leading-relaxed text-gray-700">
+                Wij zijn een team bestaande uit Next Genics, onderzoekers
+                verbonden aan Karel de Grote Hogeschool, Universiteit Gent en
+                een IT ontwikkelaar van Forcit.
               </p>
             </div>
 
@@ -100,15 +102,28 @@ export default function Home() {
               <h3 className="mb-4 text-2xl font-semibold text-gray-900">
                 Hoe is ExplainMed ontwikkeld?
               </h3>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
+              <div className="space-y-4 leading-relaxed text-gray-700">
                 <p>
-                  De tool is gebaseerd op een bestaand AI model dat we slimmer hebben gemaakt door het duizenden medische termen aan te leren uit doktersverslagen. Die termen koppelden we aan medische verklaringen uit betrouwbare begrippenlijsten.
+                  De tool is gebaseerd op een bestaand AI model dat we slimmer
+                  hebben gemaakt door het duizenden medische termen aan te leren
+                  uit doktersverslagen. Die termen koppelden we aan medische
+                  verklaringen uit betrouwbare begrippenlijsten.
                 </p>
                 <p>
-                  We trainden het model nog verder zodat het een heel verslag kan omzetten in een begrijpelijke en samengevatte versie.
+                  We trainden het model nog verder zodat het een heel verslag
+                  kan omzetten in een begrijpelijke en samengevatte versie.
                 </p>
                 <p>
-                  De tool is betrouwbaar omdat dit model geen eigen interpretaties geeft. Het is veilig in gebruik omdat onze tool geen medische gegevens opslaat (zie meer informatie in het <a href="/privacy" className="text-blue-600 underline hover:text-blue-800">Privacybeleid</a>).
+                  De tool is betrouwbaar omdat dit model geen eigen
+                  interpretaties geeft. Het is veilig in gebruik omdat onze tool
+                  geen medische gegevens opslaat (zie meer informatie in het{' '}
+                  <a
+                    href="/privacy"
+                    className="text-blue-600 underline hover:text-blue-800"
+                  >
+                    Privacybeleid
+                  </a>
+                  ).
                 </p>
               </div>
             </div>
