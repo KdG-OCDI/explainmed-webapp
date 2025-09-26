@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 
 import { DemoModeToggle } from '@/components/demo-mode-toggle';
 import { Header } from '@/components/header';
+import { PrivacyProvider } from '@/lib/privacy-context';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -26,9 +27,11 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <Header />
-        {children}
-        <DemoModeToggle />
+        <PrivacyProvider>
+          <Header />
+          {children}
+          <DemoModeToggle />
+        </PrivacyProvider>
       </body>
     </html>
   );

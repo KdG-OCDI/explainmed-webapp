@@ -9,30 +9,21 @@ export default function PrivacyPage() {
 
           <div className="prose prose-lg max-w-none">
             <p className="mb-6 text-gray-600">
-              <strong>Laatst bijgewerkt:</strong>{' '}
-              {new Date().toLocaleDateString('nl-NL')}
+              <strong>Laatst bijgewerkt:</strong> 24-9-2025
             </p>
 
             <section className="mb-8">
-              <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                1. Inleiding
-              </h2>
               <p className="mb-4 text-gray-700">
-                ExplainMed respecteert uw privacy en is toegewijd aan het
-                beschermen van uw persoonlijke gegevens. Dit privacybeleid legt
-                uit hoe wij omgaan met de informatie die u aan ons verstrekt
-                wanneer u onze AI-gestuurde medische verslag analyse tool
-                gebruikt.
+                ExplainMed respecteert uw privacy en zal uw persoonlijke gegevens beschermen. Hier leggen we uit hoe ExplainMed omgaat met uw verslag wanneer u deze tool gebruikt. ExplainMed maakt gebruik van AI.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                2. Gegevens die wij verzamelen
+                Informatie die wij verzamelen
               </h2>
               <p className="mb-4 text-gray-700">
-                Wanneer u een medisch verslag uploadt voor analyse, verwerken
-                wij deze gegevens tijdelijk om:
+                Wanneer u een medisch verslag uploadt voor analyse, verwerken wij deze gegevens tijdelijk om:
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Medische termen te identificeren en uit te leggen</li>
@@ -42,40 +33,40 @@ export default function PrivacyPage() {
 
             <section className="mb-8">
               <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                3. Gegevensopslag en -beveiliging
+                Tijdelijke opslag
               </h2>
-              <h3 className="mb-3 text-xl font-medium text-gray-900">
-                3.1 Tijdelijke opslag
-              </h3>
               <p className="mb-4 text-gray-700">
-                <strong>Belangrijk:</strong> Wij bewaren uw medische verslagen
-                niet permanent. Alle geüploade documenten worden automatisch
-                verwijderd na verwerking. Wij houden geen database bij van uw
-                medische gegevens.
+                Wij bewaren uw medische verslagen niet permanent. Alle geüploade documenten worden automatisch verwijderd na verwerking.
               </p>
+            </section>
 
-              <h3 className="mb-3 text-xl font-medium text-gray-900">
-                3.2 Beveiliging
-              </h3>
+            <section className="mb-8">
+              <h2 className="mb-4 text-2xl font-semibold text-gray-900">
+                Beveiliging
+              </h2>
               <p className="mb-4 text-gray-700">
-                Wij implementeren passende technische en organisatorische
-                maatregelen om uw gegevens te beschermen:
+                Wij gebruiken maatregelen om uw gegevens te beschermen:
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>Versleuteling van gegevens tijdens overdracht en opslag</li>
-                <li>Toegangscontrole en authenticatie</li>
-                <li>Regelmatige beveiligingsaudits</li>
+                <li>
+                  <strong>Versleuteling van gegevens:</strong> Informatie wordt geheim gemaakt met een soort code, zodat anderen het niet zomaar kunnen lezen tijdens de overdracht en opslag
+                </li>
+                <li>
+                  <strong>Toegangscontrole en authenticatie:</strong> Alleen mensen die toestemming hebben, kunnen erbij. Ze moeten zich bijvoorbeeld aanmelden met een wachtwoord of extra code.
+                </li>
+                <li>
+                  <strong>Regelmatige controles:</strong> Er wordt vaak gecontroleerd of alles nog veilig is en of er geen fouten in de beveiliging zitten
+                </li>
                 <li>Beperkte toegang tot gegevens</li>
               </ul>
             </section>
 
             <section className="mb-8">
               <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                4. Gegevensdeling
+                Gegevensdeling
               </h2>
               <p className="mb-4 text-gray-700">
-                Wij delen uw persoonlijke gegevens niet met derden, behalve in
-                de volgende gevallen:
+                Wij delen uw persoonlijke gegevens niet met derden, behalve in de volgende gevallen:
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>Wanneer wettelijk verplicht</li>
@@ -85,41 +76,19 @@ export default function PrivacyPage() {
 
             <section className="mb-8">
               <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                5. Uw rechten
+                Uw rechten
               </h2>
               <p className="mb-4 text-gray-700">
-                Onder de Algemene Verordening Gegevensbescherming (AVG) heeft u
-                de volgende rechten:
-              </p>
-              <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>Recht op toegang tot uw gegevens</li>
-                <li>Recht op rechtzetting van onjuiste gegevens</li>
-                <li>Recht op verwijdering van uw gegevens</li>
-                <li>Recht op beperking van de verwerking</li>
-                <li>Recht op gegevensoverdraagbaarheid</li>
-                <li>Recht van bezwaar tegen verwerking</li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                6. Wijzigingen aan dit privacybeleid
-              </h2>
-              <p className="mb-4 text-gray-700">
-                Wij kunnen dit privacybeleid van tijd tot tijd bijwerken.
-                Wijzigingen worden op deze pagina gepubliceerd en de datum van
-                de laatste update wordt bovenaan vermeld. Wij adviseren u om
-                deze pagina regelmatig te controleren.
+                U mag uw gegevens inzien, aanpassen of laten verwijderen. Ook kunt u altijd bezwaar maken tegen het gebruik van uw gegevens.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                7. Contact
+                Contact
               </h2>
               <p className="mb-4 text-gray-700">
-                Als u vragen heeft over dit privacybeleid of over hoe wij uw
-                gegevens verwerken, kunt u contact met ons opnemen via:
+                Als u vragen heeft over dit privacybeleid of over hoe wij uw gegevens verwerken, kunt u contact met ons opnemen via:
               </p>
               <div className="rounded-lg bg-gray-50 p-4">
                 <p className="text-gray-700">
@@ -134,9 +103,7 @@ export default function PrivacyPage() {
 
             <div className="mt-8 border-t border-gray-200 pt-6">
               <p className="text-sm text-gray-500">
-                Dit privacybeleid is opgesteld in overeenstemming met de
-                Algemene Verordening Gegevensbescherming (AVG) en de Belgische
-                privacywetgeving.
+                Dit privacybeleid is opgesteld in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en de Belgische privacywetgeving.
               </p>
             </div>
           </div>

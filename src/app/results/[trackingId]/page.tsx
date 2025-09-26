@@ -480,21 +480,19 @@ export default function ResultsPage() {
                       <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                            activeTab === 'verslag'
-                              ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                          }`}
+                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${activeTab === 'verslag'
+                            ? 'bg-white text-blue-600 shadow-sm'
+                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                            }`}
                         >
                           Bekijk het medisch verslag
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                            activeTab === 'samenvatting'
-                              ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                          }`}
+                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${activeTab === 'samenvatting'
+                            ? 'bg-white text-blue-600 shadow-sm'
+                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                            }`}
                         >
                           Lees de samenvatting
                         </button>
@@ -535,10 +533,15 @@ export default function ResultsPage() {
               <div className="flex w-1/4 flex-col gap-4">
                 <button
                   onClick={() => setIsQuestionsModalOpen(true)}
-                  className="flex items-center justify-between rounded-lg border-gray-200 bg-white px-4 py-3 text-left shadow-md transition-colors hover:bg-gray-50"
+                  className="flex flex-col items-start rounded-lg border-gray-200 bg-white px-4 py-3 text-left shadow-md transition-colors hover:bg-gray-50"
                 >
-                  <h3 className="text-xl font-semibold">Vragen voor uw arts</h3>
-                  <ChevronRight className="size-5 text-gray-400" />
+                  <div className="flex w-full items-center justify-between">
+                    <h3 className="text-lg font-semibold">Vragen voor uw arts</h3>
+                    <ChevronRight className="size-5 text-gray-400" />
+                  </div>
+                  <p className="mt-1 text-sm text-gray-600">
+                    Bekijk hier voorbeeld vragen die je aan je arts kan stellen
+                  </p>
                 </button>
                 {(() => {
                   const currentTerms =
@@ -546,7 +549,7 @@ export default function ResultsPage() {
                   return (
                     <div className="flex flex-col rounded-lg bg-white pb-3 shadow-md">
                       <h3 className="border-b border-gray-200 px-4 py-3 text-xl font-semibold">
-                        Medische termen
+                        Medische termen verklaard
                       </h3>
                       <div className="h-[calc(100vh-245px)] grow overflow-auto text-sm">
                         {currentTerms?.length > 0 ? (
@@ -554,15 +557,13 @@ export default function ResultsPage() {
                             <div
                               key={index}
                               ref={(el) => setTermRef(el, term.term)}
-                              className={`p-4 transition-colors duration-300 ${
-                                selectedTerm === term.term.toLowerCase()
-                                  ? 'bg-blue-200'
-                                  : ''
-                              } ${
-                                index < currentTerms.length - 1
+                              className={`p-4 transition-colors duration-300 ${selectedTerm === term.term.toLowerCase()
+                                ? 'bg-blue-200'
+                                : ''
+                                } ${index < currentTerms.length - 1
                                   ? 'border-b border-gray-200'
                                   : ''
-                              }`}
+                                }`}
                             >
                               <h4 className="font-semibold text-blue-700">
                                 {term.term}

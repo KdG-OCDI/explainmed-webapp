@@ -15,7 +15,7 @@ export function Terms({ terms }: TermsProps) {
     <div className="mx-auto w-full rounded-lg bg-white shadow-lg">
       <Accordion type="single" collapsible>
         <AccordionItem value="terms">
-          <AccordionTrigger>Medische termen</AccordionTrigger>
+          <AccordionTrigger>Medische termen verklaard</AccordionTrigger>
           <AccordionContent>
             <dl className="space-y-4">
               {terms.map((item) => (
