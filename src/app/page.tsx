@@ -35,8 +35,7 @@ export default function Home() {
                 setIsModalOpen(true);
               }
             }}
-            disabled={hasAcceptedCookies === false}
-            className="rounded-lg bg-white px-8 py-6 text-lg font-semibold text-blue-600 hover:bg-blue-50 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
+            className="rounded-lg bg-white px-8 py-6 text-lg font-semibold text-blue-600 hover:bg-blue-50"
           >
             Aan de slag
           </Button>
