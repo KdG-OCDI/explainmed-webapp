@@ -54,7 +54,9 @@ export default function PrivacyPage() {
               </p>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>
-                  Tijdens de overdracht van uw informatie van uw computer naar ons servers wordt deze versleuteld en beveiligd verstuurd over een HTTPS verbinding.
+                  Tijdens de overdracht van uw informatie van uw computer naar
+                  ons servers wordt deze versleuteld en beveiligd verstuurd over
+                  een HTTPS verbinding.
                 </li>
                 <li>
                   <strong>Toegangscontrole en authenticatie:</strong> Alleen
