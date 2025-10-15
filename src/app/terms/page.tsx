@@ -119,22 +119,6 @@ export default function TermsPage() {
 
             <section className="mb-8">
               <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                Beschikbaarheid
-              </h2>
-              <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>
-                  We proberen 24/7 online te zijn, maar kunnen dit niet
-                  garanderen
-                </li>
-                <li>
-                  We mogen de service tijdelijk onderbreken voor onderhoud,
-                  updates of beëindiging
-                </li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="mb-4 text-2xl font-semibold text-gray-900">
                 Eigendom
               </h2>
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
@@ -161,10 +145,6 @@ export default function TermsPage() {
                 <li>
                   We zijn niet aansprakelijk voor schade, fouten in de analyse
                   of onderbrekingen
-                </li>
-                <li>
-                  Onze maximale aansprakelijkheid is het bedrag dat u voor de
-                  service heeft betaald
                 </li>
               </ul>
             </section>

@@ -48,14 +48,17 @@ export default function Home() {
           <h2 className="mb-10 text-center text-3xl font-bold">
             Hoe het werkt
           </h2>
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="rounded-lg bg-blue-50 p-6">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-lg bg-blue-50 p-5">
               <h3 className="mb-3 text-xl font-semibold">
-                1. Plak uw medisch verslag
+                1. Laad uw medisch verslag op.
               </h3>
-              <p>Kopieer en plak uw medisch verslag in onze beveiligde tool.</p>
+              <p>
+                Dit doe je door de tekst van je medisch verslag te kopiëren en
+                de tekst in onze beveiligde tool te plakken.
+              </p>
             </div>
-            <div className="rounded-lg bg-blue-50 p-6">
+            <div className="rounded-lg bg-blue-50 p-5">
               <h3 className="mb-3 text-xl font-semibold">
                 2. Onze AI analyseert
               </h3>
@@ -64,7 +67,7 @@ export default function Home() {
                 terminologie uit.
               </p>
             </div>
-            <div className="rounded-lg bg-blue-50 p-6">
+            <div className="rounded-lg bg-blue-50 p-5">
               <h3 className="mb-3 text-xl font-semibold">
                 3. Jij krijgt duidelijke uitleg
               </h3>
@@ -100,7 +103,7 @@ export default function Home() {
             {/* Hoe is ExplainMed ontwikkeld */}
             <div className="rounded-lg bg-blue-50 p-8">
               <h3 className="mb-4 text-2xl font-semibold text-gray-900">
-                Hoe is ExplainMed ontwikkeld?
+                Hoe werd ExplainMed ontwikkeld?
               </h3>
               <div className="space-y-4 leading-relaxed text-gray-700">
                 <p>
@@ -114,9 +117,8 @@ export default function Home() {
                   kan omzetten in een begrijpelijke en samengevatte versie.
                 </p>
                 <p>
-                  De tool is betrouwbaar omdat dit model geen eigen
-                  interpretaties geeft. Het is veilig in gebruik omdat onze tool
-                  geen medische gegevens opslaat (zie meer informatie in het{' '}
+                  ExplainMed is veilig in gebruik omdat de tool geen medische
+                  gegevens opslaat (zie meer informatie in het{' '}
                   <a
                     href="/privacy"
                     className="text-blue-600 underline hover:text-blue-800"

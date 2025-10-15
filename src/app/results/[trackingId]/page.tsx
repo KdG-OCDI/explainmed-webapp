@@ -1,13 +1,12 @@
 'use client';
 
 import { ChevronRight, Loader2 } from 'lucide-react';
-import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 import React from 'react';
 import { useEffect, useRef, useState } from 'react';
+import { toast } from 'sonner';
 
 import { QuestionsModal } from '@/components/questions-modal';
-import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import {
@@ -28,7 +27,6 @@ export default function ResultsPage() {
   const searchParams = useSearchParams();
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null);
   const [showInlineDescriptions, setShowInlineDescriptions] = useState(false);
   const [isQuestionsModalOpen, setIsQuestionsModalOpen] = useState(false);
@@ -56,7 +54,12 @@ export default function ResultsPage() {
 
         if (!response.ok) {
           if (response.status === 404) {
-            setError('The requested analysis could not be found.');
+            toast.error('De gevraagde analyse kon niet worden gevonden.', {
+              action: {
+                label: 'Probeer opnieuw',
+                onClick: () => (window.location.href = '/'),
+              },
+            });
             setLoading(false);
             return;
           }
@@ -76,7 +79,12 @@ export default function ResultsPage() {
 
           setLoading(false);
         } else if (data.status === 'failed') {
-          setError('Analysis failed. Please try again.');
+          toast.error('Analysis failed. Please try again.', {
+            action: {
+              label: 'Probeer opnieuw',
+              onClick: () => (window.location.href = '/'),
+            },
+          });
           setLoading(false);
         } else {
           // If still processing, check again after a delay
@@ -84,7 +92,12 @@ export default function ResultsPage() {
         }
       } catch (err) {
         console.error('Failed to check status:', err);
-        setError('Failed to retrieve results. Please try again.');
+        toast.error('Failed to retrieve results. Please try again.', {
+          action: {
+            label: 'Probeer opnieuw',
+            onClick: () => (window.location.href = '/'),
+          },
+        });
         setLoading(false);
       }
     };
@@ -448,7 +461,7 @@ export default function ResultsPage() {
 
   return (
     <div className="flex h-[calc(100vh-64px)] grow flex-col bg-gray-50">
-      <main className="container mx-auto flex grow flex-col py-6">
+      <main className="mx-4 flex grow flex-col py-6 lg:container lg:mx-auto">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
             <Loader2 className="mb-4 size-12 animate-spin text-blue-600" />
@@ -461,19 +474,10 @@ export default function ResultsPage() {
           </div>
         )}
 
-        {error && (
-          <div className="mb-6 rounded-md border border-red-200 bg-red-50 p-4">
-            <p className="text-red-600">{error}</p>
-            <Button asChild className="mt-4">
-              <Link href="/">Probeer opnieuw</Link>
-            </Button>
-          </div>
-        )}
-
         {result && (
           <div className="flex flex-col gap-4">
-            <div className="flex grow gap-4">
-              <div className="w-3/4">
+            <div className="flex grow flex-col gap-4 lg:flex-row">
+              <div className="w-full lg:w-3/4">
                 <div className="rounded-lg bg-white pb-3 shadow-md">
                   <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
                     <div className="flex items-center gap-6">
@@ -532,7 +536,7 @@ export default function ResultsPage() {
                 </div>
               </div>
 
-              <div className="flex w-1/4 flex-col gap-4">
+              <div className="flex w-full flex-col gap-4 lg:w-1/4">
                 <button
                   onClick={() => setIsQuestionsModalOpen(true)}
                   className="flex flex-col items-start rounded-lg border-gray-200 bg-white px-4 py-3 text-left shadow-md transition-colors hover:bg-gray-50"
@@ -555,7 +559,7 @@ export default function ResultsPage() {
                       <h3 className="border-b border-gray-200 px-4 py-3 text-xl font-semibold">
                         Medische termen verklaard
                       </h3>
-                      <div className="h-[calc(100vh-245px)] grow overflow-auto text-sm">
+                      <div className="x h-[calc(100vh-317px)] grow overflow-auto text-sm lg:h-[calc(100vh-289px)]">
                         {currentTerms?.length > 0 ? (
                           currentTerms.map((term: any, index: number) => (
                             <div

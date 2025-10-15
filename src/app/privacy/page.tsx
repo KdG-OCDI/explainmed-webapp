@@ -55,8 +55,7 @@ export default function PrivacyPage() {
               <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
                 <li>
                   Tijdens de overdracht van uw informatie van uw computer naar
-                  ons servers wordt deze versleuteld en beveiligd verstuurd over
-                  een HTTPS verbinding.
+                  ons servers wordt deze versleuteld en beveiligd verstuurd.
                 </li>
                 <li>
                   <strong>Toegangscontrole en authenticatie:</strong> Alleen
@@ -77,22 +76,8 @@ export default function PrivacyPage() {
                 Gegevensdeling
               </h2>
               <p className="mb-4 text-gray-700">
-                Wij delen uw persoonlijke gegevens niet met derden, behalve in
-                de volgende gevallen:
-              </p>
-              <ul className="mb-4 list-inside list-disc space-y-2 text-gray-700">
-                <li>Wanneer wettelijk verplicht</li>
-                <li>Met uw uitdrukkelijke toestemming</li>
-              </ul>
-            </section>
-
-            <section className="mb-8">
-              <h2 className="mb-4 text-2xl font-semibold text-gray-900">
-                Uw rechten
-              </h2>
-              <p className="mb-4 text-gray-700">
-                U mag uw gegevens inzien, aanpassen of laten verwijderen. Ook
-                kunt u altijd bezwaar maken tegen het gebruik van uw gegevens.
+                Wij delen uw persoonlijke gegevens niet met derden, behalve met
+                uw uitdrukkelijke toestemming
               </p>
             </section>
 

@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 
 import { DemoModeToggle } from '@/components/demo-mode-toggle';
 import { Header } from '@/components/header';
+import { Toaster } from '@/components/ui/sonner';
 import { PrivacyProvider } from '@/lib/privacy-context';
 
 const inter = Inter({
@@ -31,6 +32,7 @@ export default function RootLayout({
           <Header />
           {children}
           <DemoModeToggle />
+          <Toaster />
         </PrivacyProvider>
       </body>
     </html>

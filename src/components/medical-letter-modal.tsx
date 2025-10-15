@@ -76,7 +76,7 @@ export function MedicalLetterModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <div className="flex max-h-[90vh] w-full max-w-3xl flex-col rounded-lg bg-white shadow-xl">
         <div className="flex items-center justify-between border-b p-4">
-          <h2 className="text-xl font-semibold">Plak uw medisch verslag</h2>
+          <h2 className="text-xl font-semibold">Laad uw medisch verslag op.</h2>
           <button
             onClick={onClose}
             className="text-gray-500 hover:text-gray-700"
@@ -88,7 +88,7 @@ export function MedicalLetterModal({
 
         <div className="grow overflow-auto">
           <Textarea
-            placeholder="Plak uw medisch verslag hier..."
+            placeholder="Laad uw medisch verslag hier op...."
             className="h-[40vh] w-full resize-none p-4 text-base"
             value={medicalText}
             onChange={(e) => setMedicalText(e.target.value)}
