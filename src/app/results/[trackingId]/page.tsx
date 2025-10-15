@@ -26,6 +26,7 @@ export default function ResultsPage() {
   const { trackingId } = useParams();
   const searchParams = useSearchParams();
   const [result, setResult] = useState<any>(null);
+  const [originalDocument, setOriginalDocument] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedTerm, setSelectedTerm] = useState<string | null>(null);
   const [showInlineDescriptions, setShowInlineDescriptions] = useState(false);
@@ -39,6 +40,18 @@ export default function ResultsPage() {
   const [extractedTerms, setExtractedTerms] = useState<Bla[]>([]);
   const [summaryTerms, setSummaryTerms] = useState<Bla[]>([]);
   const termRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  // Load original document from localStorage on mount
+  useEffect(() => {
+    if (!trackingId) return;
+    const stored = localStorage.getItem(`original_doc_${trackingId}`);
+    if (stored) {
+      setOriginalDocument(stored);
+      console.log('Original document loaded from localStorage');
+    } else {
+      console.warn('No original document found in localStorage for', trackingId);
+    }
+  }, [trackingId]);
 
   useEffect(() => {
     if (!trackingId) return;
@@ -142,51 +155,109 @@ export default function ResultsPage() {
     termRefs.current[term.toLowerCase()] = el;
   };
 
-  // Function to fetch summary from API
+  // Function to fetch summary from API with polling
   const fetchSummary = async () => {
     if (summary || summaryLoading) return; // Don't fetch if already loaded or loading
+
+    // Check if we have the original document
+    if (!originalDocument) {
+      console.error('No original document available for summary generation');
+      toast.error('Origineel document niet beschikbaar voor samenvatting');
+      // Fallback to generated summary from result
+      const fallbackSummary = generateSummaryContent(result);
+      setSummary(fallbackSummary);
+      const terms = extractTermsFromHtml(fallbackSummary);
+      setSummaryTerms(terms);
+      return;
+    }
 
     setSummaryLoading(true);
     try {
       const demoMode = isDemoMode() || searchParams.get('demo') === 'true';
-      const url = demoMode
+      
+      // Step 1: Submit the summary request with the ORIGINAL document
+      const submitUrl = demoMode
         ? `/api/summarize?demo=true&trackingId=${trackingId}`
         : '/api/summarize';
 
-      const response = await fetch(url, {
+      console.log('Submitting summary request with original document');
+      const submitResponse = await fetch(submitUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          document: result,
+          document: originalDocument, // Use original document instead of result
         }),
       });
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+      if (!submitResponse.ok) {
+        throw new Error(`Error: ${submitResponse.status}`);
       }
 
-      const data = await response.json();
-      console.log('Summary API response:', data);
+      const submitData = await submitResponse.json();
+      console.log('Summary submit response:', submitData);
 
-      if (data.state === 'SUCCESS') {
-        setSummary(data.result);
-        // Extract terms from summary
-        const terms = extractTermsFromHtml(data.result);
+      // If demo mode returns SUCCESS immediately, use it
+      if (submitData.state === 'SUCCESS') {
+        setSummary(submitData.result);
+        const terms = extractTermsFromHtml(submitData.result);
         setSummaryTerms(terms);
-      } else {
-        throw new Error('Failed to generate summary');
+        setSummaryLoading(false);
+        return;
       }
+
+      // Step 2: Poll for the summary result
+      // API returns task_id (with underscore), not id
+      const summaryTaskId = submitData.task_id || submitData.id;
+      if (!summaryTaskId) {
+        throw new Error('No task ID returned from summary API');
+      }
+
+      const pollSummaryStatus = async () => {
+        try {
+          const statusUrl = demoMode
+            ? `/api/check-status?trackingId=${summaryTaskId}&demo=true`
+            : `/api/check-status?trackingId=${summaryTaskId}`;
+
+          const statusResponse = await fetch(statusUrl);
+
+          if (!statusResponse.ok) {
+            throw new Error(`Error: ${statusResponse.status}`);
+          }
+
+          const statusData = await statusResponse.json();
+          console.log('Summary status check:', statusData);
+
+          if (statusData.state === 'SUCCESS') {
+            setSummary(statusData.result);
+            const terms = extractTermsFromHtml(statusData.result);
+            setSummaryTerms(terms);
+            setSummaryLoading(false);
+          } else if (statusData.state === 'FAILURE' || statusData.status === 'failed') {
+            throw new Error('Summary generation failed');
+          } else {
+            // Still processing, check again after a delay
+            setTimeout(pollSummaryStatus, 5000);
+          }
+        } catch (pollErr) {
+          console.error('Failed to poll summary status:', pollErr);
+          throw pollErr;
+        }
+      };
+
+      // Start polling
+      await pollSummaryStatus();
+
     } catch (err) {
       console.error('Failed to fetch summary:', err);
+      toast.error('Fout bij het genereren van de samenvatting');
       // Fallback to generated summary
       const fallbackSummary = generateSummaryContent(result);
       setSummary(fallbackSummary);
       // Extract terms from fallback summary
       const terms = extractTermsFromHtml(fallbackSummary);
       setSummaryTerms(terms);
-    } finally {
       setSummaryLoading(false);
     }
   };
@@ -517,7 +588,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="h-[calc(100vh-193px)] overflow-auto whitespace-pre-wrap rounded-md p-4 text-sm">
+                  <div className="h-[calc(100vh-193px)] overflow-auto whitespace-normal leading-loose rounded-md p-4 text-sm">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (

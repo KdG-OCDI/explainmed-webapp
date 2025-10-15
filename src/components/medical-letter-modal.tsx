@@ -56,6 +56,9 @@ export function MedicalLetterModal({
 
       const data = await response.json();
 
+      // Store the original document in localStorage for later use (summary generation)
+      localStorage.setItem(`original_doc_${data.id}`, medicalText);
+
       // Redirect to results page with the tracking ID
       const resultsUrl = demoMode
         ? `/results/${data.id}?demo=true`

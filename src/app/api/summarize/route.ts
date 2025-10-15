@@ -112,6 +112,8 @@ export async function POST(request: Request) {
     const data = await response.json();
     console.log('API response data:', data);
 
+    // The async API returns a task ID, not the final result
+    // Return the task ID so the client can poll for the result
     return NextResponse.json(data);
   } catch (error) {
     console.error('API error:', error);
