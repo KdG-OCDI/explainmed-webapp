@@ -174,7 +174,7 @@ export default function ResultsPage() {
     setSummaryLoading(true);
     try {
       const demoMode = isDemoMode() || searchParams.get('demo') === 'true';
-      
+
       // Step 1: Submit the summary request with the ORIGINAL document
       const submitUrl = demoMode
         ? `/api/summarize?demo=true&trackingId=${trackingId}`
@@ -531,8 +531,8 @@ export default function ResultsPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-64px)] grow flex-col bg-gray-50">
-      <main className="mx-4 flex grow flex-col py-6 lg:container lg:mx-auto">
+    <div className="flex h-[calc(100vh-72px)] sm:h-[calc(100vh-64px)] grow flex-col bg-gray-50">
+      <main className="mx-2 sm:mx-4 flex grow flex-col py-4 sm:py-6 lg:container lg:mx-auto">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
             <Loader2 className="mb-4 size-12 animate-spin text-blue-600" />
@@ -550,32 +550,30 @@ export default function ResultsPage() {
             <div className="flex grow flex-col gap-4 lg:flex-row">
               <div className="w-full lg:w-3/4">
                 <div className="rounded-lg bg-white pb-3 shadow-md">
-                  <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
-                    <div className="flex items-center gap-6">
+                  <div className="flex flex-col gap-4 border-b border-gray-200 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+                    <div className="flex items-center gap-2 sm:gap-6">
                       <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                            activeTab === 'verslag'
-                              ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                          }`}
+                          className={`rounded-md px-2 py-2 text-xs font-medium transition-all duration-200 sm:px-4 sm:text-sm ${activeTab === 'verslag'
+                            ? 'bg-white text-blue-600 shadow-sm'
+                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                            }`}
                         >
                           Bekijk het medisch verslag
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`rounded-md px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                            activeTab === 'samenvatting'
-                              ? 'bg-white text-blue-600 shadow-sm'
-                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                          }`}
+                          className={`rounded-md px-2 py-2 text-xs font-medium transition-all duration-200 sm:px-4 sm:text-sm ${activeTab === 'samenvatting'
+                            ? 'bg-white text-blue-600 shadow-sm'
+                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                            }`}
                         >
                           Lees de samenvatting
                         </button>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 sm:gap-4">
                       <div className="flex items-center space-x-2">
                         <Switch
                           id="inline-mode"
@@ -588,7 +586,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="h-[calc(100vh-193px)] overflow-auto whitespace-normal leading-loose rounded-md p-4 text-sm">
+                  <div className="h-[calc(100vh-240px)] sm:h-[calc(100vh-193px)] overflow-auto whitespace-normal leading-loose rounded-md p-3 sm:p-4 text-sm">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (
@@ -610,15 +608,15 @@ export default function ResultsPage() {
               <div className="flex w-full flex-col gap-4 lg:w-1/4">
                 <button
                   onClick={() => setIsQuestionsModalOpen(true)}
-                  className="flex flex-col items-start rounded-lg border-gray-200 bg-white px-4 py-3 text-left shadow-md transition-colors hover:bg-gray-50"
+                  className="flex flex-col items-start rounded-lg border-gray-200 bg-white px-3 py-3 text-left shadow-md transition-colors hover:bg-gray-50 sm:px-4"
                 >
                   <div className="flex w-full items-center justify-between">
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="text-base sm:text-lg font-semibold">
                       Vragen voor uw arts
                     </h3>
                     <ChevronRight className="size-5 text-gray-400" />
                   </div>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-xs sm:text-sm text-gray-600">
                     Bekijk hier voorbeeld vragen die je aan je arts kan stellen
                   </p>
                 </button>
@@ -627,36 +625,34 @@ export default function ResultsPage() {
                     activeTab === 'verslag' ? extractedTerms : summaryTerms;
                   return (
                     <div className="flex flex-col rounded-lg bg-white pb-3 shadow-md">
-                      <h3 className="border-b border-gray-200 px-4 py-3 text-xl font-semibold">
+                      <h3 className="border-b border-gray-200 px-3 py-3 text-lg font-semibold sm:px-4 sm:text-xl">
                         Medische termen verklaard
                       </h3>
-                      <div className="x h-[calc(100vh-317px)] grow overflow-auto text-sm lg:h-[calc(100vh-289px)]">
+                      <div className="h-[calc(100vh-360px)] grow overflow-auto text-sm sm:h-[calc(100vh-317px)] lg:h-[calc(100vh-289px)]">
                         {currentTerms?.length > 0 ? (
                           currentTerms.map((term: any, index: number) => (
                             <div
                               key={index}
                               ref={(el) => setTermRef(el, term.term)}
-                              className={`p-4 transition-colors duration-300 ${
-                                selectedTerm === term.term.toLowerCase()
-                                  ? 'bg-blue-200'
-                                  : ''
-                              } ${
-                                index < currentTerms.length - 1
+                              className={`p-3 transition-colors duration-300 sm:p-4 ${selectedTerm === term.term.toLowerCase()
+                                ? 'bg-blue-200'
+                                : ''
+                                } ${index < currentTerms.length - 1
                                   ? 'border-b border-gray-200'
                                   : ''
-                              }`}
+                                }`}
                             >
-                              <h4 className="font-semibold text-blue-700">
+                              <h4 className="text-sm sm:text-base font-semibold text-blue-700">
                                 {term.term}
                               </h4>
-                              <p>{term.description}</p>
+                              <p className="text-xs sm:text-sm">{term.description}</p>
                             </div>
                           ))
                         ) : (
-                          <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+                          <div className="flex h-full flex-col items-center justify-center p-4 text-center sm:p-8">
                             <div className="mb-2 text-gray-400">
                               <svg
-                                className="mx-auto size-12"
+                                className="mx-auto size-8 sm:size-12"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -669,7 +665,7 @@ export default function ResultsPage() {
                                 />
                               </svg>
                             </div>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-xs sm:text-sm text-gray-500">
                               {activeTab === 'verslag'
                                 ? 'Geen medische termen gevonden in het verslag'
                                 : 'Geen medische termen gevonden in de samenvatting'}

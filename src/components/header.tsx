@@ -8,13 +8,13 @@ export function Header() {
   const isResultsPage = pathname.startsWith('/results/');
 
   return (
-    <header className="bg-explain-med p-4 text-primary-foreground">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="bg-explain-med p-3 sm:p-4 text-primary-foreground">
+      <div className="container mx-auto flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <Link href="/">
           <h1 className="text-2xl font-bold">ExplainMed</h1>
         </Link>
         {isResultsPage && (
-          <h2 className="text-xl font-semibold">
+          <h2 className="text-base sm:text-xl font-semibold">
             Jouw medisch verslag verklaard door AI
           </h2>
         )}
