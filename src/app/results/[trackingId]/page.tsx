@@ -40,6 +40,8 @@ export default function ResultsPage() {
   const [extractedTerms, setExtractedTerms] = useState<Bla[]>([]);
   const [summaryTerms, setSummaryTerms] = useState<Bla[]>([]);
   const termRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const [isMobile, setIsMobile] = useState(false);
+  const [openTooltipTerm, setOpenTooltipTerm] = useState<string | null>(null);
 
   // Load original document from localStorage on mount
   useEffect(() => {
@@ -52,6 +54,17 @@ export default function ResultsPage() {
       console.warn('No original document found in localStorage for', trackingId);
     }
   }, [trackingId]);
+
+  // Detect mobile/small window size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!trackingId) return;
@@ -119,7 +132,8 @@ export default function ResultsPage() {
   }, [trackingId, searchParams]);
 
   useEffect(() => {
-    if (selectedTerm && termRefs.current[selectedTerm]) {
+    // Only scroll on desktop, not on mobile
+    if (selectedTerm && termRefs.current[selectedTerm] && !isMobile) {
       const termElement = termRefs.current[selectedTerm];
       const containerElement = termElement.closest('.overflow-auto');
 
@@ -143,11 +157,17 @@ export default function ResultsPage() {
         });
       }
     }
-  }, [selectedTerm]);
+  }, [selectedTerm, isMobile]);
 
   // Function to handle term click
-  const handleTermClick = (term: string) => {
-    setSelectedTerm(term);
+  const handleTermClick = (term: string, explanation: string) => {
+    if (isMobile) {
+      // On mobile, show tooltip instead of scrolling
+      setOpenTooltipTerm(openTooltipTerm === term ? null : term);
+    } else {
+      // On desktop, scroll to term in sidebar
+      setSelectedTerm(term);
+    }
   };
 
   // Function to set ref for a term
@@ -479,19 +499,31 @@ export default function ResultsPage() {
         ) {
           const concept = element.getAttribute('data-concept') || '';
           const explanation = element.getAttribute('data-explanation') || '';
+          const conceptLower = concept.toLowerCase();
+          const isTooltipOpen = openTooltipTerm === conceptLower;
 
           return (
             <TooltipProvider>
-              <Tooltip>
+              <Tooltip
+                open={isMobile ? isTooltipOpen : undefined}
+                onOpenChange={(open) => {
+                  if (isMobile) {
+                    setOpenTooltipTerm(open ? conceptLower : null);
+                  }
+                }}
+              >
                 <TooltipTrigger asChild>
                   <span
                     className="cursor-pointer font-bold text-blue-600 hover:underline"
-                    onClick={() => handleTermClick(concept.toLowerCase())}
+                    onClick={() => handleTermClick(conceptLower, explanation)}
                   >
                     {element.textContent}
                   </span>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent
+                  collisionPadding={16}
+                  className="m-2"
+                >
                   <p className="max-w-xs">{explanation}</p>
                 </TooltipContent>
               </Tooltip>
@@ -531,8 +563,8 @@ export default function ResultsPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-72px)] sm:h-[calc(100vh-64px)] grow flex-col bg-gray-50">
-      <main className="mx-2 sm:mx-4 flex grow flex-col py-4 sm:py-6 lg:container lg:mx-auto">
+    <div className="flex flex-col bg-gray-50 sm:h-[calc(100vh-64px)] sm:grow">
+      <main className="mx-2 sm:mx-4 flex flex-col py-4 sm:grow sm:py-6 lg:container lg:mx-auto">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
             <Loader2 className="mb-4 size-12 animate-spin text-blue-600" />
@@ -555,7 +587,7 @@ export default function ResultsPage() {
                       <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`rounded-md px-2 py-2 text-xs font-medium transition-all duration-200 sm:px-4 sm:text-sm ${activeTab === 'verslag'
+                          className={`rounded-md px-2 py-2 text-sm font-medium transition-all duration-200 sm:px-4 ${activeTab === 'verslag'
                             ? 'bg-white text-blue-600 shadow-sm'
                             : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
                             }`}
@@ -564,7 +596,7 @@ export default function ResultsPage() {
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`rounded-md px-2 py-2 text-xs font-medium transition-all duration-200 sm:px-4 sm:text-sm ${activeTab === 'samenvatting'
+                          className={`rounded-md px-2 py-2 text-sm font-medium transition-all duration-200 sm:px-4 ${activeTab === 'samenvatting'
                             ? 'bg-white text-blue-600 shadow-sm'
                             : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
                             }`}
@@ -586,7 +618,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="h-[calc(100vh-240px)] sm:h-[calc(100vh-193px)] overflow-auto whitespace-normal leading-loose rounded-md p-3 sm:p-4 text-sm">
+                  <div className="overflow-auto whitespace-normal leading-loose rounded-md p-3 text-sm sm:h-[calc(100vh-193px)] sm:p-4">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (
@@ -616,8 +648,8 @@ export default function ResultsPage() {
                     </h3>
                     <ChevronRight className="size-5 text-gray-400" />
                   </div>
-                  <p className="mt-1 text-xs sm:text-sm text-gray-600">
-                    Bekijk hier voorbeeld vragen die je aan je arts kan stellen
+                  <p className="mt-1 text-sm text-gray-600">
+                    Noteer hier vragen die je aan je arts kan stellen
                   </p>
                 </button>
                 {(() => {
@@ -628,7 +660,7 @@ export default function ResultsPage() {
                       <h3 className="border-b border-gray-200 px-3 py-3 text-lg font-semibold sm:px-4 sm:text-xl">
                         Medische termen verklaard
                       </h3>
-                      <div className="h-[calc(100vh-360px)] grow overflow-auto text-sm sm:h-[calc(100vh-317px)] lg:h-[calc(100vh-289px)]">
+                      <div className="overflow-auto text-sm sm:h-[calc(100vh-317px)] lg:h-[calc(100vh-289px)]">
                         {currentTerms?.length > 0 ? (
                           currentTerms.map((term: any, index: number) => (
                             <div
@@ -645,7 +677,7 @@ export default function ResultsPage() {
                               <h4 className="text-sm sm:text-base font-semibold text-blue-700">
                                 {term.term}
                               </h4>
-                              <p className="text-xs sm:text-sm">{term.description}</p>
+                              <p className="text-sm">{term.description}</p>
                             </div>
                           ))
                         ) : (
@@ -665,7 +697,7 @@ export default function ResultsPage() {
                                 />
                               </svg>
                             </div>
-                            <p className="text-xs sm:text-sm text-gray-500">
+                            <p className="text-sm text-gray-500">
                               {activeTab === 'verslag'
                                 ? 'Geen medische termen gevonden in het verslag'
                                 : 'Geen medische termen gevonden in de samenvatting'}

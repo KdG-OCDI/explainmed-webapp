@@ -52,7 +52,7 @@ export function DemoModeToggle({ className }: DemoModeToggleProps) {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              variant="ghost"
+              variant="secondary"
               size="icon"
               className={`fixed bottom-4 right-4 z-50 ${className}`}
               onClick={() => setIsVisible(true)}
