@@ -51,7 +51,10 @@ export default function ResultsPage() {
       setOriginalDocument(stored);
       console.log('Original document loaded from localStorage');
     } else {
-      console.warn('No original document found in localStorage for', trackingId);
+      console.warn(
+        'No original document found in localStorage for',
+        trackingId,
+      );
     }
   }, [trackingId]);
 
@@ -254,7 +257,10 @@ export default function ResultsPage() {
             const terms = extractTermsFromHtml(statusData.result);
             setSummaryTerms(terms);
             setSummaryLoading(false);
-          } else if (statusData.state === 'FAILURE' || statusData.status === 'failed') {
+          } else if (
+            statusData.state === 'FAILURE' ||
+            statusData.status === 'failed'
+          ) {
             throw new Error('Summary generation failed');
           } else {
             // Still processing, check again after a delay
@@ -268,7 +274,6 @@ export default function ResultsPage() {
 
       // Start polling
       await pollSummaryStatus();
-
     } catch (err) {
       console.error('Failed to fetch summary:', err);
       toast.error('Fout bij het genereren van de samenvatting');
@@ -520,10 +525,7 @@ export default function ResultsPage() {
                     {element.textContent}
                   </span>
                 </TooltipTrigger>
-                <TooltipContent
-                  collisionPadding={16}
-                  className="m-2"
-                >
+                <TooltipContent collisionPadding={16} className="m-2">
                   <p className="max-w-xs">{explanation}</p>
                 </TooltipContent>
               </Tooltip>
@@ -564,7 +566,7 @@ export default function ResultsPage() {
 
   return (
     <div className="flex flex-col bg-gray-50 sm:h-[calc(100vh-64px)] sm:grow">
-      <main className="mx-2 sm:mx-4 flex flex-col py-4 sm:grow sm:py-6 lg:container lg:mx-auto">
+      <main className="mx-2 flex flex-col py-4 lg:container sm:mx-4 sm:grow sm:py-6 lg:mx-auto">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
             <Loader2 className="mb-4 size-12 animate-spin text-blue-600" />
@@ -582,24 +584,26 @@ export default function ResultsPage() {
             <div className="flex grow flex-col gap-4 lg:flex-row">
               <div className="w-full lg:w-3/4">
                 <div className="rounded-lg bg-white pb-3 shadow-md">
-                  <div className="flex flex-col gap-4 border-b border-gray-200 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
+                  <div className="flex flex-col gap-4 border-b border-gray-200 p-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
                     <div className="flex items-center gap-2 sm:gap-6">
                       <div className="flex items-center gap-1 rounded-lg bg-gray-100 p-1">
                         <button
                           onClick={() => setActiveTab('verslag')}
-                          className={`rounded-md px-2 py-2 text-sm font-medium transition-all duration-200 sm:px-4 ${activeTab === 'verslag'
-                            ? 'bg-white text-blue-600 shadow-sm'
-                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                            }`}
+                          className={`rounded-md p-2 text-sm font-medium transition-all duration-200 sm:px-4 ${
+                            activeTab === 'verslag'
+                              ? 'bg-white text-blue-600 shadow-sm'
+                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                          }`}
                         >
                           Bekijk het medisch verslag
                         </button>
                         <button
                           onClick={() => setActiveTab('samenvatting')}
-                          className={`rounded-md px-2 py-2 text-sm font-medium transition-all duration-200 sm:px-4 ${activeTab === 'samenvatting'
-                            ? 'bg-white text-blue-600 shadow-sm'
-                            : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
-                            }`}
+                          className={`rounded-md p-2 text-sm font-medium transition-all duration-200 sm:px-4 ${
+                            activeTab === 'samenvatting'
+                              ? 'bg-white text-blue-600 shadow-sm'
+                              : 'text-gray-600 hover:bg-blue-100 hover:text-gray-800'
+                          }`}
                         >
                           Lees de samenvatting
                         </button>
@@ -618,7 +622,7 @@ export default function ResultsPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="overflow-auto whitespace-normal leading-loose rounded-md p-3 text-sm sm:h-[calc(100vh-193px)] sm:p-4">
+                  <div className="overflow-auto whitespace-normal rounded-md p-3 text-sm leading-loose sm:h-[calc(100vh-193px)] sm:p-4">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (
@@ -640,10 +644,10 @@ export default function ResultsPage() {
               <div className="flex w-full flex-col gap-4 lg:w-1/4">
                 <button
                   onClick={() => setIsQuestionsModalOpen(true)}
-                  className="flex flex-col items-start rounded-lg border-gray-200 bg-white px-3 py-3 text-left shadow-md transition-colors hover:bg-gray-50 sm:px-4"
+                  className="flex flex-col items-start rounded-lg border-gray-200 bg-white p-3 text-left shadow-md transition-colors hover:bg-gray-50 sm:px-4"
                 >
                   <div className="flex w-full items-center justify-between">
-                    <h3 className="text-base sm:text-lg font-semibold">
+                    <h3 className="text-base font-semibold sm:text-lg">
                       Vragen voor uw arts
                     </h3>
                     <ChevronRight className="size-5 text-gray-400" />
@@ -657,7 +661,7 @@ export default function ResultsPage() {
                     activeTab === 'verslag' ? extractedTerms : summaryTerms;
                   return (
                     <div className="flex flex-col rounded-lg bg-white pb-3 shadow-md">
-                      <h3 className="border-b border-gray-200 px-3 py-3 text-lg font-semibold sm:px-4 sm:text-xl">
+                      <h3 className="border-b border-gray-200 p-3 text-lg font-semibold sm:px-4 sm:text-xl">
                         Medische termen verklaard
                       </h3>
                       <div className="overflow-auto text-sm sm:h-[calc(100vh-317px)] lg:h-[calc(100vh-289px)]">
@@ -666,15 +670,17 @@ export default function ResultsPage() {
                             <div
                               key={index}
                               ref={(el) => setTermRef(el, term.term)}
-                              className={`p-3 transition-colors duration-300 sm:p-4 ${selectedTerm === term.term.toLowerCase()
-                                ? 'bg-blue-200'
-                                : ''
-                                } ${index < currentTerms.length - 1
+                              className={`p-3 transition-colors duration-300 sm:p-4 ${
+                                selectedTerm === term.term.toLowerCase()
+                                  ? 'bg-blue-200'
+                                  : ''
+                              } ${
+                                index < currentTerms.length - 1
                                   ? 'border-b border-gray-200'
                                   : ''
-                                }`}
+                              }`}
                             >
-                              <h4 className="text-sm sm:text-base font-semibold text-blue-700">
+                              <h4 className="text-sm font-semibold text-blue-700 sm:text-base">
                                 {term.term}
                               </h4>
                               <p className="text-sm">{term.description}</p>
