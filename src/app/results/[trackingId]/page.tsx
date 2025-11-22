@@ -468,9 +468,8 @@ export default function ResultsPage() {
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = text;
 
-    // List of void elements that cannot have children
+    // List of void elements that cannot have children (we'll handle <br> specially)
     const voidElements = [
-      'br',
       'img',
       'input',
       'hr',
@@ -495,6 +494,50 @@ export default function ResultsPage() {
       if (node.nodeType === Node.ELEMENT_NODE) {
         const element = node as HTMLElement;
         const tagName = element.tagName.toLowerCase();
+
+        // Special-case <br>: if it directly follows a <strong> heading from the demo data,
+        // skip rendering it because we'll render the <strong> as a block heading.
+        if (tagName === 'br') {
+          const prev = element.previousSibling as HTMLElement | null;
+          if (prev && prev.nodeType === Node.ELEMENT_NODE && (prev as HTMLElement).tagName.toLowerCase() === 'strong') {
+            return null;
+          }
+          return React.createElement('br', { key: Math.random() });
+        }
+
+        // If <strong> tags are used as section headings in the demo HTML,
+        // render them as block-level headings only when they appear to be
+        // actual headings (e.g. followed by a <br> or a newline). Otherwise
+        // render <strong> inline so names like "Obi-Wan Kenobi" remain inline.
+        if (tagName === 'strong') {
+          const next = element.nextSibling;
+          const nextIsBr =
+            next && next.nodeType === Node.ELEMENT_NODE &&
+            (next as HTMLElement).tagName.toLowerCase() === 'br';
+          const nextIsNewlineText =
+            next &&
+            next.nodeType === Node.TEXT_NODE &&
+            /^\s*[\r\n]/.test(next.textContent || '');
+
+          const children = Array.from(element.childNodes).map((child, i) => (
+            <React.Fragment key={i}>{processNode(child)}</React.Fragment>
+          ));
+
+          if (nextIsBr || nextIsNewlineText) {
+            return React.createElement(
+              'div',
+              { key: Math.random(), className: 'font-semibold mt-2 mb-0' },
+              children,
+            );
+          }
+
+          // Default: render inline strong
+          return React.createElement(
+            'strong',
+            { key: Math.random(), className: 'font-semibold' },
+            children,
+          );
+        }
 
         // Handle the new format with data-concept and data-explanation attributes
         if (
