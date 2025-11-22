@@ -499,7 +499,11 @@ export default function ResultsPage() {
         // skip rendering it because we'll render the <strong> as a block heading.
         if (tagName === 'br') {
           const prev = element.previousSibling as HTMLElement | null;
-          if (prev && prev.nodeType === Node.ELEMENT_NODE && (prev as HTMLElement).tagName.toLowerCase() === 'strong') {
+          if (
+            prev &&
+            prev.nodeType === Node.ELEMENT_NODE &&
+            (prev as HTMLElement).tagName.toLowerCase() === 'strong'
+          ) {
             return null;
           }
           return React.createElement('br', { key: Math.random() });
@@ -512,7 +516,8 @@ export default function ResultsPage() {
         if (tagName === 'strong') {
           const next = element.nextSibling;
           const nextIsBr =
-            next && next.nodeType === Node.ELEMENT_NODE &&
+            next &&
+            next.nodeType === Node.ELEMENT_NODE &&
             (next as HTMLElement).tagName.toLowerCase() === 'br';
           const nextIsNewlineText =
             next &&
