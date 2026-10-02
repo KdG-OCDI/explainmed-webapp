@@ -78,7 +78,7 @@ export function MedicalLetterModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="flex max-h-[90vh] w-full max-w-3xl flex-col rounded-lg bg-white shadow-xl">
+      <div className="flex max-h-[90vh] w-full max-w-3xl flex-col rounded-lg bg-white text-gray-900 shadow-xl">
         <div className="flex items-center justify-between border-b p-4">
           <h2 className="text-xl font-semibold">Laad uw medisch verslag op.</h2>
           <button
@@ -102,7 +102,7 @@ export function MedicalLetterModal({
                     key={demoCase.id}
                     type="button"
                     variant="outline"
-                    className={`min-h-12 touch-manipulation text-base ${
+                    className={`min-h-12 touch-manipulation text-base text-gray-900 ${
                       medicalText === demoCase.originalText
                         ? 'border-blue-600 bg-blue-50 text-blue-900'
                         : ''
