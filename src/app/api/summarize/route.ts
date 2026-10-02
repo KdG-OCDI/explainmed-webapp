@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 
-import { findDemoCase } from '@/lib/demo-data.util';
+import { findDemoCase, findDemoCaseByTrackingId } from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
-import { getDocument } from '@/lib/document-store';
 
 export async function POST(request: Request) {
   try {
@@ -34,23 +33,14 @@ export async function POST(request: Request) {
       const trackingId = searchParams.get('trackingId');
 
       if (trackingId && trackingId.startsWith('demo-')) {
-        console.log(
-          'Demo mode: trying to get original document for tracking ID:',
-          trackingId,
-        );
-        const originalDocument = getDocument(trackingId);
+        const originalDemoCase = findDemoCaseByTrackingId(trackingId);
 
-        if (originalDocument) {
-          console.log('Demo mode: found original document, trying to match');
-          const originalDemoCase = findDemoCase(originalDocument);
-
-          if (originalDemoCase && originalDemoCase.summary) {
-            console.log(
-              'Demo mode: returning summary for original case:',
-              originalDemoCase.name,
-            );
-            return NextResponse.json(originalDemoCase.summary);
-          }
+        if (originalDemoCase && originalDemoCase.summary) {
+          console.log(
+            'Demo mode: returning summary for original case:',
+            originalDemoCase.name,
+          );
+          return NextResponse.json(originalDemoCase.summary);
         }
       }
 

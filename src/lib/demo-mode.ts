@@ -7,8 +7,10 @@ export function isDemoMode(): boolean {
     return false; // Server-side, default to false
   }
 
+  // Demo mode is on by default; only an explicit 'false' (set via the toggle)
+  // turns it off.
   const stored = localStorage.getItem(DEMO_MODE_KEY);
-  return stored === 'true';
+  return stored !== 'false';
 }
 
 export function setDemoMode(enabled: boolean): void {

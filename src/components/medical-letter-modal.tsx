@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import { demoCases } from '@/lib/demo-data.constants';
 import { isDemoMode } from '@/lib/demo-mode';
 
 interface MedicalLetterModalProps {
@@ -90,9 +91,38 @@ export function MedicalLetterModal({
         </div>
 
         <div className="grow overflow-auto">
+          {isDemoMode() && (
+            <div className="border-b bg-gray-50 p-4">
+              <p className="mb-3 text-sm text-gray-600">
+                Kies een voorbeeldverslag om te laden:
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {demoCases.map((demoCase) => (
+                  <Button
+                    key={demoCase.id}
+                    type="button"
+                    variant="outline"
+                    className={`min-h-12 touch-manipulation text-base ${
+                      medicalText === demoCase.originalText
+                        ? 'border-blue-600 bg-blue-50 text-blue-900'
+                        : ''
+                    }`}
+                    onClick={() => {
+                      setMedicalText(demoCase.originalText);
+                      setError(null);
+                    }}
+                    disabled={isLoading}
+                  >
+                    {demoCase.name}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <Textarea
             placeholder="Laad uw medisch verslag hier op...."
-            className="h-[40vh] w-full resize-none p-4 text-base"
+            className="h-[35vh] w-full resize-none p-4 text-base"
             value={medicalText}
             onChange={(e) => setMedicalText(e.target.value)}
             disabled={isLoading}
@@ -104,7 +134,7 @@ export function MedicalLetterModal({
         <div className="flex justify-end border-t p-4">
           <Button
             onClick={handleExplain}
-            className="bg-blue-600 px-8 py-2 text-white hover:bg-blue-700"
+            className="min-h-12 touch-manipulation bg-blue-600 px-8 py-2 text-base text-white hover:bg-blue-700"
             disabled={isLoading || !medicalText.trim()} // Disable if loading or text is empty
           >
             {isLoading ? (

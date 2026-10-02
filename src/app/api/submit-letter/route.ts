@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 
 import { findDemoCase, generateDemoTrackingId } from '@/lib/demo-data.util';
 import { getDemoModeFromRequest } from '@/lib/demo-mode';
-import { storeDocument } from '@/lib/document-store';
 
 export async function POST(request: Request) {
   try {
@@ -20,9 +19,8 @@ export async function POST(request: Request) {
       const demoCase = findDemoCase(body.document);
 
       if (demoCase) {
-        // Simple tracking ID - just indicates this is demo mode
-        const trackingId = generateDemoTrackingId();
-        storeDocument(trackingId, body.document);
+        // Tracking ID embeds the demo case id, so no storage is needed
+        const trackingId = generateDemoTrackingId(demoCase.id);
 
         console.log(
           'Demo mode: found case for',
@@ -106,8 +104,6 @@ export async function POST(request: Request) {
         { status: 500 },
       );
     }
-
-    storeDocument(trackingId, body.document);
 
     // Stuur de tracking ID terug naar de client
     return NextResponse.json({ id: trackingId });

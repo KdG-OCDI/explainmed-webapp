@@ -61,7 +61,7 @@ export function DemoModeToggle({ className }: DemoModeToggleProps) {
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>Demo mode instellingen (Ctrl+Shift+D)</p>
+            <p>Demo mode instellingen</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

@@ -84,9 +84,18 @@ export function findDemoCase(medicalText: string): DemoCase | null {
   return null;
 }
 
-// Simple function to generate a demo tracking ID
-export function generateDemoTrackingId(): string {
-  const randomPart = Math.random().toString(36).substr(2, 9);
-  const timestamp = Date.now();
-  return `demo-${timestamp}-${randomPart}`;
+// Generate a demo tracking ID that embeds the demo case id, so the case can be
+// resolved from the ID alone (no server-side storage; works on serverless).
+export function generateDemoTrackingId(caseId: string): string {
+  const randomPart = Math.random().toString(36).substring(2, 11);
+  return `demo-${caseId}-${Date.now()}-${randomPart}`;
+}
+
+// Resolve the demo case from a tracking ID created by generateDemoTrackingId
+export function findDemoCaseByTrackingId(trackingId: string): DemoCase | null {
+  return (
+    demoCases.find((demoCase) =>
+      trackingId.startsWith(`demo-${demoCase.id}-`),
+    ) ?? null
+  );
 }
