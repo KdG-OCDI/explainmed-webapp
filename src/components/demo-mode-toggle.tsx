@@ -3,7 +3,6 @@
 import { Settings } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-import { DemoSnippetsModal } from '@/components/demo-snippets-modal';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -22,7 +21,6 @@ interface DemoModeToggleProps {
 export function DemoModeToggle({ className }: DemoModeToggleProps) {
   const [isEnabled, setIsEnabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isSnippetsModalOpen, setIsSnippetsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsEnabled(isDemoMode());
@@ -93,24 +91,7 @@ export function DemoModeToggle({ className }: DemoModeToggleProps) {
             ✕
           </Button>
         </div>
-        {isEnabled && (
-          <div className="mt-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setIsSnippetsModalOpen(true)}
-              className="w-full text-xs"
-            >
-              Bekijk demo teksten
-            </Button>
-          </div>
-        )}
       </div>
-
-      <DemoSnippetsModal
-        isOpen={isSnippetsModalOpen}
-        onClose={() => setIsSnippetsModalOpen(false)}
-      />
     </>
   );
 }
