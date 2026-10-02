@@ -22,7 +22,7 @@ interface Bla {
   description: string;
 }
 
-export default function ResultsPage() {
+function ResultsContent() {
   const { trackingId } = useParams();
   const searchParams = useSearchParams();
   const [result, setResult] = useState<any>(null);
@@ -774,4 +774,10 @@ export default function ResultsPage() {
       />
     </div>
   );
+}
+
+// Key on the tracking ID so all state resets when another letter is analysed
+export default function ResultsPage() {
+  const { trackingId } = useParams();
+  return <ResultsContent key={String(trackingId)} />;
 }
