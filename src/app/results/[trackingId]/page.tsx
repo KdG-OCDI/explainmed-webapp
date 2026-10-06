@@ -613,7 +613,7 @@ function ResultsContent() {
   };
 
   return (
-    <div className="flex flex-col bg-gray-50 sm:h-[calc(100vh-64px)] sm:grow">
+    <div className="flex flex-col bg-gray-50 lg:h-[calc(100dvh-64px)] lg:grow">
       <main className="mx-2 flex flex-col py-4 lg:container sm:mx-4 sm:grow sm:py-6 lg:mx-auto">
         {loading && (
           <div className="flex grow flex-col items-center justify-center py-12">
@@ -670,7 +670,7 @@ function ResultsContent() {
                       </div>
                     </div>
                   </div>
-                  <div className="overflow-auto whitespace-normal rounded-md p-3 text-sm leading-loose sm:h-[calc(100vh-193px)] sm:p-4">
+                  <div className="overflow-auto whitespace-normal rounded-md p-3 text-sm leading-loose lg:h-[calc(100dvh-201px)] sm:p-4">
                     {activeTab === 'verslag' ? (
                       renderExplainedText(result)
                     ) : summaryLoading ? (
@@ -712,7 +712,7 @@ function ResultsContent() {
                       <h3 className="border-b border-gray-200 p-3 text-lg font-semibold sm:px-4 sm:text-xl">
                         Medische termen verklaard
                       </h3>
-                      <div className="overflow-auto text-sm sm:h-[calc(100vh-317px)] lg:h-[calc(100vh-289px)]">
+                      <div className="overflow-auto text-sm lg:h-[calc(100dvh-317px)]">
                         {currentTerms?.length > 0 ? (
                           currentTerms.map((term: any, index: number) => (
                             <div
